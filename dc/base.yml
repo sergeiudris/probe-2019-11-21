@@ -1,0 +1,49 @@
+version: "3.2"
+
+services:
+
+  ubuntu18:
+    image: probe.ubuntu18
+    build:
+      context: ../docker/ubuntu18
+      dockerfile: ./Dockerfile
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+  
+  java8:
+    image: probe.java8
+    build:
+      context: ../docker/java8
+      dockerfile: ./Dockerfile
+    volumes:
+      - ../:/opt/probe
+      - ../docker/java8:/opt/app
+      - ../.probedata/docker/java8:/opt/shared
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    links:
+      - ubuntu18
+
+  java11clj10:
+    image: probe.java11clj10
+    build:
+      context: ../docker/java11clj10
+      dockerfile: ./Dockerfile
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    links:
+      - ubuntu18
+
+  base1:
+    image: probe.base1
+    build:
+      context: ../docker/base1
+      dockerfile: ./Dockerfile
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    links:
+      - java11clj10

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+drop_dgraph(){
+    docker volume ls
+    docker volume rm docker_moviequery.imdb.dgraph
+    docker volume ls
+}
+
+drop_postgres(){
+    docker volume ls
+    docker volume rm docker_moviequery.imdb.postgres
+    docker volume ls
+}
+
+
+
+"$@"
