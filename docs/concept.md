@@ -5,7 +5,7 @@
     - many of previous repos were attempts to achive this - probe, shipstudio, sci-lab, ask-data, askwiki, 
     probe-system, moverecom, funworld, mnist etc.
     - it is all in the direction of 'datum system' 
-    - so daex is a precursor-type solution to explore datasets 
+    - so probe is a precursor-type solution to explore datasets 
     
 * design
     - should run on local machine
