@@ -1,22 +1,26 @@
-(ns dq.conn
+(ns starcraft.conn
   (:require [datomic.api :as d]
             [clojure.pprint :as pp]
             [clojure.repl :refer :all]
             
             ))
 
-(def  db-uri "datomic:free://datomicdbfree:4334/hello")
+(declare db)
+(declare conn)
+(declare cdb)
 
-(d/create-database db-uri)
+(comment
 
-(do
- (def conn (d/connect db-uri))
-(def db (d/db conn))
-(defn cdb [] (d/db conn))
- )
+  (def db-uri "datomic:free://datomicfreedb:4334/aligulac")
 
+  (d/create-database db-uri)
 
+  (def conn (d/connect db-uri))
+  (def db (d/db conn))
+  (defn cdb [] (d/db conn))
 
+  ;
+  )
 
 
 

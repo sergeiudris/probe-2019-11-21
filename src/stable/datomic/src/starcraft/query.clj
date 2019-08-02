@@ -1,8 +1,8 @@
-(ns dq.query
+(ns starcraft.query
   (:require [datomic.api :as d]
             [clojure.repl :refer :all]
             [clojure.pprint :as pp]
-            [dq.conn :refer [conn db cdb]]
+            [starcraft.conn :refer [conn db cdb]]
             ))
 
  (defn entity-by-external-id

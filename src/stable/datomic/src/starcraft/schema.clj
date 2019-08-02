@@ -6,14 +6,14 @@
 ;   the terms of this license.
 ;   You must not remove this notice, or any other, from this software.
 
-(ns core.schema 
+(ns starcraft.schema
   (:require [datomic.api :as d]
-            [dq.conn :refer [conn db cdb]]
+            [starcraft.conn :refer [conn db cdb]]
             [clojure.repl :refer :all]))
 
 (comment
   
-  (def db-uri "datomic:dev://datomicdb:4334/dayofdatomic")
+  (def db-uri "datomic:free://datomicfreedb:4334/aligulac")
 
   (def conn (d/connect db-uri))
 

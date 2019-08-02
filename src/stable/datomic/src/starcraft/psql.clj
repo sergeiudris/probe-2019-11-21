@@ -1,9 +1,8 @@
-(ns dq.psql
+(ns starcraft.psql
   (:require [clojure.repl :refer :all]
             [clojure.java.jdbc :as jdbc]
             [clojure.pprint :as pp]
-            [dq.nrepl]
-            [dq.query :refer [entity-by-external-id]]
+            [starcraft.query :refer [entity-by-external-id]]
             ))
 
 (defn hello [] (prn "hello"))
@@ -16,9 +15,9 @@
 
  (def db-spec
    {:dbtype "postgresql"
-    :dbname "aligulac"
+    :dbname "postgresdb"
     :user "aligulac"
-    :host "postgresdb"
+    :host "postgres-aligulac"
     :port 5432
     :password "postgres"})
 
@@ -95,7 +94,7 @@
 
 (defn player-data []
   (->>
-   (jdbc/query db-spec ["select * from player"])
+   (jdbc/query db-spec ["select * from player limit 10"])
    (mapv player->edn)
    )
 )

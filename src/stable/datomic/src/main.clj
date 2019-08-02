@@ -5,6 +5,7 @@
             [probe.tools.dgraph.core]
             [probe.tools.pedestal.server]
             [mbrainz.core]
+            [starcraft.etl]
    ;
             )
   ;

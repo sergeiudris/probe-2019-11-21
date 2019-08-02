@@ -1,11 +1,11 @@
-(ns dq.etl
+(ns starcraft.etl
   (:require [datomic.api :as d]
             [clojure.repl :refer :all]
             [clojure.pprint :as pp]
             
-            [dq.psql]
-            [dq.conn :refer [conn db cdb]]
-            [dq.query :refer [entity-by-external-id]]
+            [starcraft.psql]
+            [starcraft.conn :refer [conn db cdb]]
+            [starcraft.query :refer [entity-by-external-id]]
             ))
 
 
@@ -13,28 +13,28 @@
   (do
     (def schema (read-string (slurp "resources/schema-aligulac.edn")))
     (d/transact conn schema)
-    (d/transact conn (dq.psql/player-data))
+    (d/transact conn (starcraft.psql/player-data))
 
-    (d/transact conn (dq.psql/event-data 30000 0))
-    (d/transact conn (dq.psql/event-data 30000 30000))
-    (d/transact conn (dq.psql/event-data 28689 60000))
-    (d/transact conn (dq.psql/earnings-data))
-    ; @(d/transact conn (dq.psql/match-data 30000 0))
-    ; @(d/transact conn (dq.psql/match-data 30000 30000))
-    ; @(d/transact conn (dq.psql/match-data 30000 60000))
-    ; @(d/transact conn (dq.psql/match-data 30000 90000))
-    ; @(d/transact conn (dq.psql/match-data 30000 120000))
-    ; @(d/transact conn (dq.psql/match-data 30000 150000))
-    ; @(d/transact conn (dq.psql/match-data 30000 180000))
-    ; @(d/transact conn (dq.psql/match-data 30000 210000))
-    ; @(d/transact conn (dq.psql/match-data 30000 240000))
-    ; @(d/transact conn (dq.psql/match-data 21316 270000))
-    (d/transact conn (dq.psql/match-data 50000 0))
-    (d/transact conn (dq.psql/match-data 50000 50000))
-    (d/transact conn (dq.psql/match-data 50000 100000))
-    (d/transact conn (dq.psql/match-data 50000 150000))
-    (d/transact conn (dq.psql/match-data 50000 200000))
-    (d/transact conn (dq.psql/match-data 41316 250000))
+    (d/transact conn (starcraft.psql/event-data 30000 0))
+    (d/transact conn (starcraft.psql/event-data 30000 30000))
+    (d/transact conn (starcraft.psql/event-data 28689 60000))
+    (d/transact conn (starcraft.psql/earnings-data))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 0))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 30000))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 60000))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 90000))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 120000))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 150000))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 180000))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 210000))
+    ; @(d/transact conn (starcraft.psql/match-data 30000 240000))
+    ; @(d/transact conn (starcraft.psql/match-data 21316 270000))
+    (d/transact conn (starcraft.psql/match-data 50000 0))
+    (d/transact conn (starcraft.psql/match-data 50000 50000))
+    (d/transact conn (starcraft.psql/match-data 50000 100000))
+    (d/transact conn (starcraft.psql/match-data 50000 150000))
+    (d/transact conn (starcraft.psql/match-data 50000 200000))
+    (d/transact conn (starcraft.psql/match-data 41316 250000))
     )
   )
 
@@ -49,7 +49,7 @@
   (doc slurp)
   (doc read-string)
 
-  (count (dq.psql/player-data))
+  (count (starcraft.psql/player-data))
 
   ;; load schema
   (def schema (read-string (slurp "resources/schema-aligulac.edn")))
@@ -62,23 +62,23 @@
   ;; load sql data and transact to datomic
   
   ;player entity has no refs
-  @(d/transact conn (dq.psql/player-data))
+  @(d/transact conn (starcraft.psql/player-data))
 
   ;event entity has no refs
-  @(d/transact conn (dq.psql/event-data 50000 0))
-  @(d/transact conn (dq.psql/event-data 38689 50000))
+  @(d/transact conn (starcraft.psql/event-data 50000 0))
+  @(d/transact conn (starcraft.psql/event-data 38689 50000))
 
   ;match entity has player, event refs
-  @(d/transact conn (dq.psql/match-data 50000 0))
-  @(d/transact conn (dq.psql/match-data 50000 50000))
-  @(d/transact conn (dq.psql/match-data 50000 100000))
-  @(d/transact conn (dq.psql/match-data 50000 150000))
-  @(d/transact conn (dq.psql/match-data 50000 200000))
-  @(d/transact conn (dq.psql/match-data 41316 250000))
+  @(d/transact conn (starcraft.psql/match-data 50000 0))
+  @(d/transact conn (starcraft.psql/match-data 50000 50000))
+  @(d/transact conn (starcraft.psql/match-data 50000 100000))
+  @(d/transact conn (starcraft.psql/match-data 50000 150000))
+  @(d/transact conn (starcraft.psql/match-data 50000 200000))
+  @(d/transact conn (starcraft.psql/match-data 41316 250000))
 
 
   ;earnings entity has player, event refs
-  @(d/transact conn (dq.psql/earnings-data))
+  @(d/transact conn (starcraft.psql/earnings-data))
 
 
   ;; construct references
