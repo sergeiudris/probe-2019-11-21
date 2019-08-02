@@ -1,4 +1,4 @@
-(ns rest1.db.mbrainz.core
+(ns rest1.db.starcraft.core
   (:require [clj-time.core :as t]
             [clj-time.format :as f]
             [clojure.repl :refer :all]
@@ -8,11 +8,9 @@
             [probe.tools.datomic.core :refer [q-idents q-attrs]]))
 
 
-
-
 (comment
 
-  (def db-uri "datomic:free://datomicfreedb:4334/mbrainz")
+  (def db-uri "datomic:free://datomicfreedb:4334/aligulac")
 
   (def conn (d/connect db-uri))
 
@@ -26,17 +24,7 @@
 
 (comment
 
-  (d/q '[:find ?id ?type ?gender
-         :in $ ?name
-         :where
-         [?e :artist/name ?name]
-         [?e :artist/gid ?id]
-         [?e :artist/type ?teid]
-         [?teid :db/ident ?type]
-         [?e :artist/gender ?geid]
-         [?geid :db/ident ?gender]]
-       db
-       "Janis Joplin")
+  (q-idents db)
 
   ;
   )

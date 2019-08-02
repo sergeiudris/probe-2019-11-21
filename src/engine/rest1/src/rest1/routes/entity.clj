@@ -3,7 +3,8 @@
             [clojure.core.async :as async]
             [datomic.api :as d]
             [clojure.edn :as edn]
-            [rest1.db.mbrainz.core :refer [q-idents q-attrs]]
+            [rest1.db.mbrainz.core]
+            [rest1.db.starcraft.core]
             [probe.tools.core :refer [try-parse-int]]))
 
 
