@@ -46,9 +46,15 @@ jobwc(){
   hadjar wordcount out11
 }
 
-link(){
+link_checkouts(){
   mkdir -p ./checkouts
   ln -s /opt/probe/src/core/tools ./checkouts/tools
+}
+
+install_checkouts(){
+  cd ./checkouts/tools && \
+  lein install && \
+  cd ../
 }
 
 
