@@ -4,6 +4,7 @@
 dc(){
     # https://github.com/docker/compose/pull/5684
    docker-compose --compatibility \
+        -f dc/dc.yml \
         -f dc/base.yml \
         "$@"
 }

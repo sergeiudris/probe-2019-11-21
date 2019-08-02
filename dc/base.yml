@@ -19,7 +19,7 @@ services:
     volumes:
       - ../:/opt/probe
       - ../docker/java8:/opt/app
-      - ../.probedata/docker/java8:/opt/shared
+      - ../.probedata/shared/docker/java8:/opt/shared
     command: tail -f /dev/null
     stdin_open: true
     tty: true

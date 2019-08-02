@@ -1,4 +1,4 @@
-(defproject probe.tools "0.1.0"
+(defproject lab "0.1.0"
 
   :repositories [["conjars" {:url "https://conjars.org/repo"}]
                  ["clojars" {:url "https://clojars.org/repo"}]
@@ -53,28 +53,51 @@
                  [org.slf4j/jul-to-slf4j "1.7.7"]
                  [org.slf4j/jcl-over-slf4j "1.7.7"]
                  [org.slf4j/log4j-over-slf4j "1.7.7"]
+                 
+                 [probe.tools "0.1.0"]
 
                  ;
                  ]
 
-  :repl-options {:init-ns          probe.tools.core
-                 :main             probe.tools.core
+  :repl-options {:init-ns          main
+                 :main             main
                  :host             "0.0.0.0"
                  :port             4001
+                 :nrepl-middleware [cider.nrepl/wrap-apropos
+                                    cider.nrepl/wrap-classpath
+                                    cider.nrepl/wrap-complete
+                                    cider.nrepl/wrap-debug
+                                    cider.nrepl/wrap-format
+                                    cider.nrepl/wrap-info
+                                    cider.nrepl/wrap-inspect
+                                    cider.nrepl/wrap-macroexpand
+                                    cider.nrepl/wrap-ns
+                                    cider.nrepl/wrap-spec
+                                    cider.nrepl/wrap-profile
+                                    cider.nrepl/wrap-refresh
+                                    cider.nrepl/wrap-resource
+                                    cider.nrepl/wrap-stacktrace
+                                    cider.nrepl/wrap-test
+                                    cider.nrepl/wrap-trace
+                                    cider.nrepl/wrap-out
+                                    cider.nrepl/wrap-undef
+                                    nrepl.middleware.print/wrap-print
+                                    cider.nrepl/wrap-version]
+                ;  :nrepl-middleware [cider.piggieback/wrap-cljs-repl]
                  }
-  :profiles {:dev  {:main         ^{:skip-aot true}  probe.tools.core
+  :profiles {:dev  {:main         ^{:skip-aot true}  main
                     :aot          nil ;[dev ]
-                    ; :aliases      {"dev" ["trampoline" "run" "-m" "main/-dev"]}
+                    :aliases      {"dev" ["trampoline" "run" "-m" "main/-dev"]}
                     :dependencies [[io.pedestal/pedestal.service-tools "0.5.7"] ;; Only needed for ns-watching; WAR tooling
                                    ]}
 
-             :prod ^:leaky {:main probe.tools.core
+             :prod ^:leaky {:main main
                                 ;  :uberjar-name "wordcount-standalone.jar"
                                 ;  :jar-name     "wordcount.jar"
-                            :aot  [probe.tools.core]}}
+                            :aot  [main]}}
 
 
-  :main ^{:skip-aot false} probe.tools.core
+  :main ^{:skip-aot true} main
   :jvm-opts ["-Xms768m" "-Xmx2048m" "-Xmx1g"]
   ; :javac-opts ["-target" "1.8" "-source" "1.8"]
 
