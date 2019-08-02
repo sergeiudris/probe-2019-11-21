@@ -1,4 +1,4 @@
-(ns probe.tools.pedestal.server
+(ns rest1.server
   (:gen-class) ; for -main method in uberjar
   (:require [io.pedestal.http :as server]
             [io.pedestal.http.route :as route]

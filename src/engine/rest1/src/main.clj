@@ -3,9 +3,7 @@
             [probe.tools.core]
             [probe.tools.io.core]
             [probe.tools.dgraph.core]
-            [probe.tools.pedestal.server]
-            [mbrainz.core]
-            [starcraft.etl]
+            [rest1.server]
    ;
             )
   ;
@@ -14,7 +12,7 @@
 
 (defn -dev  [& args]
   (probe.tools.nrepl/-main)
-  ; (probe.tools.pedestal.server/run-dev)
+  (rest1.server/run-dev)
   )
 
 (defn -main  [& args]

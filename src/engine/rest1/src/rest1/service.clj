@@ -1,4 +1,4 @@
-(ns probe.tools.pedestal.service
+(ns rest1.service
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
@@ -8,6 +8,7 @@
             [clojure.pprint :as pp]
             [clj-http.client :as client]
             [probe.tools.core :refer [version]]
+            [rest1.routes.entity]
             [slingshot.slingshot :refer [throw+ try+]]))
 
 (defn about-page
