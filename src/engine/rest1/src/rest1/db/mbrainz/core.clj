@@ -37,6 +37,8 @@
          [?geid :db/ident ?gender]]
        db
        "Janis Joplin")
+  
+  (q-attrs db)
 
   ;
   )
