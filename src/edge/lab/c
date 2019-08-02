@@ -9,6 +9,10 @@ repl_headless(){
   lein repl :headless :host 0.0.0.0 :port 4001
 }
 
+repl_connect(){
+  lein repl :connect 0.0.0.0:7878
+}
+
 test(){
   lein test
 }

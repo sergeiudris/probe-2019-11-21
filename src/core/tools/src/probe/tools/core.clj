@@ -24,6 +24,11 @@
   ;
   )
 
+(defn version 
+  []
+  (clojure-version)
+  )
+
 
 (defn try-parse-int 
   "returns number or nil"

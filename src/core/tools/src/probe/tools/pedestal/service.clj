@@ -7,6 +7,7 @@
             [cheshire.core :as json]
             [clojure.pprint :as pp]
             [clj-http.client :as client]
+            [probe.tools.core :refer [version]]
             [slingshot.slingshot :refer [throw+ try+]]))
 
 (defn about-page
@@ -85,7 +86,7 @@
 (defn home-page
   [request]
   (swap! n inc )
-  (ring-resp/response (str "Hello World!!! #" @n )))
+  (ring-resp/response (str (version) "Hello World! #" @n )))
 
 ;; Defines "/" and "/about" routes with their associated :get handlers.
 ;; The interceptors defined after the verb map (e.g., {:get home-page}

@@ -28,5 +28,8 @@
 (comment
   (probe.tools.core/try-parse-int "3")
   
+  (probe.tools.core/version)
+  
+  
   ;
   )
