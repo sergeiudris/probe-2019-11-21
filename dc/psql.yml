@@ -35,6 +35,23 @@ services:
     stdin_open: true
     tty: true
 
+  postgres-aligulac:
+    image: postgres:11.4
+    # restart: always
+    environment:
+      POSTGRES_USER: aligulac
+      POSTGRES_DB: postgresdb
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - type: volume
+        source: probe.aligulac.postgres
+        target: /var/lib/postgresql/data
+        volume:
+          nocopy: true
+      - ../:/opt/probe
+    stdin_open: true
+    tty: true
+
   adminer:
     image: adminer
     # restart: always

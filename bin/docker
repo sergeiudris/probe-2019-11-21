@@ -19,6 +19,20 @@ rmi_all(){
 
 
 
+ip(){
+  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'   "$@"
+}
 
+
+prune(){
+  down
+  docker system prune -a
+  docker volume prune
+
+  # docker image prune # dangling
+  # docker image prune -a # all unused
+  # docker container  prune
+
+}
 
 "$@"

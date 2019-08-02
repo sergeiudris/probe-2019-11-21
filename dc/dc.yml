@@ -36,3 +36,4 @@ volumes:
   probe.movies.dgraph:
   probe.imdb.postgres:
   probe.stack.postgres:
+  probe.aligulac.postgres:
