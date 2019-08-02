@@ -31,3 +31,34 @@ services:
         # reservations:
         #   cpus: '0.25'
         #   memory: 20M
+
+  datomic:
+    image: probe.datomic
+    volumes:
+      - ../src/stable/datomic:/opt/app
+      - ../:/opt/probe
+      - ../.probedata/shared/src/stable/datomic:/opt/shared
+    build:
+      context: ../src/stable/datomic
+      dockerfile: ./Dockerfile
+    ports:
+      - 7802:7878
+      - 7082:8080
+      # - 7878:7878
+      # - 11488:7888
+      # - 12083:8080
+    command: bash c dev
+    # command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    links:
+      - base1
+      - datomicfreedb
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8096M
+        # reservations:
+        #   cpus: '0.25'
+        #   memory: 20M

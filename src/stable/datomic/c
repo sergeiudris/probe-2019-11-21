@@ -5,24 +5,77 @@ repl(){
   lein repl :start :host 0.0.0.0 :port 35543
 }
 
-conn(){
-  lein repl :connect 0.0.0.0:35543
+repl_headless(){
+  lein repl :headless :host 0.0.0.0 :port 4001
 }
 
-conn7888(){
-  lein repl :connect 0.0.0.0:7888
+repl_connect(){
+  lein repl :connect 0.0.0.0:7878
 }
 
-start(){
-  lein run
+test(){
+  lein test
 }
 
-init(){
-  lein run-dev
+test_refresh(){
+  lein test-refresh
 }
 
-nrepl_cljs(){
-  clj -R:nREPL -m nrepl.cmdline --middleware "[cider.piggieback/wrap-cljs-repl]"
+dev(){
+  lein clean
+  install_deps
+  lein dev
+
+  # lein clean
+  # repl_headless
 }
+
+uberjars(){
+  lein with-profile wordcount:sandbox:cascalog uberjar
+  # lein with-profile wordcount uberjar
+}
+supujar(){
+  lein with-profile supweb1 uberjar
+  # lein with-profile wordcount uberjar
+}
+jars(){
+  lein with-profile wordcount:sandbox:cascalog jar
+  # lein with-profile wordcount uberjar
+}
+
+hadjar(){
+  hadoop jar target/$1-standalone.jar  "${@:2}"
+}
+
+jobwc(){
+  hadjar wordcount out11
+}
+
+link_checkouts(){
+  echo "--- link checkouts"
+  ls -a
+  if [ ! -d ./checkouts ]; then
+  mkdir -p ./checkouts
+  ln -s /opt/probe/src/core/tools ./checkouts/tools
+  else
+  echo "checkouts already exists"
+  fi
+}
+
+install_checkouts(){
+  for d in ./checkouts/*/ ; do
+    echo "$d"
+    cd $d 
+    lein install
+    cd ../..
+  done
+}
+
+install_deps(){
+  link_checkouts
+  install_checkouts
+  # lein deps
+}
+
 
 "$@"

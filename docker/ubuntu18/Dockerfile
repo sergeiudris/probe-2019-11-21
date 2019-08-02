@@ -7,4 +7,5 @@ RUN apt-get update && \
     apt-get install -y git-core && \
     apt-get install -y gpg && \
     apt-get install -y rlwrap && \
-    apt-get install -y software-properties-common
+    apt-get install -y software-properties-common && \
+    apt-get install -y unzip curl net-tools lsof

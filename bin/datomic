@@ -8,4 +8,13 @@ load_mbrainz(){
 }
 
 
+import_mbrainz(){
+    # bin/datomic restore-db file:///opt/datomic-pro/mbrainz-1968-1973 datomic:dev://datomicdb:4334/mbrainz-1968-1973
+    bash ./c dc exec datomicfreedb bash -c " \
+    bin/datomic restore-db \
+    file:///opt/probe/.probedata/datomic/mbrainz-1968-1973 \
+    datomic:free://datomicfreedb:4334/mbrainz "
+    # clojure -m initdev
+}
+
 "$@"
