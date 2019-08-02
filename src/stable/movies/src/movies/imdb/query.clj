@@ -1,4 +1,4 @@
-(ns lab.imdb.query
+(ns movies.imdb.query
   (:require [clojure.repl :refer :all]
             [clojure.pprint :as pp]
             [probe.tools.dgraph.core :refer [q qry create-client set-schema]])

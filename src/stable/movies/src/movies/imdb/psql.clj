@@ -1,7 +1,7 @@
-(ns lab.imdb.psql
+(ns movies.imdb.psql
   (:require [clojure.repl :refer :all]
             [clojure.pprint :as pp]
-            [lab.csv :as csv]
+            [movies.csv :as csv]
             [clojure.java.io :as io]
             [clojure.string :as cstr]
             [clojure.java.jdbc :as jdbc]

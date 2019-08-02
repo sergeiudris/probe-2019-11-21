@@ -1,0 +1,94 @@
+#!/bin/bash
+
+# https://stackoverflow.com/questions/3430810/multiple-simultaneous-downloads-using-wget
+# https://datasets.imdbws.com/
+
+load_imdb(){
+  PREFIX=./.probedata/movies/imdb.gz
+  HOST=https://datasets.imdbws.com
+
+  wget -P $PREFIX $HOST/name.basics.tsv.gz &
+  wget -P $PREFIX $HOST/title.akas.tsv.gz &
+  wget -P $PREFIX $HOST/title.basics.tsv.gz &
+  wget -P $PREFIX $HOST/title.crew.tsv.gz &
+  wget -P $PREFIX $HOST/title.episode.tsv.gz &
+  wget -P $PREFIX $HOST/title.principals.tsv.gz &
+  wget -P $PREFIX $HOST/title.ratings.tsv.gz &
+  # wget -r -np -N -P ./.probedata/movies $HOST
+}
+
+ungz_imdb(){
+  PREFIX=./.probedata/movies/imdb.gz
+  TARGET=./.probedata/movies/imdb
+  # find $PREFIX -type f -name "*.gz" -print0 | xargs -0 -I{} tar xf {} -C $PREFIX
+  # find $PREFIX -type f -name "*.gz" -exec tar xf {} -C $PREFIX/a \;
+  gunzip -r -k $PREFIX
+  mkdir -p $TARGET
+  mv $PREFIX/*.tsv $TARGET
+}
+
+gz_imdb(){
+  PREFIX=./.probedata/movies/imdb.rdf
+  TARGET=./.probedata/movies/imdb.rdf.gz
+  gzip -k -r  $PREFIX
+  mkdir -p $TARGET
+  mv $PREFIX/*.gz $TARGET
+}
+
+zip_all_imdb(){
+  DIR=$(pwd)
+  PREFIX=./.probedata/movies/imdb.rdf
+  TARGET=./.probedata/movies/imdb.rdf.gz
+  OUT=all.tar.gz
+  mkdir -p $TARGET
+  # gzip -k $PREFIX/*.rdf 
+  cd $PREFIX && \
+      tar -czvf $OUT *.rdf
+  cd $DIR
+  ls -a
+  mv $PREFIX/$OUT $TARGET
+}
+
+
+import_imdb_dgraph(){
+    # dc exec server bash -c "cd /opt/app; dgraph live -r .probedata/movies/imdb.rdf.gz/title.ratings.rdf.gz --zero zero:5080 -c 1"
+    # dc exec server bash -c "cd /opt/app; dgraph live -r .probedata/movies/imdb.rdf.gz/title.ratings.rdf.gz \
+    # -r .probedata/movies/imdb.rdf.gz/name.basics.rdf.gz \
+    #  --zero zero:5080 -c 1"
+
+    # dc exec server bash -c "cd /opt/app; dgraph live -r .probedata/movies/imdb.rdf/name.basics.rdf --zero zero:5080 -c 1"
+    
+    bash bin/dgraph dc exec server bash -c "cd /opt/app; dgraph live -b 2000 -c 20 \
+     -r .probedata/movies/imdb.rdf/all.rdf \
+     --zero zero:5080 -c 1"
+
+    # dc exec server bash -c "cd /opt/app; dgraph live -b 1000 -c 10 \
+    #  -r .probedata/movies/imdb.rdf.gz/all.tar.gz --zero zero:5080 -c 1"
+
+}
+
+import_imdb_test_dgraph(){
+      bash bin/dgraph dc exec server bash -c "cd /opt/app; dgraph live -b 2000 -c 20 \
+     -r ./bin/test.rdf \
+     --zero zero:5080 -c 1"
+}
+
+import_imdb_dgraph_bulk(){
+  RDFS=".probedata/movies/imdb.rdf/sample.rdf"
+  SCHEMA=".probedata/movies/imdb.rdf/imdb.schema"
+   bash bin/dgraph dc exec server bash -c "cd /opt/app; \
+      dgraph bulk -s $SCHEMA \
+     -r $RDFS \
+     --map_shards=4 --reduce_shards=2 \
+     --num_go_routines=6 \
+     --http 0.0.0.0:8000 \
+     --zero zero:5080"
+}
+
+load_ml(){
+  PREFIX=./.probedata/movies/lens
+  wget -P $PREFIX http://files.grouplens.org/datasets/movielens/ml-latest.zip
+  unzip  $PREFIX/ml-latest.zip -d $PREFIX
+}
+
+"$@"

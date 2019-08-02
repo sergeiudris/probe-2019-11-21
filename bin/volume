@@ -1,0 +1,23 @@
+#!/bin/bash
+
+
+drop_dgraph(){
+    docker volume ls
+    docker volume rm dc_probe.movies.dgraph
+    docker volume ls
+}
+
+drop_stack(){
+    docker volume ls
+    docker volume rm dc_probe.stack.postgres
+    docker volume ls
+}
+
+drop_imdb(){
+    docker volume ls
+    docker volume rm dc_probe.imdb.postgres
+    docker volume ls
+}
+
+
+"$@"

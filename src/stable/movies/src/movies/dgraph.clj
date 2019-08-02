@@ -1,4 +1,4 @@
-(ns lab.dgraph
+(ns movies.dgraph
   (:require [clojure.repl :refer :all]
             [cheshire.core :as json]
             [clojure.pprint :as pp]

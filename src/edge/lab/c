@@ -52,7 +52,7 @@ jobwc(){
 }
 
 link_checkouts(){
-  if [! -d ./checkouts]; then
+  if [ ! -d ./checkouts ]; then
   mkdir -p ./checkouts
   ln -s /opt/probe/src/core/tools ./checkouts/tools
   else
@@ -64,15 +64,16 @@ install_checkouts(){
   for d in ./checkouts/*/ ; do
     echo "$d"
     cd $d 
-    lein install
+    # lein install
+    bash c install
     cd ../..
   done
 }
 
 install_deps(){
-  lein deps
   link_checkouts
   install_checkouts
+  # lein deps
 }
 
 

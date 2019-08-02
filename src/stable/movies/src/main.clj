@@ -4,7 +4,11 @@
             [probe.tools.io.core]
             [probe.tools.dgraph.core]
             [probe.tools.pedestal.server]
-            [lab.core]
+            [movies.imdb.schema]
+            [movies.imdb.etl]
+            [movies.imdb.query]
+            [movies.imdb.psql]
+            [movies.stack.psql]
    ;
             )
   ;
@@ -13,7 +17,7 @@
 
 (defn -dev  [& args]
   (probe.tools.nrepl/-main)
-  ; (probe.tools.pedestal.server/run-dev)
+  (probe.tools.pedestal.server/run-dev)
   )
 
 (defn -main  [& args]

@@ -1,0 +1,44 @@
+version: "3.2"
+
+services:
+  postgres-imdb:
+    image: postgres:11.4
+    # restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgresdb
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - type: volume
+        source: probe.imdb.postgres
+        target: /var/lib/postgresql/data
+        volume:
+          nocopy: true
+      - ../:/opt/probe
+    stdin_open: true
+    tty: true
+
+  postgres-stack:
+    image: postgres:11.4
+    # restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgresdb
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - type: volume
+        source: probe.stack.postgres
+        target: /var/lib/postgresql/data
+        volume:
+          nocopy: true
+      - ../:/opt/probe
+    stdin_open: true
+    tty: true
+
+  adminer:
+    image: adminer
+    # restart: always
+    ports:
+      - 7088:8080
+
+

@@ -1,17 +1,23 @@
 #!/bin/bash
 
-
-drop_dgraph(){
-    docker volume ls
-    docker volume rm docker_moviequery.imdb.dgraph
-    docker volume ls
+stop_all(){
+    docker stop $(docker ps -aq)
 }
 
-drop_postgres(){
-    docker volume ls
-    docker volume rm docker_moviequery.imdb.postgres
-    docker volume ls
+rm_all(){
+    docker rm $(docker ps -aq)
 }
+
+stop_rm_all(){
+    stop_all
+    rm_all
+}
+
+rmi_all(){
+    docker rmi $(docker images -q)
+}
+
+
 
 
 

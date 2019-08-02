@@ -1,4 +1,4 @@
-(ns lab.stack.core
+(ns movies.stack.core
   (:require [clojure.repl :refer :all]
             [clojure.pprint :as pp]
             [clojure.java.io :as io]

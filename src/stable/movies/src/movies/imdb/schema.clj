@@ -1,4 +1,4 @@
-(ns lab.imdb.core
+(ns movies.imdb.core
   (:require [clojure.repl :refer :all]
             [clojure.pprint :as pp]
             [clojure.java.io :as io]

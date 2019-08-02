@@ -1,4 +1,4 @@
-(ns lab.imdb.lens
+(ns movies.imdb.lens
   (:require [clojure.repl :refer :all]
             [clojure.pprint :as pp]
             [clojure.java.jdbc :as jdbc]

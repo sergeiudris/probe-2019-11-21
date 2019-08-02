@@ -8,7 +8,7 @@
 
 (ns ^{:author "Jonas Enlund"
       :doc    "Reading and writing comma separated values."}
- lab.csv
+ movies.csv
   (:require (clojure [string :as str]))
   (:import (java.io PushbackReader Reader Writer StringReader EOFException)))
 

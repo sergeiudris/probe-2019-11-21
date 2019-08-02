@@ -1,4 +1,4 @@
-(ns lab.imdb.etl
+(ns movies.imdb.etl
   (:require [clojure.repl :refer :all]
             [clojure.pprint :as pp]
             [probe.tools.dgraph.core :refer [q create-client
@@ -6,7 +6,7 @@
                                      count-total-nodes
                                      mutate mutate-del set-schema]]
             ; [clojure.data.csv :as csv]
-            [lab.csv :as csv]
+            [movies.csv :as csv]
             [clojure.java.io :as io]
             [clojure.string :as cstr]
 

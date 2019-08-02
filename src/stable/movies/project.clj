@@ -1,4 +1,4 @@
-(defproject probe.lab "0.1.0"
+(defproject probe.movies "0.1.0"
 
   :repositories [["conjars" {:url "https://conjars.org/repo"}]
                  ["clojars" {:url "https://clojars.org/repo"}]

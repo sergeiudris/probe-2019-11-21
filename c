@@ -6,6 +6,8 @@ dc(){
    docker-compose --compatibility \
         -f dc/dc.yml \
         -f dc/base.yml \
+        -f dc/dgraph.yml \
+        -f dc/psql.yml \
         "$@"
 }
 
