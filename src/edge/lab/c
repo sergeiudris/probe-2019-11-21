@@ -19,6 +19,7 @@ test_refresh(){
 
 dev(){
   lein clean
+  install_deps
   lein dev
 
   # lein clean
@@ -47,14 +48,27 @@ jobwc(){
 }
 
 link_checkouts(){
+  if [! -d ./checkouts]; then
   mkdir -p ./checkouts
   ln -s /opt/probe/src/core/tools ./checkouts/tools
+  else
+  echo "checkouts already exists"
+  fi
 }
 
 install_checkouts(){
-  cd ./checkouts/tools && \
-  lein install && \
-  cd ../
+  for d in ./checkouts/*/ ; do
+    echo "$d"
+    cd $d 
+    lein install
+    cd ../..
+  done
+}
+
+install_deps(){
+  lein deps
+  link_checkouts
+  install_checkouts
 }
 
 

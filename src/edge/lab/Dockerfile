@@ -11,6 +11,9 @@ WORKDIR /opt/app
 # RUN lein deps
 
 # COPY .  .
+# COPY c .
+COPY project.clj .
+# RUN bash c install_deps
 
 EXPOSE 4001
 EXPOSE 8080

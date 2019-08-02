@@ -17,8 +17,8 @@ services:
       # - 7878:7878
       # - 11488:7888
       # - 12083:8080
-    # command: bash c dev
-    command: tail -f /dev/null
+    command: bash c dev
+    # command: tail -f /dev/null
     stdin_open: true
     tty: true
     links:
