@@ -1,0 +1,45 @@
+version: "3.2"
+
+services:
+
+  datomicfree:
+    image: probe.datomicfree
+    build:
+      context: ../datomic-free
+      dockerfile: ./Dockerfile
+    # ports:
+    #   - "4336:4336"
+    #   - "4335:4335"
+    #   - "4334:4334"
+    #   - "9000:9000"
+    # entrypoint: ./bin/transactor
+    command: tail -f /dev/null
+    # command: bash c nrepl_clj
+    # environment:
+    #   - DISPLAY=10.0.75.1:0.0
+    stdin_open: true
+    tty: true
+
+  datomicfreedb:
+    image: probe.datomicfree
+    # volumes:
+    #   - "./.data/datomicdbfree:/opt/datomic-free/data"
+    # build:
+    #   context: ./datomic-pro
+    #   dockerfile: ./Dockerfile
+    ports:
+      - 4436:4336
+      - 4435:4335
+      - 4434:4334
+      # - "9000:9000"
+    # entrypoint: ./bin/transactor
+    command: ./bin/transactor ./config/free-transactor.properties
+    # command: config/dev-transactor.properties
+    # command: tail -f /dev/null
+    # command: bash c nrepl_clj
+    # environment:
+    #   - DISPLAY=10.0.75.1:0.0
+    stdin_open: true
+    tty: true
+    depends_on:
+      - datomicfree
