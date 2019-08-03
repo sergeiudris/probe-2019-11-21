@@ -6,6 +6,7 @@
             [probe.tools.pedestal.server]
             [mbrainz.core]
             [starcraft.etl]
+            [seattle.core]
    ;
             )
   ;
