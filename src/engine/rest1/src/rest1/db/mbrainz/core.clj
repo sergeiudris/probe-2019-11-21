@@ -56,6 +56,9 @@
        "Janis Joplin")
   
   (q-attrs db)
+  
+  (q-idents db)
+  
 
   ;
   )

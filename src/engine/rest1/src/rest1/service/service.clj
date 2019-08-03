@@ -1,4 +1,4 @@
-(ns rest1.service
+(ns rest1.service.service
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
@@ -8,7 +8,8 @@
             [clojure.pprint :as pp]
             [clj-http.client :as client]
             [probe.tools.core :refer [version]]
-            [rest1.routes.entity ]
+            [rest1.routes.entity]
+            [rest1.routes.mbrainz]
             [slingshot.slingshot :refer [throw+ try+]]))
 
 (defn about-page
@@ -89,6 +90,11 @@
   (swap! n inc )
   (ring-resp/response (str (version) "Hello World! #" @n )))
 
+(defn home-page2
+  [request]
+  (swap! n inc)
+  (ring-resp/response (str (version) "Hello World2! #" @n)))
+
 ;; Defines "/" and "/about" routes with their associated :get handlers.
 ;; The interceptors defined after the verb map (e.g., {:get home-page}
 ;; apply to / and its children (/about).
@@ -99,7 +105,8 @@
               ["/about" :get (conj common-interceptors `about-page)]
               ["/r" :get (conj common-interceptors `redirect-page)]
               ["/s" :get (conj common-interceptors `stew-page)]
-              ["/attrs" :get (conj common-interceptors `rest1.routes.entity/mbrainz-get-attributes)]
+              ["/attrs" :get (conj common-interceptors `rest1.routes.mbrainz/get-attributes-route)]
+              ["/home2" :get (conj common-interceptors `home-page2)]
               ;
               })
 

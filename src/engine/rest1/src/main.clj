@@ -3,7 +3,7 @@
             [probe.tools.core]
             [probe.tools.io.core]
             [probe.tools.dgraph.core]
-            [rest1.server]
+            [rest1.service.server]
    ;
             )
   ;
@@ -12,7 +12,7 @@
 
 (defn -dev  [& args]
   (probe.tools.nrepl/-main)
-  (rest1.server/run-dev)
+  (rest1.service.server/run-dev)
   )
 
 (defn -main  [& args]
