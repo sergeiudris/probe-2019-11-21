@@ -8,7 +8,7 @@
             [clojure.pprint :as pp]
             [clj-http.client :as client]
             [probe.tools.core :refer [version]]
-            [rest1.routes.entity]
+            [rest1.routes.entity ]
             [slingshot.slingshot :refer [throw+ try+]]))
 
 (defn about-page
@@ -99,6 +99,7 @@
               ["/about" :get (conj common-interceptors `about-page)]
               ["/r" :get (conj common-interceptors `redirect-page)]
               ["/s" :get (conj common-interceptors `stew-page)]
+              ["/attrs" :get (conj common-interceptors `rest1.routes.entity/mbrainz-get-attributes)]
               ;
               })
 

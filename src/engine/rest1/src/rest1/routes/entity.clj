@@ -3,15 +3,23 @@
             [clojure.core.async :as async]
             [datomic.api :as d]
             [clojure.edn :as edn]
-            [rest1.db.mbrainz.core]
+            [rest1.db.mbrainz.core :as mbrainz]
             [rest1.db.starcraft.core]
             [rest1.db.seattle.core]
-            [probe.tools.core :refer [try-parse-int]]))
+            [probe.tools.datomic.core :refer [q-idents q-attrs]]
+            [probe.tools.core :refer [try-parse-int]]
+            [ring.util.response :as ring-resp]
+            [cheshire.core :as json]))
 
 
 (defn hi
   []
   "hi!")
+
+(defn mbrainz-get-attributes
+  [request]
+  (mbrainz/connect-lazy)
+  (ring-resp/response (str (json/generate-string (q-attrs mbrainz/db)))))
 
 (comment
   

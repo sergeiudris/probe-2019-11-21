@@ -5,16 +5,33 @@
             [clojure.data :refer :all]
             [clojure.pprint :as pp]
             [datomic.api :as d]
-            [probe.tools.datomic.core :refer [q-idents q-attrs]]))
+            [probe.tools.datomic.core :refer [q-idents q-attrs]]
+            
+   
+   ))
+
+(def db-uri "datomic:free://datomicfreedb:4334/mbrainz")
+
+(declare conn)
+(declare db)
+
+
+
+(defn connect-lazy
+  "Connect if conn does not exist"
+  []
+  (defonce conn (d/connect db-uri))
+  (defonce db (d/db conn)))
+
+
 
 
 
 
 (comment
 
-  (def db-uri "datomic:free://datomicfreedb:4334/mbrainz")
 
-  (def conn (d/connect db-uri))
+  (defonce conn (d/connect db-uri))
 
   (def db (d/db conn))
 
