@@ -17,6 +17,8 @@
 
 ;; create database
   (d/create-database uri)
+  
+  ; (d/delete-database uri)
 
 ;; connect to database
   (def conn (d/connect uri))

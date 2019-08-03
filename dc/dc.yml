@@ -67,3 +67,4 @@ volumes:
   probe.imdb.postgres:
   probe.stack.postgres:
   probe.aligulac.postgres:
+  probe.datomicfreedb.datomic:

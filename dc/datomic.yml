@@ -29,6 +29,12 @@ services:
     #   dockerfile: ./Dockerfile
     volumes:
       - ../:/opt/probe
+      - ../docker/datomicfree:/opt/app
+      - type: volume
+        source:  probe.datomicfreedb.datomic
+        target: /opt/datomic-data
+        volume:
+          nocopy: true
     ports:
       - 4436:4336
       - 4435:4335
