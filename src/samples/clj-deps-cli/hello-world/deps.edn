@@ -1,5 +1,7 @@
 {:deps
- {time-lib {:local/root "../time-lib"}}
+ {time-lib {:local/root "../time-lib"}
+  nrepl/nrepl {:mvn/version "0.5.3"}
+  }
 
  :aliases {:nREPL {:extra-deps {nrepl/nrepl {:mvn/version "0.5.3"}
                                 cider/piggieback {:mvn/version "0.3.10"}

@@ -13,3 +13,8 @@
   (f/unparse
    (f/with-zone (f/formatter "hh:mm aa") (t/default-time-zone))
    dt))
+
+(defn hi
+  []
+  "hi!"
+  )

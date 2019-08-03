@@ -12,10 +12,10 @@ nrepl_cljs(){
   clj -R:nREPL -m nrepl.cmdline --middleware "[cider.piggieback/wrap-cljs-repl]"
 }
 
-init(){
+dev(){
   # https://github.com/clojure-emacs/cider/pull/2194
   # echo "skipping the init script"
-  clojure -m initdev
+  clojure -m hello
 }
 
 "$@"
