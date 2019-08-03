@@ -27,7 +27,7 @@
 (comment
 
   
-  (q-attrs db)
+  (pp/pprint (q-attrs db))
 
   ;
   )

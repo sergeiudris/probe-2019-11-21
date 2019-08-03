@@ -2,35 +2,35 @@ version: "3.2"
 
 services:
 
-  lab:
-    image: probe.lab
-    volumes:
-      - ../src/edge/lab:/opt/app
-      - ../:/opt/probe
-      - ../.probedata/shared/src/edge/lab:/opt/shared
-    build:
-      context: ../src/edge/lab
-      dockerfile: ./Dockerfile
-    ports:
-      - 7800:7878
-      - 7080:8080
-      # - 7878:7878
-      # - 11488:7888
-      # - 12083:8080
-    command: bash c dev
-    # command: tail -f /dev/null
-    stdin_open: true
-    tty: true
-    links:
-      - base1
-    deploy:
-      resources:
-        limits:
-          cpus: '4'
-          memory: 8096M
-        # reservations:
-        #   cpus: '0.25'
-        #   memory: 20M
+  # lab:
+  #   image: probe.lab
+  #   volumes:
+  #     - ../src/edge/lab:/opt/app
+  #     - ../:/opt/probe
+  #     - ../.probedata/shared/src/edge/lab:/opt/shared
+  #   build:
+  #     context: ../src/edge/lab
+  #     dockerfile: ./Dockerfile
+  #   ports:
+  #     - 7800:7878
+  #     - 7080:8080
+  #     # - 7878:7878
+  #     # - 11488:7888
+  #     # - 12083:8080
+  #   command: bash c dev
+  #   # command: tail -f /dev/null
+  #   stdin_open: true
+  #   tty: true
+  #   links:
+  #     - base1
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '4'
+  #         memory: 8096M
+  #       # reservations:
+  #       #   cpus: '0.25'
+  #       #   memory: 20M
 
   rest1:
     image: probe.rest1
