@@ -12,7 +12,7 @@ nrepl_cljs(){
   clj -R:nREPL -m nrepl.cmdline --middleware "[cider.piggieback/wrap-cljs-repl]"
 }
 
-init(){
+dev(){
     lein garden once
     lein do clean, figwheel
 }

@@ -10,6 +10,7 @@ dc(){
         -f dc/dgraph.yml \
         -f dc/psql.yml \
         -f dc/datomic.yml \
+        -f dc/ui.yml \
         "$@"
 }
 
