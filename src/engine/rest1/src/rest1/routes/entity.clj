@@ -5,6 +5,7 @@
             [clojure.edn :as edn]
             [rest1.db.mbrainz.core]
             [rest1.db.starcraft.core]
+            [rest1.db.seattle.core]
             [probe.tools.core :refer [try-parse-int]]))
 
 
