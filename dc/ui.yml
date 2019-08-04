@@ -2,52 +2,22 @@ version: "3.2"
 
 services:
 
-  shadow1:
-    image: probe.shadow1
-    volumes:
-      - ../src/ui/shadow1:/opt/app
-      - ../:/opt/probe
-      - ../.probedata/shared/src/ui/shadow1:/opt/shared
-    build:
-      context: ../src/ui/shadow1
-      dockerfile: ./Dockerfile
-    ports:
-      # - 7802:7878
-      # - 7082:8080
-      - 4041:4001
-      - 3030:3000
-      - 3333:3333
-      - 4888:7888
-      # - 7878:7878
-      # - 11488:7888
-      # - 12083:8080
-    command: bash c dev
-    # command: tail -f /dev/null
-    stdin_open: true
-    tty: true
-    deploy:
-      resources:
-        limits:
-          cpus: '4'
-          memory: 8096M
-        # reservations:
-        #   cpus: '0.25'
-        #   memory: 20M
-
-  # wui:
-  #   image: probe.wui
+  # shadow1:
+  #   image: probe.shadow1
   #   volumes:
-  #     - ../src/ui/wui:/opt/app
+  #     - ../src/ui/shadow1:/opt/app
   #     - ../:/opt/probe
-  #     - ../.probedata/shared/src/ui/wui:/opt/shared
+  #     - ../.probedata/shared/src/ui/shadow1:/opt/shared
   #   build:
-  #     context: ../src/ui/wui
+  #     context: ../src/ui/shadow1
   #     dockerfile: ./Dockerfile
   #   ports:
   #     # - 7802:7878
   #     # - 7082:8080
-  #     - 3449:3449
-  #     - 7888:7888
+  #     - 4041:4001
+  #     - 3030:3000
+  #     - 3333:3333
+  #     - 4888:7888
   #     # - 7878:7878
   #     # - 11488:7888
   #     # - 12083:8080
@@ -63,6 +33,36 @@ services:
   #       # reservations:
   #       #   cpus: '0.25'
   #       #   memory: 20M
+
+  wui:
+    image: probe.wui
+    volumes:
+      - ../src/ui/wui:/opt/app
+      - ../:/opt/probe
+      - ../.probedata/shared/src/ui/wui:/opt/shared
+    build:
+      context: ../src/ui/wui
+      dockerfile: ./Dockerfile
+    ports:
+      # - 7802:7878
+      # - 7082:8080
+      - 3449:3449
+      - 7888:7888
+      # - 7878:7878
+      # - 11488:7888
+      # - 12083:8080
+    command: bash c dev
+    # command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8096M
+        # reservations:
+        #   cpus: '0.25'
+        #   memory: 20M
 
   
 

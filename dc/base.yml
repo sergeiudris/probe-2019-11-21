@@ -7,7 +7,7 @@ services:
     build:
       context: ../docker/ubuntu18
       dockerfile: ./Dockerfile
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
     stdin_open: true
     tty: true
   
@@ -20,7 +20,7 @@ services:
       - ../:/opt/probe
       - ../docker/java8:/opt/app
       - ../.probedata/shared/docker/java8:/opt/shared
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
     stdin_open: true
     tty: true
     links:
@@ -31,7 +31,7 @@ services:
     build:
       context: ../docker/java11clj10
       dockerfile: ./Dockerfile
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
     stdin_open: true
     tty: true
     links:
@@ -42,7 +42,7 @@ services:
     build:
       context: ../docker/base1
       dockerfile: ./Dockerfile
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
     stdin_open: true
     tty: true
     links:
