@@ -1,9 +1,9 @@
-(ns rest1.routes.mbrainz
+(ns rest1.routes.datomic
   (:require [clojure.java.io :as io]
             [clojure.core.async :as async]
             [datomic.api :as d]
             [clojure.edn :as edn]
-            [rest1.db.mbrainz.core :as mbrainz]
+            [rest1.db.datomic.core :as dtm]
             [rest1.db.starcraft.core]
             [rest1.db.seattle.core]
             [probe.tools.datomic.core :refer [q-idents q-attrs]]
@@ -13,8 +13,8 @@
 
 (defn get-attributes
   [request]
-  (mbrainz/connect-lazy)
-  (ring-resp/response (str (json/generate-string (q-attrs mbrainz/db)))))
+  (dtm/connect-lazy)
+  (ring-resp/response (str (json/generate-string (q-attrs dtm/db)))))
 
 
 (defn get-attributes-route

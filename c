@@ -39,4 +39,8 @@ permis(){
     sudo chmod 777 ./.data/imdb.rdf/*
 }
 
+link_vscode(){
+    ln -s .vscode src/ui/wui/.vscode
+}
+
 "$@"
