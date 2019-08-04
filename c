@@ -19,6 +19,7 @@ dc(){
         -f dc/dc.yml \
         -f dc/stable.yml \
         -f dc/datomic.yml \
+        -f dc/ui.yml \
         "$@"
 }
 

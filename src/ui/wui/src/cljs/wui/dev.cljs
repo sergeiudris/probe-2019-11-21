@@ -27,3 +27,27 @@
   
   
   )
+
+(comment
+
+
+  (repl/dir cljs.repl)
+
+  (clog 3)
+
+  (->
+   (js/fetch "http://localhost:7881/attrs")
+   (.then (fn [r]
+            (.json r)))
+   (.then (fn [r]
+            (clog r))))
+  
+  (->
+   (js/fetch "http://localhost:7881/attrs")
+   (.then (fn [r]
+            (.json r)))
+   (.then (fn [r]
+            (prn r))))
+
+  ;
+  )
