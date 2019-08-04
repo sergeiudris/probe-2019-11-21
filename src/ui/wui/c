@@ -13,8 +13,10 @@ nrepl_cljs(){
 }
 
 dev(){
-    lein garden once
-    lein do clean, figwheel
+    lein clean
+    # lein garden once
+    lein garden auto &
+    lein figwheel
 }
 
 "$@"

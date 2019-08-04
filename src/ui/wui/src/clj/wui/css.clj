@@ -3,4 +3,5 @@
 
 (defstyles screen
   [:body {:color "red"}]
-  [:.level1 {:color "green"}])
+  [:.level1 {:color "green"}]
+  [:.red {:color "red"}])
