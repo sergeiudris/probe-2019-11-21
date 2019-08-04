@@ -36,14 +36,14 @@
   (clog 3)
 
   (->
-   (js/fetch "http://localhost:7881/attrs")
+   (js/fetch "http://localhost:7881/datomic/attrs")
    (.then (fn [r]
             (.json r)))
    (.then (fn [r]
             (clog r))))
   
   (->
-   (js/fetch "http://localhost:7881/attrs")
+   (js/fetch "http://localhost:7881/datomic/attrs")
    (.then (fn [r]
             (.json r)))
    (.then (fn [r]
