@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+
+dev(){
+    yarn
+    yarn dev
+}
+
+"$@"

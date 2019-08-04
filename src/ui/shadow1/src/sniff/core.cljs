@@ -1,6 +1,8 @@
 (ns sniff.core
   (:require  [reagent.core :as r]
-             [cljs.repl :as repl]))
+             [cljs.repl :as repl]
+             [cljs.pprint :as pp]
+             ))
 
 (defn simple-component []
   [:div
@@ -30,9 +32,12 @@
             (.json r)
             ))
    (.then (fn [r]
-            (clog r)
+            ; (clog r)
+            (prn r)
             ))
    )
+  
+  (pp/pprint 3)
 
   ;
   )

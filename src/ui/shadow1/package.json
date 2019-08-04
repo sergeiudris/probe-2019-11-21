@@ -15,6 +15,7 @@
     "dev": "shadow-cljs -A:dev watch app;",
     "devcards": "shadow-cljs  -A:dev watch devcards",
     "all": "shadow-cljs  -A:dev watch app devcards",
+    "info": "shadow-cljs info",
     "release": "shadow-cljs -A:prod release app;",
     "repl": "shadow-cljs cljs-repl app",
     "stop": "shadow-cljs stop",
