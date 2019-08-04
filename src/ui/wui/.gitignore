@@ -50,5 +50,9 @@ build/
 .m2/settings.xml
 
 
+**/.shadow-cljs/**
+**/resources/public/js/**
+
+
 data
 
