@@ -86,6 +86,12 @@
          pp/pprint)
         ))
   
+  (go (let [result (<! (github-get-users))]
+        (pp/pprint result)))
+  
+  (go (let [result (<! (github-get-users))]
+        (prn result)))
+  
   
   (go (let [result (<! ( app-pro-get-entity-params {:limit 1 :offset 0 :attribute :release/name} ))]
         (pp/pprint result)

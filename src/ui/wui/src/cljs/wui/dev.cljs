@@ -47,7 +47,7 @@
    (.then (fn [r]
             (.json r)))
    (.then (fn [r]
-            (prn r))))
-
+            (pp/pprint r))))
+  
   ;
   )
