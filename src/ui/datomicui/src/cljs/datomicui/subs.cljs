@@ -17,6 +17,11 @@
    (:active-panel-key db)))
 
 (re-frame/reg-sub
+ ::plugins
+ (fn [db _]
+   (:plugins db)))
+
+(re-frame/reg-sub
  ::re-pressed-example
  (fn [db _]
    (:re-pressed-example db)))

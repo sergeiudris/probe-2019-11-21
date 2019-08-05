@@ -47,11 +47,39 @@
 (defn show-panel [panel-name]
   [panels panel-name])
 
+; (defn main-panel []
+;   (let [active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
+;     [re-com/v-box
+;      :height "100%"
+;      :children [[panels @active-panel-key]]]))
+
+(defn plugins-bar
+  []
+  (let [plugins (re-frame/subscribe [::subs/plugins])]
+    [:div {:style {:position "relative"
+                   :left     0
+                   :top      0
+                   :height   "100vh"
+                   :width    "50px"}}
+     (map (fn [plugin]
+            [ant/icon {:type  "plus"
+                       :title (str (:plugin/key plugin))}]) @plugins)]))
+
+(defn layout
+  [props & children]
+  [:section
+   {:style {:padding "8px"}}
+   children
+   ]
+  )
+
 (defn main-panel []
   (let [active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
-    [re-com/v-box
-     :height "100%"
-     :children [[panels @active-panel-key]]]))
+    [layout
+     {}
+     [plugins-bar]
+     [panels @active-panel-key]
+     ]))
 
 (comment
   
