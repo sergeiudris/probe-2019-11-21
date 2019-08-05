@@ -17,6 +17,9 @@
 
 
 
+
+
+
 (defn buttons []
   [:section
    [ant/button-group
@@ -37,6 +40,34 @@
     ; [ant/button {:value ":medium/format"} ":medium/format"]
     ; [ant/button {:value ":medium/tracks"} ":medium/tracks"]
     ]])
+
+
+;; main
+
+(defn home-panel []
+  [re-com/v-box
+   :gap "1em"
+   :children [[buttons]]])
+
+(defn about-panel []
+  [re-com/v-box
+   :gap "1em"
+   :children [[:div "about"]]])
+
+(defn- panels [panel-name]
+  (case panel-name
+    :home-panel [home-panel]
+    :about-panel [about-panel]
+    [:div]))
+
+(defn show-panel [panel-name]
+  [panels panel-name])
+
+(defn main-panel []
+  (let [active-panel (re-frame/subscribe [::subs/active-panel])]
+    [re-com/v-box
+     :height "100%"
+     :children [[panels @active-panel]]]))
 
 (comment
   

@@ -45,8 +45,8 @@
 
   ; (+ 1 1)
   
-  (defroute "/hello" []
-    (re-frame/dispatch [::events/set-active-panel :about-panel]))
+  (defroute "home" []
+    (re-frame/dispatch [::events/set-active-panel :home-panel]))
   
   (defroute "/entity" []
       (re-frame/dispatch [::events/set-active-panel :entity-panel]))

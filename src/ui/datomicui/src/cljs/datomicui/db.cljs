@@ -3,6 +3,7 @@
 (def default-db
   {:name "re-frame"
   ;  :songs-list [{:index 1 :name "Mister Sandman" :duration 136}]
+   :active-panel :home-panel
    :songs-list [{:name "Black Porch Bogie"
                  :index 1
                  :stats {:play_count 2, :rating 5}}

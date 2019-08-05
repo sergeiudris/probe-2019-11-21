@@ -35,6 +35,8 @@
 
 (comment
   
+  ((.-log js/console) 3)
+  
   
   ;
   )

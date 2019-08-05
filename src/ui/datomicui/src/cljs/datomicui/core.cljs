@@ -26,14 +26,14 @@
   (reagent/render
   ;  [views/main-panel]
   ;  [:span ". So go ahead, try it out!"]
-   [main-view/buttons]
+   [main-view/main-panel]
    (.getElementById js/document "app")))
 
 (defn ^:export init []
   (routes/app-routes)
   (re-frame/dispatch-sync [::events/initialize-db])
   (re-frame/dispatch-sync [::rp/add-keyboard-event-listener "keydown"])
-  (re-frame/dispatch-sync [::events/set-active-panel :entity-panel])
+  ; (re-frame/dispatch-sync [::events/set-active-panel :entity-panel])
   (dev-setup)
   (mount-root))
 
