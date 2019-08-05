@@ -3,6 +3,7 @@
                  [org.clojure/clojurescript "1.10.238"]
                  [reagent "0.8.1"]
                  [antizer "0.3.1"]
+                 [ant-man "1.7.4"]
                  [re-frame "0.10.6"]
                  [day8.re-frame/http-fx "0.1.6"]
                  [cljs-ajax "0.8.0"]
