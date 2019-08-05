@@ -34,46 +34,14 @@ services:
   #       #   cpus: '0.25'
   #       #   memory: 20M
 
-  wui:
-    image: probe.wui
-    volumes:
-      - ../src/ui/wui:/opt/app
-      - ../:/opt/probe
-      - ../.probedata/shared/src/ui/wui:/opt/shared
-    build:
-      context: ../src/ui/wui
-      dockerfile: ./Dockerfile
-    ports:
-      # - 7802:7878
-      # - 7082:8080
-      - 3449:3449
-      - 7888:7888
-      # - 7878:7878
-      # - 11488:7888
-      # - 12083:8080
-    command: bash c dev
-    # command: tail -f /dev/null
-    stdin_open: true
-    tty: true
-    deploy:
-      resources:
-        limits:
-          cpus: '4'
-          memory: 8096M
-        # reservations:
-        #   cpus: '0.25'
-        #   memory: 20M
-
-  
-
-  # datomicui:
-  #   image: probe.datomicui
+  # wui:
+  #   image: probe.wui
   #   volumes:
-  #     - ../src/ui/datomicui:/opt/app
+  #     - ../src/ui/wui:/opt/app
   #     - ../:/opt/probe
-  #     - ../.probedata/shared/src/ui/datomicui:/opt/shared
+  #     - ../.probedata/shared/src/ui/wui:/opt/shared
   #   build:
-  #     context: ../src/ui/datomicui
+  #     context: ../src/ui/wui
   #     dockerfile: ./Dockerfile
   #   ports:
   #     # - 7802:7878
@@ -95,3 +63,34 @@ services:
   #       # reservations:
   #       #   cpus: '0.25'
   #       #   memory: 20M
+
+  
+  datomicui:
+    image: probe.datomicui
+    volumes:
+      - ../src/ui/datomicui:/opt/app
+      - ../:/opt/probe
+      - ../.probedata/shared/src/ui/datomicui:/opt/shared
+    build:
+      context: ../src/ui/datomicui
+      dockerfile: ./Dockerfile
+    ports:
+      # - 7802:7878
+      # - 7082:8080
+      - 3559:3449
+      - 7575:7888
+      # - 7878:7878
+      # - 11488:7888
+      # - 12083:8080
+    command: bash c dev
+    # command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2048M
+        # reservations:
+        #   cpus: '0.25'
+        #   memory: 20M
