@@ -15,25 +15,36 @@
 (def log (.-log js/console))
 
 (defn buttons []
-  [:section
-   [ant/button-group
-    {:size     "small"
+  (let [
+        data                 (re-frame/subscribe [:get-attrs-resp])
+        ]
+    (fn []
+      [:section
+       [ant/button-group
+        {:size     "small"
     ;  :on-click #(ant/message-info (.-value (-.target %1)))
     ;  :on-click #(prn (.-nativeEvent  %1))
     ;  :on-click #(log %1)
     ;  :on-click #(-> % .-target .-value log)
     ;  :on-click #(re-frame/dispatch [:get-entities (-> % .-target .-value)])
-     :on-click #(re-frame/dispatch [:active-attribute (-> % .-target .-value)])}
-    [ant/button {:value ":artist/name"} ":artist/name"]
-    [ant/button {:value ":release/name"} ":release/name"]
-    [ant/button {:value ":label/country"} ":label/country"]
-    [ant/button {:value ":track/name"} ":track/name"]
+         :on-click #(re-frame/dispatch [:active-attribute (cljs.reader/read-string (-> % .-target .-value))])}
+;     [ant/button {:value ":artist/name"} ":artist/name"]
+; [ant/button {:value ":release/name"} ":release/name"]
+; [ant/button {:value ":label/country"} ":label/country"]
+; [ant/button {:value ":track/name"} ":track/name"]
+        (map
+         (fn [x]
+           (let [attr (str x)]
+             [ant/button {:key   attr
+                          :value attr} attr]))
+         @data)
 
 
 
     ; [ant/button {:value ":medium/format"} ":medium/format"]
     ; [ant/button {:value ":medium/tracks"} ":medium/tracks"]
-    ]])
+        ]])
+    ))
 
 ;; people data
 (def people [{:id      1

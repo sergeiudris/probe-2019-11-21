@@ -17,7 +17,7 @@
 (defn get-attributes
   [request]
   (dtm/connect-lazy)
-  (ring-resp/response (str (json/generate-string (q-attrs dtm/db)))))
+  (ring-resp/response (str (vec (q-attrs dtm/db)))))
 
 
 (defn get-attributes-route
@@ -49,7 +49,7 @@
               }} q-data]
     {:status 200
      :body (let [body {
-                       :data (dtm/q-paginted-entity {:attribute (edn/read-string attribute)
+                       :data (dtm/q-paginted-entity {:attribute attribute
                                                             :limit (try-parse-int limit)
                                                             :offset (try-parse-int offset)})
                       ;  :args  {:attribute (edn/read-string attribute)
@@ -65,6 +65,8 @@
 
 (defn get-entity-route [request]
   (get-entity-response request))
+
+
 
 
 (comment

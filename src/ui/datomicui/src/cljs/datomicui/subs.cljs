@@ -99,6 +99,13 @@
      )
    )
  )
+
+(re-frame/reg-sub
+ :get-attrs-resp
+ (fn [db _]
+   ; (prn (:entities-response db) 0.5)
+   (:get-attrs-resp db)
+   ))
    
   ;  (map fn [entity] {:title (get-in data [:request-data :attribute])
   ;                    :dataIndex 

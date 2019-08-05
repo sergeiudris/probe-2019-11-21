@@ -21,6 +21,7 @@
    :tabs/seq         0
    :entities-response nil
    :entity-table-state nil
+   :get-attrs-resp []
    :flag true
    :tabs             [{:datomicui/uuid (random-uuid)
                        :tabs/seqid     0
@@ -67,6 +68,20 @@
  )
 
 (re-frame/reg-event-fx
+ ::get-attrs
+;  [(re-frame/)]
+ [(re-frame/inject-cofx ::inject/sub [:get-attrs-resp])]
+ (fn [{:keys [db attrs-req-data]} [_ a]]
+   {:http-xhrio {:method          :get
+                 :uri             "http://localhost:7881/datomicui/attrs"
+                 :response-format (ajax/raw-response-format)
+                 :on-success      [:handle-get-attrs-resp]
+                 :format          :edn
+                 :params          {}
+                 :on-fail         [:failed-response]}
+    :db         db}))
+
+(re-frame/reg-event-fx
  :entity-table-state
  (fn [{:keys [db]} [_ pagination filters sorter extra]]
   ;  (prn value)
@@ -100,6 +115,12 @@
   ;  (prn value)
    (assoc db :entities-response (reader/read-string value) )
    ))
+
+(re-frame/reg-event-db
+ :handle-get-attrs-resp
+ (fn [db [_ value]]
+  ;  (prn value)
+   (assoc db :get-attrs-resp (reader/read-string value))))
 
 (re-frame/reg-event-db
  :failed-response
