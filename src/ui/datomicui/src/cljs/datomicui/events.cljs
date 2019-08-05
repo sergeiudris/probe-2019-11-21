@@ -19,6 +19,9 @@
                        :plugin/key     :plugin/text-search}]
    :active-tab-index 0
    :tabs/seq         0
+   :entities-response nil
+   :entity-table-state nil
+   :flag true
    :tabs             [{:datomicui/uuid (random-uuid)
                        :tabs/seqid     0
                        :plugin/key     :plugin/info}]})

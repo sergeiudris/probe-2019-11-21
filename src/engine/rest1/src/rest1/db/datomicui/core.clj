@@ -66,7 +66,7 @@
   (->
    (q-paginted-entity {; :db        db
                        :attribute :artist/name
-                       :limit     3
+                       :limit     2
                        :offset    0})
    pp/pprint)
 

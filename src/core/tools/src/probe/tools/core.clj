@@ -33,14 +33,19 @@
 (defn try-parse-int 
   "returns number or nil"
   [number-string]
-  (try (Integer/parseInt number-string)
-       (catch Exception e nil)))
+  (cond 
+    (int? number-string) number-string
+    :else (try (Integer/parseInt number-string)
+               (catch Exception e nil))
+  ))
 
 (defn try-parse-float
   "returns number or nil"
   [number-string]
-  (try (Float/parseFloat number-string) 
-       (catch Exception e number-string)))
+  (cond
+    (float? number-string) number-string
+    :else (try (Float/parseFloat number-string)
+               (catch Exception e number-string))))
 
 (defn replace-double-quotes
   [s & {:keys [ch]

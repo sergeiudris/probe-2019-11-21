@@ -118,6 +118,7 @@
       ; (log (or data []))
       ; (log @data)
       ; (log @columns)
+      (prn data)
       ; (log (into [] (or columns [])))
       [:div
        [:h2 "Entity Table"]

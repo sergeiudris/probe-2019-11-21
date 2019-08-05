@@ -32,22 +32,24 @@
 
 ; ; http://localhost:8893/entity-params?limit=1&offset=0&attribute=%22:release/year%22&fmt=str
 (defn get-entity-response [request]
-  "Calls aq.query and sends edn as repsonse. Parses individual url string params (limit, offset, attribute etc.) "
+  "Queries db and sends edn as repsonse. Parses individual url string params (limit, offset, attribute etc.) "
   (let [{query-params :query-params} request
+        q-data (-> query-params (get :data) edn/read-string)
         {x :x
          limit :limit
          offset :offset
          attribute :attribute
          fmt :fmt
-         :or {attribute ":artist/name"
+         :or {
+              attribute ":artist/name"
               limit 10
               offset 0
-              fmt "edn"}} query-params]
+              fmt "edn"}} q-data]
     {:status 200
      :body (let [body {:data (dtm/q-paginted-entity {:attribute (edn/read-string attribute)
-                                                            :limit (or (try-parse-int limit) 10)
-                                                            :offset (or (try-parse-int offset) 0)})
-                       :query-params query-params
+                                                            :limit (try-parse-int limit)
+                                                            :offset (try-parse-int offset)})
+                       :query-params (str q-data)
                        :random (Math/random)
                        :uuid (d/squuid)
                        :x x}]
@@ -61,14 +63,15 @@
 
 (comment
   
+  (try-parse-int "3")
+  
   (as-> nil x
     (try+
      (client/get "http://localhost:8080/datomicui/entity"
-                 {:query-params {"attribute" ":artist/name"
-                                 "limit" 3
-                                 "offset" 0
-                                 "fmt" "edn"
-                                 }         
+                 {:query-params {"data" (str {"attribute" ":artist/name"
+                                              "limit"     3
+                                              "offset"    0
+                                              "fmt"       "edn"})}         
                   :headers      {}})
      (catch [:status 500] {:keys [request-time headers body]}
        (pp/pprint ; (json/parse-string body) 
@@ -83,6 +86,15 @@
       ; (pp/pprint (:cookies x))
       ; )
     )
+  
+  (as-> nil x
+   (client/get "http://localhost:8080/datomicui/entity?data={:limit 10, :offset 20, :attribute \":artist/name\", :fmt \"edn\"}")
+   (edn/read-string (:body x))
+   (pp/pprint x))
+  
+  
+  
+  
   
   (as-> nil x
     (try+
