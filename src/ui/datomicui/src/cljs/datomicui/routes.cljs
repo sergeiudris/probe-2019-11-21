@@ -23,7 +23,7 @@
   ;; --------------------
   ;; define routes here
   (defroute "/" []
-    (re-frame/dispatch [::events/set-active-panel :home-panel])
+    (re-frame/dispatch [::events/set-active-panel-key :table-panel])
     (re-frame/dispatch [::events/set-re-pressed-example nil])
     (re-frame/dispatch
      [::rp/set-keydown-rules
@@ -41,15 +41,16 @@
     )
 
   (defroute "/about" []
-    (re-frame/dispatch [::events/set-active-panel :about-panel]))
+    (re-frame/dispatch [::events/set-active-panel-key :about-panel]))
 
   ; (+ 1 1)
   
-  (defroute "home" []
-    (re-frame/dispatch [::events/set-active-panel :home-panel]))
+  (defroute "/home" []
+    (re-frame/dispatch [::events/set-active-panel-key :home-panel]))
   
-  (defroute "/entity" []
-      (re-frame/dispatch [::events/set-active-panel :entity-panel]))
+  (defroute "/table" []
+    (re-frame/dispatch [::events/set-active-panel-key :table-panel]))
+  
   
   ;; --------------------
   (hook-browser-navigation!))

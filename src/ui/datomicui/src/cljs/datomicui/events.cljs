@@ -9,15 +9,37 @@
    [vimsical.re-frame.cofx.inject :as inject]
    ))
 
+(def default-db
+  {:active-panel-key :home-panel
+   :plugins          [{:datomicui/uuid (random-uuid)
+                       :plugin/key     :plugin/info}
+                      {:datomicui/uuid (random-uuid)
+                       :plugin/key     :plugin/table}
+                      {:datomicui/uuid (random-uuid)
+                       :plugin/key     :plugin/text-search}]
+   :active-tab-index 0
+   :tabs/seq         0
+   :tabs             [{:datomicui/uuid (random-uuid)
+                       :tabs/seqid     0
+                       :plugin/key     :plugin/info}]})
+
+(comment
+
+  (uuid "00000000-0000-0000-0000-000000000000")
+
+  (random-uuid)
+  ;
+  )
+
 (re-frame/reg-event-db
  ::initialize-db
  (fn-traced [_ _]
-   db/default-db))
+   default-db))
 
 (re-frame/reg-event-db
- ::set-active-panel
- (fn-traced [db [_ active-panel]]
-   (assoc db :active-panel active-panel)))
+ ::set-active-panel-key
+ (fn-traced [db [_ active-panel-key]]
+   (assoc db :active-panel-key active-panel-key)))
 
 (re-frame/reg-event-db
  ::set-re-pressed-example
@@ -32,7 +54,7 @@
    (conlog entity-request-data)
    
    {:http-xhrio {:method :get
-                 :uri "http://localhost:8893/entity"
+                 :uri "http://localhost:7881/datomicui/entity"
                  :response-format (ajax/raw-response-format)
                  :on-success [:process-response]
                  :format :edn

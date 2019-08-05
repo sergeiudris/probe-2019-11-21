@@ -12,7 +12,7 @@
    [antizer.reagent :as ant]
    [reagent.core :as r]
    [datomicui.plugins.info.view]
-   [datomicui.plugins.table.view]
+   [datomicui.plugins.table.view :as table-view]
    [datomicui.plugins.text-search.view]))
 
 
@@ -20,26 +20,7 @@
 
 
 
-(defn buttons []
-  [:section
-   [ant/button-group
-    {:size     "small"
-    ;  :on-click #(ant/message-info (.-value (-.target %1)))
-    ;  :on-click #(prn (.-nativeEvent  %1))
-    ;  :on-click #(log %1)
-    ;  :on-click #(-> % .-target .-value log)
-    ;  :on-click #(re-frame/dispatch [:get-entities (-> % .-target .-value)])
-     :on-click #(re-frame/dispatch [:active-attribute (-> % .-target .-value)])}
-    [ant/button {:value ":artist/name"} ":artist/name"]
-    [ant/button {:value ":release/name"} ":release/name"]
-    [ant/button {:value ":label/country"} ":label/country"]
-    [ant/button {:value ":track/name"} ":track/name"]
 
-
-
-    ; [ant/button {:value ":medium/format"} ":medium/format"]
-    ; [ant/button {:value ":medium/tracks"} ":medium/tracks"]
-    ]])
 
 
 ;; main
@@ -47,16 +28,19 @@
 (defn home-panel []
   [re-com/v-box
    :gap "1em"
-   :children [[buttons]]])
+   :children [[table-view/buttons]]])
 
 (defn about-panel []
   [re-com/v-box
    :gap "1em"
    :children [[:div "about"]]])
 
+
+
 (defn- panels [panel-name]
   (case panel-name
     :home-panel [home-panel]
+    :table-panel [table-view/view]
     :about-panel [about-panel]
     [:div]))
 
@@ -64,10 +48,10 @@
   [panels panel-name])
 
 (defn main-panel []
-  (let [active-panel (re-frame/subscribe [::subs/active-panel])]
+  (let [active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
     [re-com/v-box
      :height "100%"
-     :children [[panels @active-panel]]]))
+     :children [[panels @active-panel-key]]]))
 
 (comment
   

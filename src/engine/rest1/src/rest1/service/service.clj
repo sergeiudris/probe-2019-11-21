@@ -106,6 +106,7 @@
               ["/r" :get (conj common-interceptors `redirect-page)]
               ["/s" :get (conj common-interceptors `stew-page)]
               ["/datomicui/attrs" :get (conj common-interceptors `rest1.routes.datomicui/get-attributes-route)]
+              ["/datomicui/entity" :get (conj common-interceptors `rest1.routes.datomicui/get-entity-route)]
               ["/home2" :get (conj common-interceptors `home-page2)]
               ;
               })

@@ -12,9 +12,9 @@
    (:name db)))
 
 (re-frame/reg-sub
- ::active-panel
+ ::active-panel-key
  (fn [db _]
-   (:active-panel db)))
+   (:active-panel-key db)))
 
 (re-frame/reg-sub
  ::re-pressed-example

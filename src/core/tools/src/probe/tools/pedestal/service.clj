@@ -7,8 +7,8 @@
             [cheshire.core :as json]
             [clojure.pprint :as pp]
             [clj-http.client :as client]
-            [probe.tools.core :refer [version]]
-            [slingshot.slingshot :refer [throw+ try+]]))
+            [slingshot.slingshot :refer [throw+ try+]]
+            [probe.tools.core :refer [version]]))
 
 (defn about-page
   [request]
