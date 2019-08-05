@@ -25,7 +25,8 @@
   (re-frame/clear-subscription-cache!)
   (reagent/render
   ;  [views/main-panel]
-   [:span ". So go ahead, try it out!"]
+  ;  [:span ". So go ahead, try it out!"]
+   [main-view/buttons]
    (.getElementById js/document "app")))
 
 (defn ^:export init []
