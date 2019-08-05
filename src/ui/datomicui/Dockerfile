@@ -16,6 +16,5 @@ RUN lein deps
 # exercise for the reader.
 
 # 3449 is default http and websocket port that figwheel uses to communicate
-EXPOSE 3449
+EXPOSE 3449 3559 7888 7889
 # 7888 is the default nrepl port
-EXPOSE 7888

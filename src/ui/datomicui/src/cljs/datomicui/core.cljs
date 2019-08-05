@@ -5,7 +5,7 @@
    [re-pressed.core :as rp]
    [datomicui.events :as events]
    [datomicui.routes :as routes]
-   [datomicui.views :as views]
+  ;  [datomicui.views :as views]
    [datomicui.config :as config]
    [datomicui.io :as io]
    [cljs.spec.alpha :as s]
@@ -23,8 +23,10 @@
 
 (defn mount-root []
   (re-frame/clear-subscription-cache!)
-  (reagent/render [views/main-panel]
-                  (.getElementById js/document "app")))
+  (reagent/render
+  ;  [views/main-panel]
+   [:span ". So go ahead, try it out!"]
+   (.getElementById js/document "app")))
 
 (defn ^:export init []
   (routes/app-routes)

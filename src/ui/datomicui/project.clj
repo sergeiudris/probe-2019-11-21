@@ -4,7 +4,7 @@
                  [reagent "0.8.1"]
                  [antizer "0.3.1"]
                 ;  [ant-man "1.7.4"]
-                 [cljsjs/antd "3.20.6-0"]
+                ;  [cljsjs/antd "3.20.6-0"]
                  [re-frame "0.10.6"]
                  [day8.re-frame/http-fx "0.1.6"]
                  [cljs-ajax "0.8.0"]
@@ -90,9 +90,9 @@
     ]}
   
   :figwheel {:css-dirs ["resources/public/css"]
-             :server-port 3449
+             :server-port 3559
              :nrepl-host  "0.0.0.0"
-             :nrepl-port  7888
+             :nrepl-port  7889
              :repl        false
             ;  :repl        true
              :nrepl-middleware ["cider.nrepl/cider-middleware"
