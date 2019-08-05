@@ -1,4 +1,4 @@
-(ns rest1.db.datomic.core
+(ns rest1.db.datomicui.core
   (:require [clj-time.core :as t]
             [clj-time.format :as f]
             [clojure.repl :refer :all]
@@ -27,7 +27,7 @@
 
   (defonce conn (d/connect db-uri))
 
-  (def db (d/db conn))
+  (defonce db (d/db conn))
 
   (dir d)
 

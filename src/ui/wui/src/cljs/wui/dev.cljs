@@ -43,7 +43,7 @@
             (clog r))))
   
   (->
-   (js/fetch "http://localhost:7881/datomic/attrs")
+   (js/fetch "http://localhost:7881/datomicui/attrs")
    (.then (fn [r]
             (.json r)))
    (.then (fn [r]

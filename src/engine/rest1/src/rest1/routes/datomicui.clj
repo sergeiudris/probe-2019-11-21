@@ -1,9 +1,9 @@
-(ns rest1.routes.datomic
+(ns rest1.routes.datomicui
   (:require [clojure.java.io :as io]
             [clojure.core.async :as async]
             [datomic.api :as d]
             [clojure.edn :as edn]
-            [rest1.db.datomic.core :as dtm]
+            [rest1.db.datomicui.core :as dtm]
             [rest1.db.starcraft.core]
             [rest1.db.seattle.core]
             [probe.tools.datomic.core :refer [q-idents q-attrs]]
