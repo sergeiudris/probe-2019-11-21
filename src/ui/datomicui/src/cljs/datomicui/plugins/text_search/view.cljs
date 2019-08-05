@@ -7,5 +7,4 @@
    [datomicui.subs :as subs]
    [re-frame-datatable.core :as dt]
    [re-frame-datatable.views :as dtv]
-   [cljsjs.antd]
    [reagent.core :as r]))
