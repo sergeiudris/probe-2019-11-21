@@ -16,6 +16,7 @@
  (fn [db _]
    (:active-panel-key db)))
 
+
 (re-frame/reg-sub
  ::plugins
  (fn [db _]

@@ -7,16 +7,21 @@
    [cljs.reader :as reader]
    [datomicui.dev :refer [conlog]]
    [vimsical.re-frame.cofx.inject :as inject]
+   
+   [datomicui.plugins.main.core]
    ))
 
 (def default-db
   {:active-panel-key :home-panel
-   :plugins          [{:datomicui/uuid (random-uuid)
-                       :plugin/key     :plugin/info}
-                      {:datomicui/uuid (random-uuid)
-                       :plugin/key     :plugin/table}
-                      {:datomicui/uuid (random-uuid)
-                       :plugin/key     :plugin/text-search}]
+  ;  :plugins          [{:datomicui/uuid (random-uuid)
+  ;                      :plugin/key     :plugin/info}
+  ;                     {:datomicui/uuid (random-uuid)
+  ;                      :plugin/key     :plugin/table}
+  ;                     {:datomicui/uuid (random-uuid)
+  ;                      :plugin/key     :plugin/text-search}]
+   
+   :plugins [datomicui.plugins.main.core/plugin]
+   
    :active-tab-index 0
    :tabs/seq         0
    :entities-response nil
