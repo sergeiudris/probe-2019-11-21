@@ -5,9 +5,9 @@
 
 
 (def default-containers
-  {:dock-container
-   :main-container
-   :panel-container
+  {:dock-container {}
+   :main-container {}
+   :panel-container {}
    
    }
   

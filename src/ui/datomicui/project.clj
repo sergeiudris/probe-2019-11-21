@@ -37,7 +37,13 @@
                      :source-paths ["src/clj"]
                      :stylesheet   datomicui.css/screen
                      :compiler     {:output-to     "resources/public/css/screen.css"
-                                    :pretty-print? true}}]}
+                                    :pretty-print? true}}
+                    {:id           "tabui"
+                     :source-paths ["src/clj"]
+                     :stylesheet   datomicui.css.tabui/tabui
+                     :compiler     {:output-to     "resources/public/css/tabui.css"
+                                    :pretty-print? true}}
+                    ]}
 
   :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
 
