@@ -20,6 +20,30 @@
 
 
 
+(def plugin
+  {:containers [{:tabui.container/uuid (random-uuid)
+                 :tabui.container/key :tabui.main.container/dock-container
+                 :tabui.container/style {}
+                 :tabui.container/classes ["tabui-container tabui-main-dock-container"]
+                 }
+                {:tabui.container/uuid (random-uuid)
+                 :tabui.container/key :tabui.main.container/center-container
+                 :tabui.container/style {}
+                 :tabui.container/classes ["tabui-container tabui-main-center-container"]}
+                {:tabui.container/uuid (random-uuid)
+                 :tabui.container/key :tabui.main.container/panel-container
+                 :tabui.container/style {}
+                 :tabui.container/classes ["tabui-container tabui-main-panel-container"]}
+                {:tabui.container/uuid (random-uuid)
+                 :tabui.container/key :tabui.main.container/header-container
+                 :tabui.container/style {}
+                 :tabui.container/classes ["tabui-container tabui-main-header-container"]}
+                
+                ]
+   :tabs []
+   }
+  )
+
 
 
 
@@ -73,7 +97,7 @@
    {:style {:padding "8px"}}
    children])
 
-(defn main-panel []
+(defn main-panel0 []
   (let [active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
     [re-com/v-box
     ;  :gap "1em"
@@ -81,6 +105,19 @@
      :children [
                 [plugins-bar]
                 [panels @active-panel-key]]]))
+
+(defn main-panel []
+  (let [active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
+    ; [:div "datomicui"]
+    [:div 
+     (map (fn [container]
+            (prn container)
+            [:section {:key (:tabui.container/key container)
+                       :style (:tabui.container/style container) 
+                       :class (->> (:tabui.container/classes container) (clojure.string/join " " )  )} ]
+            ) (:containers plugin) )
+     ]
+    ))
 
 (comment
   

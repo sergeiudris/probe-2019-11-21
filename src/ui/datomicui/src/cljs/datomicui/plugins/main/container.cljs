@@ -14,3 +14,4 @@
    [datomicui.plugins.info.core]
    [datomicui.plugins.table.core :as table-view]
    [datomicui.plugins.text-search.core]))
+
