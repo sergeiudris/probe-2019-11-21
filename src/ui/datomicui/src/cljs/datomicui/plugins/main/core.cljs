@@ -71,9 +71,7 @@
   [props & children]
   [:section
    {:style {:padding "8px"}}
-   children
-   ]
-  )
+   children])
 
 (defn main-panel []
   (let [active-panel-key (re-frame/subscribe [::subs/active-panel-key])]

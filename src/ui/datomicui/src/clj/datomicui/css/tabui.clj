@@ -3,5 +3,5 @@
 
 (defstyles tabui
   [:body {:color "red"}]
-  [:.level1 {:color "darkblue"}]
-  [:.red {:color "red"}])
+  [:.tabui-level1 {:color "darkblue"}]
+  [:.tabui-red {:color "red"}])
