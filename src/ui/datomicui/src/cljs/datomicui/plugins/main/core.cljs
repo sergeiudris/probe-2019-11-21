@@ -107,7 +107,8 @@
                 [panels @active-panel-key]]]))
 
 (defn main-panel []
-  (let [active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
+  (let [
+        active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
     ; [:div "datomicui"]
     [:div 
      (map (fn [container]

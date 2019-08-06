@@ -10,6 +10,7 @@
                                 :left 0
                                 :top "16px"
                                 :height "calc(100vh - 16px)"
+                                :border-right "none"
                                 :width "32px"}]
   [:.tabui-main-center-container {:position "absolute"
                                   :left "32px"
@@ -19,6 +20,7 @@
   [:.tabui-main-header-container {:position "absolute"
                                   :left 0
                                   :top 0
+                                  :border-bottom "none"
                                   :height "16px"
                                   :width "100vw"}]
   [:.tabui-main-panel-container {:position "absolute"
