@@ -30,3 +30,7 @@ otherwise they will be added. you say 'here are tabs', they react to these event
 * when you drag a tab from one container to another, you can specify (with contextmenu) whether it's just for this one time fot his tab or you mean that pligin should always use this container from now on
 
 * all settings are stored
+
+
+* if some ui logic does not fit into tab simplicity, first consider the use case, validity of the logic. systemic approach is better. proven by the browser, the editor and the linux interfaces.
+
