@@ -1,4 +1,4 @@
-(ns datomicui.plugins.main.view
+(ns datomicui.plugins.main.core
   (:require
    [re-frame.core :as re-frame]
    [re-com.core :as re-com]
@@ -11,11 +11,11 @@
   ;  [antd :as antd]
    [antizer.reagent :as ant]
    [reagent.core :as r]
-   [datomicui.plugins.info.view]
-   [datomicui.plugins.table.view :as table-view]
-   [datomicui.plugins.text-search.view]))
-
-
+   [datomicui.plugins.info.core]
+   [datomicui.plugins.table.core :as table-view]
+   [datomicui.plugins.text-search.core]
+   [tabui.core]
+   ))
 
 
 

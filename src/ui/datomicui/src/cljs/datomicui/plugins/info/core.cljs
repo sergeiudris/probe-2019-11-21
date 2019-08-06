@@ -1,4 +1,4 @@
-(ns datomicui.plugins.info.view
+(ns datomicui.plugins.info.core
   (:require
    [re-frame.core :as re-frame]
    [re-com.core :as re-com]

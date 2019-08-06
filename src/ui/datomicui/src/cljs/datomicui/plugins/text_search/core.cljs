@@ -1,4 +1,4 @@
-(ns datomicui.plugins.text-search.view
+(ns datomicui.plugins.text-search.core
   (:require
    [re-frame.core :as re-frame]
    [re-com.core :as re-com]
