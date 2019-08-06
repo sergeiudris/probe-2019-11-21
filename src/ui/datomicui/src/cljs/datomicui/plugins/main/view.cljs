@@ -56,7 +56,7 @@
 (defn plugins-bar
   []
   (let [plugins (re-frame/subscribe [::subs/plugins])]
-    [:div {:key (Math/random)
+    [:container {:key (Math/random)
            :style {:position "relative"
                    :left     0
                    :top      0
