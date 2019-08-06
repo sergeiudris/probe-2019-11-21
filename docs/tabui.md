@@ -40,3 +40,15 @@ otherwise they will be added. you say 'here are tabs', they react to these event
 * first, main plugin containers are being rendered, then its tabs; then the rest; when main's container is being rendered, it goes 
 over all plugins (if they are active for example, maybe a control mechanism ) and adds their tabs that also target this container
 
+
+
+# render
+
+* put data strucutre in db plugins-containers/tabs
+* go over main plugins containers, pass them to container component (along with context)
+* containers render open tabs from db/open-tabs [tab-instance]
+* by default main/plugin-list main/welcome-page are open
+* when plugin is clicked, tab-instance is added to sv/open-tabs with target container taken from db/plugin/tabs/tab 
+* when tab-instance is moved, db/open-tabs/tab-instance/target-container is chnaged to new target
+* main/dock main/center main/panel will be starting main containers
+* main/dock will  db/open-tabs/tab-instance main/plugin-list and render it

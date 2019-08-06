@@ -3,6 +3,16 @@
             [cljs.pprint :as pp]))
 
 
+
+(def default-containers
+  {:dock-container
+   :main-container
+   :panel-container
+   
+   }
+  
+  )
+
 (comment 
   
   (prn 3)
