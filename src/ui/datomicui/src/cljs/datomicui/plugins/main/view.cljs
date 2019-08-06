@@ -56,13 +56,15 @@
 (defn plugins-bar
   []
   (let [plugins (re-frame/subscribe [::subs/plugins])]
-    [:div {:style {:position "relative"
+    [:div {:key (Math/random)
+           :style {:position "relative"
                    :left     0
                    :top      0
                    :height   "100vh"
                    :width    "50px"}}
      (map (fn [plugin]
-            [ant/icon {:type  "plus"
+            [ant/icon {:key (str (:plugin/key plugin))
+                       :type  "plus"
                        :title (str (:plugin/key plugin))}]) @plugins)]))
 
 (defn layout
@@ -75,16 +77,18 @@
 
 (defn main-panel []
   (let [active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
-    [layout
-     {}
-     [plugins-bar]
-     [panels @active-panel-key]
-     ]))
+    [re-com/v-box
+    ;  :gap "1em"
+     :style {:padding "16px"}
+     :children [
+                [plugins-bar]
+                [panels @active-panel-key]]]))
 
 (comment
   
   (cljs.repl/dir r)
   
+  (Math/random)
   
 
   ;

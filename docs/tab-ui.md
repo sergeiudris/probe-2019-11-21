@@ -34,3 +34,9 @@ otherwise they will be added. you say 'here are tabs', they react to these event
 
 * if some ui logic does not fit into tab simplicity, first consider the use case, validity of the logic. systemic approach is better. proven by the browser, the editor and the linux interfaces.
 
+
+--
+
+* first, main plugin containers are being rendered, then its tabs; then the rest; when main's container is being rendered, it goes 
+over all plugins (if they are active for example, maybe a control mechanism ) and adds their tabs that also target this container
+
