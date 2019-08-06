@@ -7,5 +7,15 @@
   
   (prn 3)
   
+  (->
+   (js/Promise. (fn [rslv,rjct]
+                  (js/setTimeout #(prn "hi") 5000 )
+                  (rslv 3)))
+   (.then (fn [x]
+            (prn "then " x)
+            ))
+   )
+  
+  
   ;
   )
