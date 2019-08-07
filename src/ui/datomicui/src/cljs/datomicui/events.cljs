@@ -22,6 +22,11 @@
   )
 
 (re-frame/reg-event-db
+ :ping
+ (fn [db [_ value]]
+   (assoc db :ping value)))
+
+(re-frame/reg-event-db
  ::initialize-db
  (fn-traced [_ _]
    db/default-db))
@@ -102,6 +107,8 @@
    (assoc db :entities-response (reader/read-string value) )
    ))
 
+
+
 (re-frame/reg-event-db
  :handle-get-attrs-resp
  (fn [db [_ value]]
@@ -112,6 +119,17 @@
  :failed-response
  (fn [db [_ value]]
    (assoc db :entities-failed value)))
+
+(re-frame/reg-event-fx
+ :open-context-menu
+ (fn [{:keys [db]} [_ eargs]]
+   (let [k (:tabui.context-menu-uuk eargs)
+         menu-fn (get-in db/context-menus [k :tabui.context-menu-uuk])]
+    ;  (prn "k is " k)
+    ;  (prn eargs)
+     {:dispatch [:ping (Math/random)]
+      :db (assoc db :context-menu-data {:menu (menu-fn {})
+                                        :eargs eargs})})))
 
 
 (comment

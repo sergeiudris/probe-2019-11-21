@@ -24,11 +24,18 @@
    :tabs/seq         0
    :entities-response nil
    :entity-table-state nil
+   :context-menu-data nil
    :get-attrs-resp []
    :flag true
    :tabs             [{:datomicui/uuid (random-uuid)
                        :tabs/seqid     0
                        :plugin/key     :plugin/info}]})
+
+(def context-menus
+  {:datomicui.plugins.main.plugin/context-menu-dock-icon 
+   {:tabui.context-menu-uuk datomicui.plugins.main.plugin/context-menu-dock-icon}
+   }
+  )
 
 (comment
  
@@ -36,7 +43,7 @@
   
   (random-uuid)
   (keys default-db )
-  
+  (prn datomicui.plugins.main.plugin/context-menu-dock-icon)
   (:tabs default-db)
   ;
  )

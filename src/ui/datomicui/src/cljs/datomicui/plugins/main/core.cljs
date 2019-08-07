@@ -102,6 +102,12 @@
     (map $ plugins)
     (into [:div] $)))
 
+(defn context-menu-comp
+  []
+  (let [menu-data (re-frame/subscribe [::subs/context-menu-data])
+        k (get-in menu-data [:eargs :tabui.context-menu-uuk])]
+    [:div {} k]))
+
 (defn main-panel []
   (let [plugins @(re-frame/subscribe [::subs/plugins])
         tab-instances  @(re-frame/subscribe [::subs/tab-instances])
@@ -109,9 +115,10 @@
     ; [:div "datomicui"]
     [:div
      [tabui.container/containers-comp {:tab-instances tab-instances
-                                      :plugins plugins
-                                      :containers (:tabui.plugins/containers plugin)}]
+                                       :plugins plugins
+                                       :containers (:tabui.plugins/containers plugin)}]
      [random-buttons-comp {:plugins plugins}]
+     [context-menu-comp ]
      ]))
 
 (comment

@@ -32,9 +32,14 @@
                        :size "small"
                        :value key-str
                        :on-context-menu (fn [e]
-                                          (prn e.target.value)
-                                          (prn plugin)
-                                          )
+                                          ; (prn e.target.value)
+                                          ; (prn plugin)
+                                          (re-frame/dispatch
+                                           [:open-context-menu
+                                            {:tabui.context-menu-uuk
+                                             :datomicui.plugins.main.plugin/context-menu-dock-icon
+                                             :tab tab
+                                             :plugin plugin}]))
                        :title   key-str}
            [ant/icon {:theme "outlined"
                       :type "info-circle"}]]
@@ -44,6 +49,13 @@
       (into [:div {:class "tabui-main-dock-list"}] $))
   ; [:div (str (:tabui.tab/key tab))]
   )
+
+(defn context-menu-dock-icon
+  [ctx]
+  [{:key :info
+    :title "info"}
+   {:key :open-new-tab
+    :title "open tab"}])
 
 (def plugin
   {:tabui.plugins/uuid (random-uuid)

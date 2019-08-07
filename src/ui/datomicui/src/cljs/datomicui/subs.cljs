@@ -33,6 +33,11 @@
    (:re-pressed-example db)))
 
 (re-frame/reg-sub
+ ::context-menu-data
+ (fn [db _]
+   (:context-menu-data db)))
+
+(re-frame/reg-sub
  ::songs-list
  (fn [db _]
    (:songs-list db)))
