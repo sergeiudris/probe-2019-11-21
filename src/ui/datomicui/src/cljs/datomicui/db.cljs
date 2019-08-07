@@ -4,7 +4,7 @@
             [datomicui.plugins.table.plugin]
             [datomicui.plugins.text-search.plugin]))
 
-(def welcome-tab-uuid (random-uuid))
+(def info-tab-uuid (random-uuid))
 (def dock-tab-uuid (random-uuid))
 (def text-search-tab-uuid (random-uuid))
 
@@ -29,8 +29,8 @@
                    {:tabui.tab-instance/uuid (random-uuid)
                     :tabui.tab-instance/key :tabui.tab/settings-tab
                     :tabui.tab-instance/container-key :tabui.main.container/center-container}
-                   {:tabui.tab-instance/uuid welcome-tab-uuid
-                    :tabui.tab-instance/key :tabui.tab/welcome-tab
+                   {:tabui.tab-instance/uuid info-tab-uuid
+                    :tabui.tab-instance/key :tabui.tab/info-tab
                     :tabui.tab-instance/container-key :tabui.main.container/center-container}
                    {:tabui.tab-instance/uuid text-search-tab-uuid
                     :tabui.tab-instance/key :tabui.tab/text-search-tab

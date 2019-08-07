@@ -21,9 +21,9 @@
 
 
 
-(defn welcome-tab
+(defn info-tab
   []
-  [:div "info: welcome"])
+  [:div "info: "])
 
 
 
@@ -31,12 +31,12 @@
   {:tabui.plugins/uuid (random-uuid)
    :tabui.plugins/key :tabui.plugins/info
    :tabui.plugins/antd-icon "info-circle-o"
-   :tabui.plugins/default-tab :tabui.tab/welcome-tab
+   :tabui.plugins/default-tab :tabui.tab/info-tab
    :tabui.plugins/containers [
                               ]
    :tabui.plugins/tabs [{:tabui.tab/uuid (random-uuid)
-                         :tabui.tab/key :tabui.tab/welcome-tab
-                         :tabui.tab/component welcome-tab
+                         :tabui.tab/key :tabui.tab/info-tab
+                         :tabui.tab/component info-tab
                          :tabui.container/key :tabui.main.container/center-container
                          }
                         ]})
