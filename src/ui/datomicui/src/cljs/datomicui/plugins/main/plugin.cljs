@@ -30,6 +30,11 @@
             ; (prn plugin)
           [ant/button {:key key-str
                        :size "small"
+                       :value key-str
+                       :on-context-menu (fn [e]
+                                          (prn e.target.value)
+                                          (prn plugin)
+                                          )
                        :title   key-str}
            [ant/icon {:theme "outlined"
                       :type "info-circle"}]]
