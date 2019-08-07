@@ -18,11 +18,6 @@
    [datomicui.db :refer [default-db]]
    ))
 
-
-
-
-
-
 ;; main
 
 (defn home-panel []
@@ -148,25 +143,42 @@
                (= (:tabui.tab-instance/key tab-instance) (:tabui.tab/key t))))
      (first))))
 
+
 (defn container-comp
   [{:keys [tab-instances plugins container]} & children]
-  [:section {:key (:tabui.container/key container)
-             :style (:tabui.container/style container)
-             :class (->> (:tabui.container/classes container) (clojure.string/join " "))}
-   [:div {:class (->> (:tabui.container/header-classes container) (clojure.string/join " "))}]
-   [:div {:class (->> (:tabui.container/content-classes container) (clojure.string/join " "))}
-    (->>
-     (filter (fn [t]
-               (= (:tabui.container/key container)  (:tabui.tab-instance/container-key t)))
-             tab-instances)
-     (map (fn [t]
-            (let [tab (find-tab plugins t)
-                  comp (:tabui.tab/component tab)]
-              [comp {:key (:tabui.tab-instance/key t)
-                     :plugins plugins
-                     :tab tab}]
+  (let [tab-insts (filter (fn [t]
+                            (= (:tabui.container/key container)
+                               (:tabui.tab-instance/container-key t)))
+                          tab-instances)]
+    [:section {:key (:tabui.container/key container)
+               :style (:tabui.container/style container)
+               :class (->> (:tabui.container/classes container) (clojure.string/join " "))}
+     [:div {:class (->> (:tabui.container/header-list-classes container) (clojure.string/join " "))}
+
+      (map (fn [tab-inst]
+             (let [tab (find-tab plugins tab-inst)
+                   k (:tabui.tab/key tab )
+                   title (str k)
+                   classes (:tabui.container/header-classes container)
+                   class (->> classes
+                                   (clojure.string/join " "))
+                   ]
+               (if classes
+                 [:div {:key k
+                        :class class}
+                  title]
+                 nil)
              ;
-              ))))]])
+               ))tab-insts)]
+     [:div {:class (->> (:tabui.container/content-classes container) (clojure.string/join " "))}
+      (map (fn [tab-inst]
+             (let [tab (find-tab plugins tab-inst)
+                   comp (:tabui.tab/component tab)]
+               [comp {:key (:tabui.tab-instance/key tab-inst)
+                      :plugins plugins
+                      :tab tab}]
+             ;
+               ))tab-insts)]]))
 
 
 (defn containers-comp

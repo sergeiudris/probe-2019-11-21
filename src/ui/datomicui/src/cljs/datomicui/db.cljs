@@ -32,9 +32,10 @@
                        :plugin/key     :plugin/info}]})
 
 (def context-menus
-  {:datomicui.plugins.main.plugin/context-menu-dock-icon 
+  {:datomicui.plugins.main.plugin/context-menu-dock-icon
    {:tabui.context-menu-uuk datomicui.plugins.main.plugin/context-menu-dock-icon}
-   }
+   :datomicui.plugins.main.plugin/context-menu-header
+   {:tabui.context-menu-uuk datomicui.plugins.main.plugin/context-menu-header}}
   )
 
 (comment

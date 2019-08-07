@@ -69,6 +69,13 @@
    {:key :open-new-tab
     :title "open tab"}])
 
+(defn context-menu-header
+  [ctx]
+  [{:key :close
+    :title "close"}
+   {:key :pin
+    :title "pin"}])
+
 (def plugin
   {:tabui.plugins/uuid (random-uuid)
    :tabui.plugins/key :tabui.plugins/main
@@ -80,7 +87,8 @@
                                :tabui.container/key :tabui.main.container/center-container
                                :tabui.container/style {}
                                :tabui.container/classes ["tabui-container tabui-main-center-container"]
-                               :tabui.container/header-classes ["tabui-container-main-header-list "]
+                               :tabui.container/header-list-classes ["tabui-container-main-header-list "]
+                               :tabui.container/header-classes ["tabui-container-header tabui-container-main-header "]
                                :tabui.container/content-classes ["tabui-container-main-content "]
                                }
                               {:tabui.container/uuid (random-uuid)

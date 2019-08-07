@@ -34,19 +34,21 @@
                                        :display "flex"
                                        :flex-direction "row"
                                        :position "absolute"
-                                       :height "16px"
+                                       :height "24px"
                                        :width "100%"
                                        :top 0
                                        :left 0}]
   [:.tabui-container-main-content {:border "1px solid grey"
                                    :position "absolute"
-                                   :top "16px"
+                                   :top "24px"
                                    :width "100%"
-                                   :height "calc(100% - 16px)"
+                                   :height "calc(100% - 24px)"
                                    :left 0}]
   [:.tabui-container-header {:border "1px solid grey"}]
-  [:.tabui-container-main-header {:width "64px"
-                                  :height "16px"}]
+  [:.tabui-container-main-header {:width "128px"
+                                  :overflow-x "hidden"
+                                  :overflow-y "hidden"
+                                  :height "24px"}]
 
   [:.anticon {; :color "blue"
               }]
