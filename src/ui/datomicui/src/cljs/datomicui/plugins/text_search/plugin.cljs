@@ -20,9 +20,19 @@
 
 
 
-(defn search-tab
+(defn text-search-tab
   []
-  [:div "info: text search"])
+  ; [:div "info: text search"]
+  [:div
+   [ant/input-search
+    {:on-search (fn [e]
+                  (prn e)
+                  (re-frame/dispatch [:text-search e ])
+                  )}
+    ]
+   ]
+  
+  )
 
 
 
@@ -30,11 +40,11 @@
   {:tabui.plugins/uuid (random-uuid)
    :tabui.plugins/key :tabui.plugins/text-search
    :tabui.plugins/antd-icon "search"
-   :tabui.plugins/default-tab :tabui.tab/search-tab
+   :tabui.plugins/default-tab :tabui.tab/text-search-tab
    :tabui.plugins/containers []
    :tabui.plugins/tabs [{:tabui.tab/uuid (random-uuid)
-                         :tabui.tab/key :tabui.tab/search-tab
-                         :tabui.tab/component search-tab
+                         :tabui.tab/key :tabui.tab/text-search-tab
+                         :tabui.tab/component text-search-tab
                          :tabui.container/key :tabui.main.container/center-container}]})
 
 (comment

@@ -66,6 +66,17 @@
 (defn get-entity-route [request]
   (get-entity-response request))
 
+(defn text-search-response
+  [request]
+  (dtm/connect-lazy)
+  (let [{query-params :query-params} request
+        q-data (-> query-params (get :data) edn/read-string)]
+    {:status 200
+     :body {:data q-data}}))
+
+(defn text-search-route [request]
+  (text-search-response request))
+
 
 
 
@@ -93,6 +104,10 @@
       ; (pp/pprint (:cookies x))
       ; )
     )
+  
+  (client/get "http://localhost:8080/datomicui/text-search"
+              {:query-params {"data" (str {})}
+               :headers      {}})
   
   (as-> nil x
    (client/get "http://localhost:8080/datomicui/entity?data={:limit 10, :offset 20, :attribute \":artist/name\", :fmt \"edn\"}")

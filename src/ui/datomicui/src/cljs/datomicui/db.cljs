@@ -6,6 +6,8 @@
 
 (def welcome-tab-uuid (random-uuid))
 (def dock-tab-uuid (random-uuid))
+(def text-search-tab-uuid (random-uuid))
+
 
 (def default-db
   {:active-panel-key :home-panel
@@ -29,9 +31,13 @@
                     :tabui.tab-instance/container-key :tabui.main.container/center-container}
                    {:tabui.tab-instance/uuid welcome-tab-uuid
                     :tabui.tab-instance/key :tabui.tab/welcome-tab
-                    :tabui.tab-instance/container-key :tabui.main.container/center-container}]
+                    :tabui.tab-instance/container-key :tabui.main.container/center-container}
+                   {:tabui.tab-instance/uuid text-search-tab-uuid
+                    :tabui.tab-instance/key :tabui.tab/text-search-tab
+                    :tabui.tab-instance/container-key :tabui.main.container/center-container}
+                   ]
    :active-tabs {:tabui.main.container/center-container {:tabui.container/key :tabui.main.container/center-container
-                                                         :tabui.tab-instance/uuid  welcome-tab-uuid}
+                                                         :tabui.tab-instance/uuid  text-search-tab-uuid}
                  :tabui.main.container/dock-container {:tabui.container/key :tabui.main.container/dock-container
                                                        :tabui.tab-instance/uuid  dock-tab-uuid}
                  }

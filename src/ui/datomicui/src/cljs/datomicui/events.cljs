@@ -61,6 +61,19 @@
  )
 
 (re-frame/reg-event-fx
+ :text-search
+;  [(re-frame/)]
+ (fn [{:keys [db ]} [_ earg]]
+   {:http-xhrio {:method :get
+                 :uri "http://localhost:7881/datomicui/text-search"
+                 :response-format (ajax/raw-response-format)
+                 :on-success [:process-text-search-response]
+                 :format :edn
+                 :params {:data (str {:input earg})}
+                 :on-fail [:failed-response]}
+    :db (assoc db :flag true)}))
+
+(re-frame/reg-event-fx
  ::get-attrs
 ;  [(re-frame/)]
  [(re-frame/inject-cofx ::inject/sub [:get-attrs-resp])]
@@ -108,6 +121,12 @@
   ;  (prn value)
    (assoc db :entities-response (reader/read-string value) )
    ))
+
+(re-frame/reg-event-db
+ :process-text-search-response
+ (fn [db [_ value]]
+  ;  (prn value)
+   (assoc db :text-search-response (reader/read-string value))))
 
 
 
