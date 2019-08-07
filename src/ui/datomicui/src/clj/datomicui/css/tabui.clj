@@ -27,4 +27,15 @@
                                  :left "32px"
                                  :bottom 0
                                  :height "256px"
-                                 :width "calc(100vw - 32px)"}])
+                                 :width "calc(100vw - 32px)"}]
+  [:.tabui-main-dock-list {:display "flex"
+                           :flex-direction "column"
+                           }]
+  [:.tabui-tab-header {:border "1px solid grey"}]
+  [:.tabui-tab-header-64 {:width "64px"
+                          :height "16px"}]
+  
+  [:.anticon {
+              ; :color "blue"
+              }]
+  )

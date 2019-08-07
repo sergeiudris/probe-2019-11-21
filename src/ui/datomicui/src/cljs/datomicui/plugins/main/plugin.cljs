@@ -21,9 +21,24 @@
   [:div "datomicui"])
 
 (defn dock-tab
-  []
-  (map (fn [x]
-         [:div x]) (range 3)))
+  [{:keys [tab plugins]}]
+ 
+    (as-> nil $
+      (fn [plugin]
+        (let [key (:tabui.plugins/key plugin)
+              key-str (str (:tabui.plugins/key plugin))]
+            ; (prn plugin)
+          [ant/button {:key key-str
+                       :size "small"
+                       :title   key-str}
+           [ant/icon {:theme "outlined"
+                      :type "info-circle"}]]
+          ;
+          ))
+      (map $ plugins)
+      (into [:div {:class "tabui-main-dock-list"}] $))
+  ; [:div (str (:tabui.tab/key tab))]
+  )
 
 (def plugin
   {:tabui.plugins/uuid (random-uuid)

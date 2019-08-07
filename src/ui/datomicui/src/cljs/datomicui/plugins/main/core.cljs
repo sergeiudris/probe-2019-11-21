@@ -14,7 +14,7 @@
    [datomicui.plugins.info.core]
    [datomicui.plugins.table.core :as table-view]
    [datomicui.plugins.text-search.core]
-   [tabui.core :refer [find-tab]]
+   [tabui.container ]
    [datomicui.plugins.main.plugin :refer [plugin]]
    
    ))
@@ -83,37 +83,36 @@
                 [plugins-bar]
                 [panels @active-panel-key]]]))
 
+
+(defn random-button-comp
+  [{:keys [plugin]} & children]
+  (let [key (:tabui.plugins/key plugin)
+        key-str (str key)]
+    [:button {:style {:position "absolute" :right 0}
+              :value key-str} key-str]))
+
+(defn random-buttons-comp
+  [{:keys [plugins]} & children]
+  (as-> nil $
+    (fn [plugin]
+            ; (prn plugin)
+      [random-button-comp {:key (:tabui.plugins/key plugin)
+                         :plugin plugin}]
+      )
+    (map $ plugins)
+    (into [:div] $)))
+
 (defn main-panel []
   (let [plugins @(re-frame/subscribe [::subs/plugins])
         tab-instances  @(re-frame/subscribe [::subs/tab-instances])
         active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
     ; [:div "datomicui"]
     [:div
-     (map (fn [container]
-            [:section {:key (:tabui.container/key container)
-                       :style (:tabui.container/style container)
-                       :class (->> (:tabui.container/classes container) (clojure.string/join " "))}
-             (->>
-              (filter (fn [t]
-                        (= (:tabui.container/key container)  (:tabui.tab-instance/container-key t)))
-                      tab-instances)
-              (map (fn [t]
-                     (let [tab (find-tab plugins t)
-                           component (:tabui.tab/component tab)
-                           ]
-                       (prn component)
-                       [:div  {:key (:tabui.tab-instance/key t) }
-                        [component]
-                        ]
-                       )
-                    ;  [:div {:key (str (:tabui.tab-instance/key t))} (str (:tabui.tab-instance/key t))]
-                     
-                     )))]) 
-          (:tabui.plugins/containers plugin))
-     (map (fn [plugin]
-            ; (prn plugin)
-            [:button {:style {:position "absolute" :right 0}
-                      :key (str (:tabui.plugins/key plugin))} (str (:tabui.plugins/key plugin))]) plugins)]))
+     [tabui.container/containers-comp {:tab-instances tab-instances
+                                      :plugins plugins
+                                      :containers (:tabui.plugins/containers plugin)}]
+     [random-buttons-comp {:plugins plugins}]
+     ]))
 
 (comment
   
@@ -121,6 +120,7 @@
   
   (Math/random)
   
+  (def $ 3)
 
   ;
   )

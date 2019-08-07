@@ -15,10 +15,10 @@
    :tab-instances [{:tabui.tab-instance/uuid (random-uuid)
                     :tabui.tab-instance/key :tabui.tab/welcome-tab
                     :tabui.tab-instance/container-key :tabui.main.container/center-container}
-                  ;  {:tabui.tab-instance/uuid (random-uuid)
-                  ;   :tabui.tab-instance/key :tabui.tab/dock-tab
-                  ;   :tabui.tab-instance/container-key :tabui.main.container/dock-container
-                  ;   }
+                   {:tabui.tab-instance/uuid (random-uuid)
+                    :tabui.tab-instance/key :tabui.tab/dock-tab
+                    :tabui.tab-instance/container-key :tabui.main.container/dock-container
+                    }
                    ]
    :active-tab-index 0
    :tabs/seq         0
