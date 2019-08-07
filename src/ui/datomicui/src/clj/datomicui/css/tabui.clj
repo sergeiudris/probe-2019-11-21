@@ -5,7 +5,8 @@
   [:body {}]
   [:.tabui-level1 {:color "darkblue"}]
   [:.tabui-red {:color "red"}]
-  [:.tabui-container {:border "1px solid black"}]
+  [:.tabui-container {:border "1px solid black"
+                      }]
   [:.tabui-main-dock-container {:position "absolute"
                                 :left 0
                                 :top "16px"
@@ -43,7 +44,8 @@
                                    :top "24px"
                                    :width "100%"
                                    :height "calc(100% - 24px)"
-                                   :left 0}]
+                                   :left 0
+                                   :overflow "auto"}]
   [:.tabui-container-header {:border "1px solid grey"
                              :cursor "default"
                              :background-color "#efefef"
