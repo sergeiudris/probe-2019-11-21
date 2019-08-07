@@ -36,7 +36,9 @@
                               ]
    :tabui.plugins/tabs [{:tabui.tab/uuid (random-uuid)
                          :tabui.tab/key :tabui.tab/welcome-tab
-                         :tabui.tab/component welcome-tab}
+                         :tabui.tab/component welcome-tab
+                         :tabui.container/key :tabui.main.container/center-container
+                         }
                         ]})
 
 (comment

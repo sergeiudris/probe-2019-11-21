@@ -154,7 +154,7 @@
         active-tabs @(re-frame/subscribe [::subs/active-tabs])
         active-tab-inst-uuid (get-in active-tabs [(:tabui.container/key container) :tabui.tab-instance/uuid])]
     (prn "active-tab-inst-uuid" active-tab-inst-uuid)
-    [:section {:key (:tabui.container/key container)
+    [:section {:key (:tabui.container/uuid container)
                :style (:tabui.container/style container)
                :class (->> (:tabui.container/classes container) (clojure.string/join " "))}
      [:div {:class (->> (:tabui.container/header-list-classes container) (clojure.string/join " "))}
@@ -165,11 +165,11 @@
                    active? (= active-tab-inst-uuid
                               (:tabui.tab-instance/uuid tab-inst))
                    title (str k)
-                   classes (concat (:tabui.container/header-classes container) (if active? ["tabui-container-header-active"] [] ) )
-                   class (->> classes
+                   classes (:tabui.container/header-classes container)
+                   class (->> (concat classes (if active? ["tabui-container-header-active"] []))
                               (clojure.string/join " "))]
                (if classes
-                 [:div {:key k
+                 [:div {:key (:tabui.tab-instance/uuid tab-inst)
                         :class class
                         :on-click (fn [e]
                                     (.stopPropagation e)

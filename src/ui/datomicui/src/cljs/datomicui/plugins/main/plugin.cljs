@@ -105,8 +105,10 @@
    :tabui.plugins/tabs [
                         {:tabui.tab/uuid (random-uuid)
                          :tabui.tab/key :tabui.tab/dock-tab
+                         :tabui.container/key :tabui.main.container/dock-container
                          :tabui.tab/component dock-tab}
                         {:tabui.tab/uuid (random-uuid)
+                         :tabui.container/key :tabui.main.container/center-container
                          :tabui.tab/key :tabui.tab/settings-tab
                          :tabui.tab/component settings-tab}
                         ]})

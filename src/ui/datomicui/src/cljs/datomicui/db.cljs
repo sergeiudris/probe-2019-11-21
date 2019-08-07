@@ -3,6 +3,7 @@
             [datomicui.plugins.info.plugin]))
 
 (def welcome-tab-uuid (random-uuid))
+(def dock-tab-uuid (random-uuid))
 
 (def default-db
   {:active-panel-key :home-panel
@@ -15,7 +16,7 @@
 
    :plugins [datomicui.plugins.main.plugin/plugin
              datomicui.plugins.info.plugin/plugin]
-   :tab-instances [{:tabui.tab-instance/uuid (random-uuid)
+   :tab-instances [{:tabui.tab-instance/uuid dock-tab-uuid
                     :tabui.tab-instance/key :tabui.tab/dock-tab
                     :tabui.tab-instance/container-key :tabui.main.container/dock-container}
                    {:tabui.tab-instance/uuid (random-uuid)
@@ -25,7 +26,10 @@
                     :tabui.tab-instance/key :tabui.tab/welcome-tab
                     :tabui.tab-instance/container-key :tabui.main.container/center-container}]
    :active-tabs {:tabui.main.container/center-container {:tabui.container/key :tabui.main.container/center-container
-                                                         :tabui.tab-instance/uuid  welcome-tab-uuid}}
+                                                         :tabui.tab-instance/uuid  welcome-tab-uuid}
+                 :tabui.main.container/dock-container {:tabui.container/key :tabui.main.container/dock-container
+                                                       :tabui.tab-instance/uuid  dock-tab-uuid}
+                 }
    :active-tab-index 0
    :tabs/seq         0
    :entities-response nil
@@ -59,6 +63,35 @@
    :datomicui.plugins.main.plugin/context-menu-header
    {:tabui.context-menu-uuk datomicui.plugins.main.plugin/context-menu-header}}
   )
+
+(defn plugin->tab
+ [plugin key]
+ (let [tabs (:tabui.plugins/tabs plugin)]
+   (->
+    (filter #(= (:tabui.tab/key %) key) tabs)
+    first)))
+
+(defn new-default-tab-inst
+  [plugin]
+  (let [default-tab-key (:tabui.plugins/default-tab plugin)
+        tab (plugin->tab plugin default-tab-key)]
+    ; (prn "tab" tab)
+    {:tabui.tab-instance/uuid (random-uuid)
+     :tabui.tab-instance/key (:tabui.tab/key tab)
+     :tabui.tab-instance/container-key (:tabui.container/key tab)}))
+
+(defn add-new-default-tab-inst!
+  [db plugin]
+  (let [new-tab (new-default-tab-inst plugin)
+        tab-insts (:tab-instances db)
+        next-tab-insts (conj tab-insts new-tab)]
+    ; (prn "new tab" new-tab)
+    ; (prn next-tab-insts)
+    ; (prn "tab-insts" tab-insts)
+    ; (prn "next-tab-insts" next-tab-insts)
+    (assoc db :tab-instances next-tab-insts)
+    ))
+
 
 (comment
  

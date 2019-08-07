@@ -160,16 +160,20 @@
    (let [option (:option eargs)
          menu-eargs (:menu-eargs eargs)
          tab-inst (:tab-inst menu-eargs)
-         k (:key option)]
+         k (:key option)
+         tab (:tab menu-eargs)
+         plugin (:plugin menu-eargs)
+         ]
+    ;  (prn tab)
     ;  (prn option)
     ;  (prn "k is " k)
     ;  (prn eargs)
     ;  (pp/pprint "menu-eargs" menu-eargs )
-    ;  (prn menu-eargs)
+     (prn menu-eargs)
      {:dispatch [:ping (Math/random)]
       :db (case k
             :tabui.plugins.main/open-tab-inst (merge db
-                                             (db/remove-tab-inst! db tab-inst)
+                                             (db/add-new-default-tab-inst! db plugin)
                                              {:context-menu-data nil})
             :tabui.plugins.main/close-tab-inst (merge db
                                              (db/remove-tab-inst! db tab-inst)
