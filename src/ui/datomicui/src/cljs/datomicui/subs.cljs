@@ -27,6 +27,11 @@
    (:text-search-response db)))
 
 (re-frame/reg-sub
+ ::db-names-response
+ (fn [db _]
+   (:db-names-response db)))
+
+(re-frame/reg-sub
  ::plugins
  (fn [db _]
    (:plugins db)))

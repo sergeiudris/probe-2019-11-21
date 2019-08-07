@@ -19,11 +19,26 @@
    ))
 
 
-
+(defn text-search-results
+  []
+  (let [resp @(re-frame/subscribe [::subs/text-search-response])
+        data (:data resp)]
+    (into [:div]
+          (map (fn [x]
+                 (prn x)
+                 [:div
+                  [:span (first x)]
+                  [:span (second x)]
+                  [:span (nth x 2)]]) data))))
 
 (defn info-tab
   []
-  [:div "info: "])
+  (let [resp @(re-frame/subscribe [::subs/db-names-response])
+        data (:data resp)]
+    [ant/select {:style {:min-width "128px"}}
+     (map (fn [db-name]
+            [ant/select-option  {:key db-name
+                                 :value db-name} db-name]) data )]))
 
 
 

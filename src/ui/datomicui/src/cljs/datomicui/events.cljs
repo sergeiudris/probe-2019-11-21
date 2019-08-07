@@ -74,6 +74,19 @@
     :db (assoc db :flag true)}))
 
 (re-frame/reg-event-fx
+ ::db-names
+;  [(re-frame/)]
+ (fn [{:keys [db]} [_ earg]]
+   {:http-xhrio {:method :get
+                 :uri "http://localhost:7881/datomicui/db-names"
+                 :response-format (ajax/raw-response-format)
+                 :on-success [:process-db-names-response]
+                 :format :edn
+                 :params {:data (str {:input earg})}
+                 :on-fail [:failed-response]}
+    :db db}))
+
+(re-frame/reg-event-fx
  ::get-attrs
 ;  [(re-frame/)]
  [(re-frame/inject-cofx ::inject/sub [:get-attrs-resp])]
@@ -127,6 +140,12 @@
  (fn [db [_ value]]
   ;  (prn value)
    (assoc db :text-search-response (reader/read-string value))))
+
+(re-frame/reg-event-db
+ :process-db-names-response
+ (fn [db [_ value]]
+  ;  (prn value)
+   (assoc db :db-names-response (reader/read-string value))))
 
 
 

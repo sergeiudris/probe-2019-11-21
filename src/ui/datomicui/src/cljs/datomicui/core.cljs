@@ -33,6 +33,7 @@
   (routes/app-routes)
   (re-frame/dispatch-sync [::events/initialize-db])
   (re-frame/dispatch-sync [::events/get-attrs])
+  (re-frame/dispatch-sync [::events/db-names])
   (re-frame/dispatch-sync [::rp/add-keyboard-event-listener "keydown"])
   ; (re-frame/dispatch-sync [::events/set-active-panel :entity-panel])
   (dev-setup)

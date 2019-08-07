@@ -47,6 +47,7 @@
    :entity-table-state nil
    :context-menu-data nil
    :text-search-response nil
+   :db-names-response nil
    :get-attrs-resp []
    :flag true
    :tabs             [{:datomicui/uuid (random-uuid)
