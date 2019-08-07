@@ -1,6 +1,8 @@
 (ns datomicui.db
   (:require [datomicui.plugins.main.plugin]
-            [datomicui.plugins.info.plugin]))
+            [datomicui.plugins.info.plugin]
+            [datomicui.plugins.table.plugin]
+   ))
 
 (def welcome-tab-uuid (random-uuid))
 (def dock-tab-uuid (random-uuid))
@@ -15,7 +17,9 @@
   ;                      :plugin/key     :plugin/text-search}]
 
    :plugins [datomicui.plugins.main.plugin/plugin
-             datomicui.plugins.info.plugin/plugin]
+             datomicui.plugins.info.plugin/plugin
+             datomicui.plugins.table.plugin/plugin
+             ]
    :tab-instances [{:tabui.tab-instance/uuid dock-tab-uuid
                     :tabui.tab-instance/key :tabui.tab/dock-tab
                     :tabui.tab-instance/container-key :tabui.main.container/dock-container}

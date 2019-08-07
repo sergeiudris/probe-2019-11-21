@@ -23,7 +23,7 @@
 (defn home-panel []
   [re-com/v-box
    :gap "1em"
-   :children [[table-view/buttons]]])
+   :children [[:div]]])
 
 (defn about-panel []
   [re-com/v-box
