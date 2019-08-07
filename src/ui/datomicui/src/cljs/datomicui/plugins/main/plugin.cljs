@@ -21,9 +21,9 @@
 
 
 
-(defn welcome-tab
+(defn settings-tab
   []
-  [:div "datomicui"])
+  [:div "main: settings"])
 
 (defn dock-tab
   [{:keys [tab plugins]}]
@@ -54,7 +54,7 @@
                                              :plugin plugin}]))
                        :title   key-str}
            [ant/icon {:theme "outlined"
-                      :type "info-circle"}]]
+                      :type (:tabui.plugins/antd-icon plugin)}]]
           ;
           ))
       (map $ plugins)
@@ -64,21 +64,23 @@
 
 (defn context-menu-dock-icon
   [ctx]
-  [{:key :info
+  [{:key :tabui.plugins.main/info
     :title "info"}
-   {:key :open-new-tab
+   {:key :tabui.plugins.main/open-tab-inst
     :title "open tab"}])
 
 (defn context-menu-header
   [ctx]
-  [{:key :close
+  [{:key :tabui.plugins.main/close-tab-inst
     :title "close"}
-   {:key :pin
+   {:key :tabui.plugins.main/pin-tab-inst
     :title "pin"}])
 
 (def plugin
   {:tabui.plugins/uuid (random-uuid)
    :tabui.plugins/key :tabui.plugins/main
+   :tabui.plugins/antd-icon "setting"
+   
    :tabui.plugins/containers [{:tabui.container/uuid (random-uuid)
                                :tabui.container/key :tabui.main.container/dock-container
                                :tabui.container/style {}
@@ -99,12 +101,15 @@
                                :tabui.container/key :tabui.main.container/header-container
                                :tabui.container/style {}
                                :tabui.container/classes ["tabui-container tabui-main-header-container"]}]
-   :tabui.plugins/tabs [{:tabui.tab/uuid (random-uuid)
-                         :tabui.tab/key :tabui.tab/welcome-tab
-                         :tabui.tab/component welcome-tab}
+   :tabui.plugins/default-tab :tabui.tab/settings-tab
+   :tabui.plugins/tabs [
                         {:tabui.tab/uuid (random-uuid)
                          :tabui.tab/key :tabui.tab/dock-tab
-                         :tabui.tab/component dock-tab}]})
+                         :tabui.tab/component dock-tab}
+                        {:tabui.tab/uuid (random-uuid)
+                         :tabui.tab/key :tabui.tab/settings-tab
+                         :tabui.tab/component settings-tab}
+                        ]})
 
 (comment
  

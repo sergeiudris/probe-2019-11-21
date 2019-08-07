@@ -136,17 +136,45 @@
                                         :eargs eargs})})))
 
 (re-frame/reg-event-fx
+ :select-tab
+ (fn [{:keys [db]} [_ eargs]]
+   (prn ":select-tab")
+   (prn eargs)
+   (let [k (:tabui.context-menu-uuk eargs)
+         tab-inst (:tab-inst eargs)
+         container (:container eargs)
+         container-key (:tabui.container/key container)
+         tab-inst-uuid (:tabui.tab-instance/uuid tab-inst)
+         ]
+     {:dispatch [:ping (Math/random)]
+      :db (db/set-active-tab! db container-key tab-inst-uuid) 
+      ; :db db
+      }
+     )))
+
+(re-frame/reg-event-fx
  :select-menu-option
  [(re-frame/inject-cofx ::inject/sub [::subs/context-menu-data])]
  (fn [{:keys [db ctx-menu-data]} [_ eargs]]
    (prn ":select-menu-option")
    (let [option (:option eargs)
+         menu-eargs (:menu-eargs eargs)
+         tab-inst (:tab-inst menu-eargs)
          k (:key option)]
-     (prn option)
+    ;  (prn option)
     ;  (prn "k is " k)
     ;  (prn eargs)
+    ;  (pp/pprint "menu-eargs" menu-eargs )
+    ;  (prn menu-eargs)
      {:dispatch [:ping (Math/random)]
-      :db (assoc db :context-menu-data nil)})))
+      :db (case k
+            :tabui.plugins.main/open-tab-inst (merge db
+                                             (db/remove-tab-inst! db tab-inst)
+                                             {:context-menu-data nil})
+            :tabui.plugins.main/close-tab-inst (merge db
+                                             (db/remove-tab-inst! db tab-inst)
+                                             {:context-menu-data nil})
+            (merge db {:context-menu-data nil}))})))
 
 (re-frame/reg-event-db
  :close-context-menu

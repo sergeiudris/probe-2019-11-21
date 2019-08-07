@@ -16,6 +16,10 @@
  (fn [db _]
    (:active-panel-key db)))
 
+(re-frame/reg-sub
+ ::active-tabs
+ (fn [db _]
+   (:active-tabs db)))
 
 (re-frame/reg-sub
  ::plugins

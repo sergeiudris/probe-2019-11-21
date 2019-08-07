@@ -44,7 +44,11 @@
                                    :width "100%"
                                    :height "calc(100% - 24px)"
                                    :left 0}]
-  [:.tabui-container-header {:border "1px solid grey"}]
+  [:.tabui-container-header {:border "1px solid grey"
+                             :cursor "default"
+                             :background-color "#efefef"
+                             }]
+  [:.tabui-container-header-active {:background-color "#fff"}]
   [:.tabui-container-main-header {:width "128px"
                                   :overflow-x "hidden"
                                   :overflow-y "hidden"

@@ -120,7 +120,8 @@
             [:div {:key (:key option)
                    :on-click (fn [e]
                                (.stopPropagation e)
-                               (re-frame/dispatch [:select-menu-option {:option option}])
+                               (re-frame/dispatch [:select-menu-option {:option option
+                                                                        :menu-eargs eargs}])
                                ) 
                    :class "tabui-context-menu-option"} (:title option)])
           (map $ menu)
@@ -149,7 +150,10 @@
   (let [tab-insts (filter (fn [t]
                             (= (:tabui.container/key container)
                                (:tabui.tab-instance/container-key t)))
-                          tab-instances)]
+                          tab-instances)
+        active-tabs @(re-frame/subscribe [::subs/active-tabs])
+        active-tab-inst-uuid (get-in active-tabs [(:tabui.container/key container) :tabui.tab-instance/uuid])]
+    (prn "active-tab-inst-uuid" active-tab-inst-uuid)
     [:section {:key (:tabui.container/key container)
                :style (:tabui.container/style container)
                :class (->> (:tabui.container/classes container) (clojure.string/join " "))}
@@ -157,28 +161,54 @@
 
       (map (fn [tab-inst]
              (let [tab (find-tab plugins tab-inst)
-                   k (:tabui.tab/key tab )
+                   k (:tabui.tab/key tab)
+                   active? (= active-tab-inst-uuid
+                              (:tabui.tab-instance/uuid tab-inst))
                    title (str k)
-                   classes (:tabui.container/header-classes container)
+                   classes (concat (:tabui.container/header-classes container) (if active? ["tabui-container-header-active"] [] ) )
                    class (->> classes
-                                   (clojure.string/join " "))
-                   ]
+                              (clojure.string/join " "))]
                (if classes
                  [:div {:key k
-                        :class class}
+                        :class class
+                        :on-click (fn [e]
+                                    (.stopPropagation e)
+                                    (re-frame/dispatch [:select-tab {:tab tab
+                                                                     :tab-inst tab-inst
+                                                                     :container container}]))
+                        :on-context-menu (fn [e]
+                                          ; (prn e.target.value)
+                                           (.persist e)
+                                           (.preventDefault e)
+                                          ; (prn (keys-js e))
+                                          ; (pp/pprint (keys-js (.-nativeEvent e)))
+                                          ; (pp/pprint (.-clientX e))
+                                          ; (prn plugin)
+                                           (re-frame/dispatch
+                                            [:open-context-menu
+                                             {:event {:clientX (.-clientX e)
+                                                      :clientY (.-clientY e)}
+                                              :tabui.context-menu-uuk
+                                              :datomicui.plugins.main.plugin/context-menu-header
+                                              :tab tab
+                                              :tab-inst tab-inst}]))}
                   title]
                  nil)
              ;
                ))tab-insts)]
      [:div {:class (->> (:tabui.container/content-classes container) (clojure.string/join " "))}
-      (map (fn [tab-inst]
-             (let [tab (find-tab plugins tab-inst)
-                   comp (:tabui.tab/component tab)]
-               [comp {:key (:tabui.tab-instance/key tab-inst)
-                      :plugins plugins
-                      :tab tab}]
+      (let [tab-insts2 (filter (fn [ti]
+                                 (= active-tab-inst-uuid
+                                    (:tabui.tab-instance/uuid ti)))
+                               tab-insts)]
+        (map (fn [tab-inst]
+               (let [tab (find-tab plugins tab-inst)
+                     comp (:tabui.tab/component tab)]
+                 [comp {:key (:tabui.tab-instance/key tab-inst)
+                        :plugins plugins
+                        :tab tab}]
              ;
-               ))tab-insts)]]))
+                 ))tab-insts2))]]))
 
 
 (defn containers-comp
