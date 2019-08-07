@@ -18,7 +18,24 @@
    [kit.core :refer [keys-js]]))
 
 
+(defn text-search-results
+  []
+  (let [resp @(re-frame/subscribe [::subs/text-search-response])
+        data (:data resp)]
+    (into [:div]
+          (map (fn [x]
+                 (prn x)
+                 [:div
+                  [:span (first x)]
+                  [:span (second x)]
+                  [:span (nth x 2)]]) data)))
+  )
 
+(comment
+  
+  
+  ;
+  )
 
 (defn text-search-tab
   []
@@ -27,10 +44,10 @@
    [ant/input-search
     {:on-search (fn [e]
                   (prn e)
-                  (re-frame/dispatch [:text-search e ])
-                  )}
-    ]
-   ]
+                  (re-frame/dispatch [:text-search e]))}]
+   [:br]
+   [:br]
+   [text-search-results]]
   
   )
 

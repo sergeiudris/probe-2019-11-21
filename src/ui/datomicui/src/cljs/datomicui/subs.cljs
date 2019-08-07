@@ -22,6 +22,11 @@
    (:active-tabs db)))
 
 (re-frame/reg-sub
+ ::text-search-response
+ (fn [db _]
+   (:text-search-response db)))
+
+(re-frame/reg-sub
  ::plugins
  (fn [db _]
    (:plugins db)))

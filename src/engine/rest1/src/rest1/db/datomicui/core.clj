@@ -55,6 +55,16 @@
                   db attribute)})
 
 
+(defn q-text-search
+  [{:keys [db search]
+    :or {db rest1.db.datomicui.core/db}}]
+  (->
+   (d/q '[:find ?entity ?name ?tx ?score
+          :in $  ?search
+          :where [(fulltext $ :artist/name ?search) [[?entity ?name ?tx ?score]]]]
+        db
+        search)
+   vec))
 
 
 (comment
@@ -69,6 +79,17 @@
                        :limit     2
                        :offset    0})
    pp/pprint)
+
+  (->
+   (d/q '[:find ?entity ?name ?tx ?score
+          :in $ ?search
+          :where [(fulltext $ :artist/name ?search) [[?entity ?name ?tx ?score]]]]
+        db
+        "Jane")
+   vec
+   )
+
+
 
 
 

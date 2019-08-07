@@ -70,9 +70,11 @@
   [request]
   (dtm/connect-lazy)
   (let [{query-params :query-params} request
-        q-data (-> query-params (get :data) edn/read-string)]
+        q-data (-> query-params (get :data) edn/read-string)
+        {input :input} q-data
+        ]
     {:status 200
-     :body {:data q-data}}))
+     :body {:data (dtm/q-text-search {:search input} )}}))
 
 (defn text-search-route [request]
   (text-search-response request))
