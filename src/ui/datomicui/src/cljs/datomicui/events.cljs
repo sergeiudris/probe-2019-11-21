@@ -8,29 +8,10 @@
    [datomicui.dev :refer [conlog]]
    [vimsical.re-frame.cofx.inject :as inject]
    
-   [datomicui.plugins.main.core]
+   [datomicui.plugins.main.plugin]
    ))
 
-(def default-db
-  {:active-panel-key :home-panel
-  ;  :plugins          [{:datomicui/uuid (random-uuid)
-  ;                      :plugin/key     :plugin/info}
-  ;                     {:datomicui/uuid (random-uuid)
-  ;                      :plugin/key     :plugin/table}
-  ;                     {:datomicui/uuid (random-uuid)
-  ;                      :plugin/key     :plugin/text-search}]
-   
-   :plugins [datomicui.plugins.main.core/plugin]
-   
-   :active-tab-index 0
-   :tabs/seq         0
-   :entities-response nil
-   :entity-table-state nil
-   :get-attrs-resp []
-   :flag true
-   :tabs             [{:datomicui/uuid (random-uuid)
-                       :tabs/seqid     0
-                       :plugin/key     :plugin/info}]})
+
 
 (comment
 
@@ -43,7 +24,7 @@
 (re-frame/reg-event-db
  ::initialize-db
  (fn-traced [_ _]
-   default-db))
+   db/default-db))
 
 (re-frame/reg-event-db
  ::set-active-panel-key

@@ -14,33 +14,12 @@
    [datomicui.plugins.info.core]
    [datomicui.plugins.table.core :as table-view]
    [datomicui.plugins.text-search.core]
-   [tabui.core]
+   [tabui.core :refer [find-tab]]
+   [datomicui.plugins.main.plugin :refer [plugin]]
+   
    ))
 
 
-
-
-(def plugin
-  {:tabui.plugins/uuid (random-uuid)
-   :tabui.plugins/key :tabui.plugins/main
-   :tabui.plugins/containers [{:tabui.container/uuid (random-uuid)
-                                    :tabui.container/key :tabui.main.container/dock-container
-                                    :tabui.container/style {}
-                                    :tabui.container/classes ["tabui-container tabui-main-dock-container"]}
-                                   {:tabui.container/uuid (random-uuid)
-                                    :tabui.container/key :tabui.main.container/center-container
-                                    :tabui.container/style {}
-                                    :tabui.container/classes ["tabui-container tabui-main-center-container"]}
-                                   {:tabui.container/uuid (random-uuid)
-                                    :tabui.container/key :tabui.main.container/panel-container
-                                    :tabui.container/style {}
-                                    :tabui.container/classes ["tabui-container tabui-main-panel-container"]}
-                                   {:tabui.container/uuid (random-uuid)
-                                    :tabui.container/key :tabui.main.container/header-container
-                                    :tabui.container/style {}
-                                    :tabui.container/classes ["tabui-container tabui-main-header-container"]}]
-   :tabui.plugins/tabs []}
-  )
 
 
 
@@ -105,22 +84,36 @@
                 [panels @active-panel-key]]]))
 
 (defn main-panel []
-  (let [plugins (re-frame/subscribe [::subs/plugins])
+  (let [plugins @(re-frame/subscribe [::subs/plugins])
+        tab-instances  @(re-frame/subscribe [::subs/tab-instances])
         active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
     ; [:div "datomicui"]
-    [:div 
+    [:div
      (map (fn [container]
             [:section {:key (:tabui.container/key container)
-                       :style (:tabui.container/style container) 
-                       :class (->> (:tabui.container/classes container) (clojure.string/join " " )  )} ]
-            ) (:tabui.plugins/containers plugin) )
+                       :style (:tabui.container/style container)
+                       :class (->> (:tabui.container/classes container) (clojure.string/join " "))}
+             (->>
+              (filter (fn [t]
+                        (= (:tabui.container/key container)  (:tabui.tab-instance/container-key t)))
+                      tab-instances)
+              (map (fn [t]
+                     (let [tab (find-tab plugins t)
+                           component (:tabui.tab/component tab)
+                           ]
+                       (prn component)
+                       [:div  {:key (:tabui.tab-instance/key t) }
+                        [component]
+                        ]
+                       )
+                    ;  [:div {:key (str (:tabui.tab-instance/key t))} (str (:tabui.tab-instance/key t))]
+                     
+                     )))]) 
+          (:tabui.plugins/containers plugin))
      (map (fn [plugin]
             ; (prn plugin)
             [:button {:style {:position "absolute" :right 0}
-                      :key (str (:tabui.plugins/key plugin))} (str (:tabui.plugins/key plugin)) ]
-            ) @plugins)
-     ]
-    ))
+                      :key (str (:tabui.plugins/key plugin))} (str (:tabui.plugins/key plugin))]) plugins)]))
 
 (comment
   

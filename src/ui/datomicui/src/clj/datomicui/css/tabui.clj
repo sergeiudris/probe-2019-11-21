@@ -2,7 +2,7 @@
   (:require [garden.def :refer [defstyles]]))
 
 (defstyles tabui
-  [:body {:color "red"}]
+  [:body {}]
   [:.tabui-level1 {:color "darkblue"}]
   [:.tabui-red {:color "red"}]
   [:.tabui-container {:border "1px solid black"}]

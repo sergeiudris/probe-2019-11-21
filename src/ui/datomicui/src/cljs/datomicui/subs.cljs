@@ -23,6 +23,11 @@
    (:plugins db)))
 
 (re-frame/reg-sub
+ ::tab-instances
+ (fn [db _]
+   (:tab-instances db)))
+
+(re-frame/reg-sub
  ::re-pressed-example
  (fn [db _]
    (:re-pressed-example db)))
