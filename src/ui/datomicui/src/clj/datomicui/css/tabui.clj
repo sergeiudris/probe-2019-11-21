@@ -29,21 +29,30 @@
                                  :height "256px"
                                  :width "calc(100vw - 32px)"}]
   [:.tabui-main-dock-list {:display "flex"
-                           :flex-direction "column"
-                           }]
-  [:.tabui-tab-header {:border "1px solid grey"}]
-  [:.tabui-tab-header-64 {:width "64px"
-                          :height "16px"}]
-  
-  [:.anticon {
-              ; :color "blue"
+                           :flex-direction "column"}]
+  [:.tabui-container-main-header-list {:border "1px solid grey"
+                                       :display "flex"
+                                       :flex-direction "row"
+                                       :position "absolute"
+                                       :height "16px"
+                                       :width "100%"
+                                       :top 0
+                                       :left 0}]
+  [:.tabui-container-main-content {:border "1px solid grey"
+                                   :position "absolute"
+                                   :top "16px"
+                                   :width "100%"
+                                   :height "calc(100% - 16px)"
+                                   :left 0}]
+  [:.tabui-container-header {:border "1px solid grey"}]
+  [:.tabui-container-main-header {:width "64px"
+                                  :height "16px"}]
+
+  [:.anticon {; :color "blue"
               }]
   [:.tabui-context-menu-option {:border "1px solid grey"
                                 :cursor "pointer"
-                                :background-color "#fff"
-                                }]
+                                :background-color "#fff"}]
   [:.tabui-context-menu-list {:position "fixed"
-                             :display "flex"
-                             :flex-direction "column"}]
-  
-  )
+                              :display "flex"
+                              :flex-direction "column"}])

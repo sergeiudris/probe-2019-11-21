@@ -14,9 +14,8 @@
    [datomicui.plugins.info.core]
    [datomicui.plugins.table.core :as table-view]
    [datomicui.plugins.text-search.core]
-   [tabui.container ]
    [datomicui.plugins.main.plugin :refer [plugin]]
-   
+   [datomicui.db :refer [default-db]]
    ))
 
 
@@ -136,13 +135,56 @@
     ;
     }))
 
+
+(defn find-tab
+  [plugins tab-instance]
+  (let []
+
+    (->>
+     (reduce (fn [acc x]
+               (concat acc (:tabui.plugins/tabs x))) [] plugins)
+
+     (filter (fn [t]
+               (= (:tabui.tab-instance/key tab-instance) (:tabui.tab/key t))))
+     (first))))
+
+(defn container-comp
+  [{:keys [tab-instances plugins container]} & children]
+  [:section {:key (:tabui.container/key container)
+             :style (:tabui.container/style container)
+             :class (->> (:tabui.container/classes container) (clojure.string/join " "))}
+   [:div {:class (->> (:tabui.container/header-classes container) (clojure.string/join " "))}]
+   [:div {:class (->> (:tabui.container/content-classes container) (clojure.string/join " "))}
+    (->>
+     (filter (fn [t]
+               (= (:tabui.container/key container)  (:tabui.tab-instance/container-key t)))
+             tab-instances)
+     (map (fn [t]
+            (let [tab (find-tab plugins t)
+                  comp (:tabui.tab/component tab)]
+              [comp {:key (:tabui.tab-instance/key t)
+                     :plugins plugins
+                     :tab tab}]
+             ;
+              ))))]])
+
+
+(defn containers-comp
+  [{:keys [containers plugins tab-instances]} & children]
+  [:div (map (fn [container]
+               [container-comp {:key (:tabui.container/key container)
+                                                :tab-instances tab-instances
+                                                :plugins plugins
+                                                :container container}])
+             containers)])
+
 (defn main-panel []
   (let [plugins @(re-frame/subscribe [::subs/plugins])
         tab-instances  @(re-frame/subscribe [::subs/tab-instances])
         active-panel-key (re-frame/subscribe [::subs/active-panel-key])]
     ; [:div "datomicui"]
     [:div
-     [tabui.container/containers-comp {:tab-instances tab-instances
+     [containers-comp {:tab-instances tab-instances
                                        :plugins plugins
                                        :containers (:tabui.plugins/containers plugin)}]
     ;  [random-buttons-comp {:plugins plugins}]

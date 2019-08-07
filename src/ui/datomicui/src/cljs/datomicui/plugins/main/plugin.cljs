@@ -79,7 +79,10 @@
                               {:tabui.container/uuid (random-uuid)
                                :tabui.container/key :tabui.main.container/center-container
                                :tabui.container/style {}
-                               :tabui.container/classes ["tabui-container tabui-main-center-container"]}
+                               :tabui.container/classes ["tabui-container tabui-main-center-container"]
+                               :tabui.container/header-classes ["tabui-container-main-header-list "]
+                               :tabui.container/content-classes ["tabui-container-main-content "]
+                               }
                               {:tabui.container/uuid (random-uuid)
                                :tabui.container/key :tabui.main.container/panel-container
                                :tabui.container/style {}
