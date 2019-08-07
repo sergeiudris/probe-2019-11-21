@@ -80,6 +80,18 @@
   (text-search-response request))
 
 
+(defn db-names-response
+  [request]
+  (dtm/connect-lazy)
+  (let [{query-params :query-params} request
+        q-data (-> query-params (get :data) edn/read-string)
+        ]
+    {:status 200
+     :body {:data (dtm/q-database-names )}}))
+
+(defn db-names-route [request]
+  (db-names-response request))
+
 
 
 (comment
@@ -108,6 +120,10 @@
     )
   
   (client/get "http://localhost:8080/datomicui/text-search"
+              {:query-params {"data" (str {})}
+               :headers      {}})
+  
+  (client/get "http://localhost:8080/datomicui/db-names"
               {:query-params {"data" (str {})}
                :headers      {}})
   

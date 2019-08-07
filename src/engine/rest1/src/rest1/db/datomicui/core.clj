@@ -7,7 +7,9 @@
             [datomic.api :as d]
             [probe.tools.datomic.core :refer [q-idents q-attrs]]))
 
-(def db-uri "datomic:free://datomicfreedb:4334/mbrainz")
+(def base-uri "datomic:free://datomicfreedb:4334/")
+
+(def db-uri (str base-uri "mbrainz"))
 
 (declare conn)
 (declare db)
@@ -66,6 +68,9 @@
         search)
    vec))
 
+(defn q-database-names
+  []
+  (d/get-database-names (str base-uri "*")))
 
 (comment
 
@@ -90,6 +95,7 @@
    )
 
 
+  (d/get-database-names "datomic:free://datomicfreedb:4334/*")
 
 
 

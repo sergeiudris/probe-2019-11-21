@@ -108,6 +108,7 @@
               ["/datomicui/attrs" :get (conj common-interceptors `rest1.routes.datomicui/get-attributes-route)]
               ["/datomicui/entity" :get (conj common-interceptors `rest1.routes.datomicui/get-entity-route)]
               ["/datomicui/text-search" :get (conj common-interceptors `rest1.routes.datomicui/text-search-route)]
+              ["/datomicui/db-names" :get (conj common-interceptors `rest1.routes.datomicui/db-names-route)]
               ["/home2" :get (conj common-interceptors `home-page2)]
               ;
               })
