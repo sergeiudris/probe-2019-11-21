@@ -7,8 +7,10 @@
    [cljs.reader :as reader]
    [datomicui.dev :refer [conlog]]
    [vimsical.re-frame.cofx.inject :as inject]
-   
+   [cljs.pprint :as pp]
    [datomicui.plugins.main.plugin]
+   [datomicui.subs :as subs]
+   
    ))
 
 
@@ -123,6 +125,8 @@
 (re-frame/reg-event-fx
  :open-context-menu
  (fn [{:keys [db]} [_ eargs]]
+   (prn ":open-context-menu")
+   (pp/pprint (:event eargs))
    (let [k (:tabui.context-menu-uuk eargs)
          menu-fn (get-in db/context-menus [k :tabui.context-menu-uuk])]
     ;  (prn "k is " k)
@@ -130,6 +134,25 @@
      {:dispatch [:ping (Math/random)]
       :db (assoc db :context-menu-data {:menu (menu-fn {})
                                         :eargs eargs})})))
+
+(re-frame/reg-event-fx
+ :select-menu-option
+ [(re-frame/inject-cofx ::inject/sub [::subs/context-menu-data])]
+ (fn [{:keys [db ctx-menu-data]} [_ eargs]]
+   (prn ":select-menu-option")
+   (let [option (:option eargs)
+         k (:key option)]
+     (prn option)
+    ;  (prn "k is " k)
+    ;  (prn eargs)
+     {:dispatch [:ping (Math/random)]
+      :db (assoc db :context-menu-data nil)})))
+
+(re-frame/reg-event-db
+ :close-context-menu
+ (fn [db [_ value]]
+   (prn ":close-context-menu")
+   (assoc db :context-menu-data nil)))
 
 
 (comment

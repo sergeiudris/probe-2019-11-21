@@ -104,9 +104,37 @@
 
 (defn context-menu-comp
   []
-  (let [menu-data (re-frame/subscribe [::subs/context-menu-data])
-        k (get-in menu-data [:eargs :tabui.context-menu-uuk])]
-    [:div {} k]))
+  (r/create-class
+   {:component-did-mount (fn [comp]
+                           (.addEventListener
+                            js/document "click"
+                            (fn []
+                                 (re-frame/dispatch [:close-context-menu nil] ))))
+    :reagent-render
+    (fn [{:keys [plugins]} & children]
+      (let [menu-data @(re-frame/subscribe [::subs/context-menu-data])
+            eargs (:eargs menu-data)
+            menu (:menu menu-data)
+            k (:tabui.context-menu-uuk eargs)
+            event (:event eargs)
+            x (:clientX event)
+            y (:clientY event)]
+        ; (prn menu)
+        (as-> nil $
+          (fn [option]
+            ; (prn plugin)
+            [:div {:key (:key option)
+                   :on-click (fn [e]
+                               (.stopPropagation e)
+                               (re-frame/dispatch [:select-menu-option {:option option}])
+                               ) 
+                   :class "tabui-context-menu-option"} (:title option)])
+          (map $ menu)
+          (into [:div {:class "tabui-context-menu-list"
+                       :style {:top (str y "px")
+                               :left (str x "px")}}] $))))
+    ;
+    }))
 
 (defn main-panel []
   (let [plugins @(re-frame/subscribe [::subs/plugins])
@@ -117,7 +145,7 @@
      [tabui.container/containers-comp {:tab-instances tab-instances
                                        :plugins plugins
                                        :containers (:tabui.plugins/containers plugin)}]
-     [random-buttons-comp {:plugins plugins}]
+    ;  [random-buttons-comp {:plugins plugins}]
      [context-menu-comp ]
      ]))
 

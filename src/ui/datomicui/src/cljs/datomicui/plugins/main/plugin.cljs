@@ -11,9 +11,14 @@
   ;  [antd :as antd]
    [antizer.reagent :as ant]
    [reagent.core :as r]
+   [cljs.pprint :as pp]
    [datomicui.plugins.info.core]
    [datomicui.plugins.table.core :as table-view]
-   [datomicui.plugins.text-search.core]))
+   [datomicui.plugins.text-search.core]
+   [kit.core :refer [keys-js]]
+   ))
+
+
 
 
 (defn welcome-tab
@@ -33,10 +38,17 @@
                        :value key-str
                        :on-context-menu (fn [e]
                                           ; (prn e.target.value)
+                                          (.persist e)
+                                          (.preventDefault e)
+                                          ; (prn (keys-js e))
+                                          ; (pp/pprint (keys-js (.-nativeEvent e)))
+                                          ; (pp/pprint (.-clientX e))
                                           ; (prn plugin)
                                           (re-frame/dispatch
                                            [:open-context-menu
-                                            {:tabui.context-menu-uuk
+                                            {:event {:clientX (.-clientX e)
+                                                     :clientY (.-clientY e)}
+                                             :tabui.context-menu-uuk
                                              :datomicui.plugins.main.plugin/context-menu-dock-icon
                                              :tab tab
                                              :plugin plugin}]))
@@ -87,5 +99,8 @@
  
  (keys plugin)
   (:tabui.plugins/key plugin)
- 
+ (cljs.pprint/pprint [1 23 ])
+  
+  (.-innerWidth js/window)
+  
  )

@@ -38,4 +38,12 @@
   [:.anticon {
               ; :color "blue"
               }]
+  [:.tabui-context-menu-option {:border "1px solid grey"
+                                :cursor "pointer"
+                                :background-color "#fff"
+                                }]
+  [:.tabui-context-menu-list {:position "fixed"
+                             :display "flex"
+                             :flex-direction "column"}]
+  
   )
