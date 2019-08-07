@@ -2,7 +2,7 @@
   (:require [datomicui.plugins.main.plugin]
             [datomicui.plugins.info.plugin]
             [datomicui.plugins.table.plugin]
-   ))
+            [datomicui.plugins.text-search.plugin]))
 
 (def welcome-tab-uuid (random-uuid))
 (def dock-tab-uuid (random-uuid))
@@ -19,6 +19,7 @@
    :plugins [datomicui.plugins.main.plugin/plugin
              datomicui.plugins.info.plugin/plugin
              datomicui.plugins.table.plugin/plugin
+             datomicui.plugins.text-search.plugin/plugin
              ]
    :tab-instances [{:tabui.tab-instance/uuid dock-tab-uuid
                     :tabui.tab-instance/key :tabui.tab/dock-tab
