@@ -34,11 +34,16 @@ otherwise they will be added. you say 'here are tabs', they react to these event
 
 * if some ui logic does not fit into tab simplicity, first consider the use case, validity of the logic. systemic approach is better. proven by the browser, the editor and the linux interfaces.
 
+* tabs should support backforward browser-like navigation, where URI is pointing to plugin's tab. new tab is rendered in the same tab-instance
+
+* context-menu on anything should give a list of options, one of which inforamtion - opens a tab with plugin/tab/container, value etc. info
 
 --
 
 * first, main plugin containers are being rendered, then its tabs; then the rest; when main's container is being rendered, it goes 
 over all plugins (if they are active for example, maybe a control mechanism ) and adds their tabs that also target this container
+
+
 
 
 
