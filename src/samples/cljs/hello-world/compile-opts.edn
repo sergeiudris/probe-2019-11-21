@@ -1,10 +1,10 @@
 ; https://clojurescript.org/reference/compiler-options
 
-{:output-to "resources/public/js/app.js"
- :output-dir "resources/public/js/out"
+{;:output-to "resources/public/js/app.js"
+ ;:output-dir "resources/public/js/out"
  :optimizations :none ; :none, :whitespace, :simple :advanced
- :main "hello-world.core"
- :asset-path "js/compiled/out"
+; :main "hello-world.core"
+ ;:asset-path "js/compiled/out"
  :source-map true ; false "path/to/source/map.js.map"
  :verbose true
  :pretty-print true
