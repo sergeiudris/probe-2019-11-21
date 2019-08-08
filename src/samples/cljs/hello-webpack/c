@@ -32,6 +32,9 @@ dev(){
   build
   run
 }
+build_advanced(){
+  clj -m cljs.main -co build.edn -O advanced -v -c -s
+}
 
 help(){
    clj -m cljs.main --help
