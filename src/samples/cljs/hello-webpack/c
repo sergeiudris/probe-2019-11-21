@@ -1,0 +1,38 @@
+#!/bin/bash
+
+repl(){
+  clj -R:nREPL -m nrepl.cmdline -i
+}
+
+connect7888(){
+  clj -Sdeps '{:deps {nrepl {:mvn/version "0.5.3"}}}' -m nrepl.cmdline --connect --host 127.0.0.1 --port 7888
+}
+
+nrepl_cljs(){
+  clj -R:nREPL -m nrepl.cmdline --middleware "[cider.piggieback/wrap-cljs-repl]"
+}
+
+clean(){
+  rm -rf out .cpcache resources/public/js
+}
+
+compile(){
+  yarn webpack
+}
+build(){
+  clj -m cljs.main -co build.edn -v -c
+}
+run(){
+  clj -m cljs.main  -ro repl.edn  -s "0.0.0.0:3449"
+}
+
+dev(){
+  # https://clojurescript.org/reference/repl-and-main
+    clj --main cljs.main -co compile-opts.edn -ro repl-opts.edn  --compile hello-world.core --repl #--serve "0.0.0.0:3449"
+}
+
+help(){
+   clj -m cljs.main --help
+}
+
+"$@"

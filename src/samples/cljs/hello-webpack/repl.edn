@@ -1,0 +1,20 @@
+{:analyze-path "src"
+ :def-emits-var true
+ :repl-requires ['[cljs.repl :refer-macros [source doc find-doc apropos dir pst]]
+                 '[cljs.pprint :refer [pprint] :refer-macros [pp]]]
+ :repl-verbose false
+ :watch "src"
+ :watch-fn (fn [] (println "built!"))
+
+ ; browser
+ :launch-browser false
+;  :working-dir ".repl-1.9-946"
+ :static-dir ["." "out/"]
+ :src "src/"
+ :port 3449
+ :host "0.0.0.0"
+
+ ;node
+;  :host "localhost"
+;  :port 49152
+ }
