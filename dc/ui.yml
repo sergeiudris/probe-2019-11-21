@@ -65,14 +65,14 @@ services:
   #       #   memory: 20M
 
   
-  datomicui:
-    image: probe.datomicui
+  datomicui2:
+    image: probe.datomicui2
     volumes:
-      - ../src/ui/datomicui:/opt/app
+      - ../src/ui/datomicui2:/opt/app
       - ../:/opt/probe
-      - ../.probedata/shared/src/ui/datomicui:/opt/shared
+      - ../.probedata/shared/src/ui/datomicui2:/opt/shared
     build:
-      context: ../src/ui/datomicui
+      context: ../src/ui/datomicui2
       dockerfile: ./Dockerfile
     ports:
       # - 7802:7878
@@ -82,8 +82,8 @@ services:
       # - 7878:7878
       # - 11488:7888
       # - 12083:8080
-    command: bash c dev
-    # command: tail -f /dev/null
+    # command: bash c dev
+    command: tail -f /dev/null
     stdin_open: true
     tty: true
     deploy:
