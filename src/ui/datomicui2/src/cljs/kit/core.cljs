@@ -58,3 +58,17 @@
 
   ;
   )
+
+
+(comment
+  
+  (.toString (.charCodeAt (.toUpperCase "str") 1))
+  
+  (.. "str" (toUpperCase) (charCodeAt 1) (toString) )
+  
+  (.. "str" toUpperCase (charCodeAt 1) toString)
+  
+  (.. js/document -body -lastChild -innerHTML -length)
+  
+  ;
+  )
