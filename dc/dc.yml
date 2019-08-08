@@ -62,6 +62,36 @@ services:
         #   cpus: '0.25'
         #   memory: 20M
 
+  cljs:
+    image: probe.cljs
+    volumes:
+      - ../src/samples/cljs:/opt/app
+      - ../:/opt/probe
+      - ../.probedata/shared/src/samples/cljs:/opt/shared
+    build:
+      context: ../src/samples/cljs
+      dockerfile: ./Dockerfile
+    ports:
+      # - 7802:7878
+      # - 7082:8080
+      - 7810:7888
+      - 7820:3449
+      # - 7878:7878
+      # - 11488:7888
+      # - 12083:8080
+    # command: bash c dev
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2048M
+        # reservations:
+        #   cpus: '0.25'
+        #   memory: 20M
+
 volumes:
   probe.movies.dgraph:
   probe.imdb.postgres:
