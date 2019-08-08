@@ -8,6 +8,7 @@
  :source-map true ; false "path/to/source/map.js.map"
  :verbose true
  :pretty-print true
+;  :target :node
 ;  :target ; not specified (browser) :nodejs :webworker
 
  ; https://clojurescript.org/reference/compiler-options#foreign-libs
