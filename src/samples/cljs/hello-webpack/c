@@ -26,9 +26,11 @@ run(){
   clj -m cljs.main  -ro repl.edn  -s "0.0.0.0:3449"
 }
 
+
 dev(){
   # https://clojurescript.org/reference/repl-and-main
-    clj --main cljs.main -co compile-opts.edn -ro repl-opts.edn  --compile hello-world.core --repl #--serve "0.0.0.0:3449"
+  build
+  run
 }
 
 help(){
