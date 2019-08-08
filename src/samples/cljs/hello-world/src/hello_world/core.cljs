@@ -1,4 +1,6 @@
-(ns hello-world.core)
+(ns hello-world.core
+  (:require [clojure.repl :as r])
+  )
 
 (defn hi
   []

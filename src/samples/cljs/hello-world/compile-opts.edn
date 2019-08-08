@@ -6,7 +6,7 @@
 :main "hello-world.core"
  ;:asset-path "js/compiled/out"
  :source-map true ; false "path/to/source/map.js.map"
- :verbose true
+ :verbose false
  :pretty-print true
 ;  :target :node
 ;  :target ; not specified (browser) :nodejs :webworker
