@@ -1,0 +1,94 @@
+; https://clojurescript.org/reference/compiler-options
+
+{:output-to "resources/public/js/app.js"
+ :output-dir "resources/public/js/out"
+ :optimizations :none ; :none, :whitespace, :simple :advanced
+ :main "hello-world.core"
+ :asset-path "js/compiled/out"
+ :source-map true ; false "path/to/source/map.js.map"
+ :verbose true
+ :pretty-print true
+;  :target ; not specified (browser) :nodejs :webworker
+
+ ; https://clojurescript.org/reference/compiler-options#foreign-libs
+ ; :foreign-libs [{:file "http://example.com/remote.js"
+;                 :provides  ["my.example"]
+;                 :global-exports '{my.example MyExample}}
+;                {:file "./resources/js/local.js"
+;                 :provides ["my.other.example"]}
+;                {:file "./path/to/directory/"
+;                  ;; :provides will be automatically generated based on
+;                  ;; each .js filename. E.g: your.dep.js file will
+;                  ;; provides ["your.dep"]. Custom defined :provides in
+;                  ;; this case will be overwritten.
+;                 }]
+
+ :externs [] ; ["jquery-externs.js"]
+ :stable-names true
+;  :npm-deps {"lodash" "4.17.4"}
+ :npm-deps false
+ :install-deps false
+ :checked-arrays :warn ; false :error
+;  :source-map-path "public/js"
+;  :source-map-asset-path "http://foo.com/public/js/out"
+;  :source-map-timestamp true
+ :cache-analysis true
+ :recompile-dependents true
+ :static-fns false
+ :fn-invoke-direct false
+
+; https://clojurescript.org/reference/compiler-options#warnings
+; :warnings {:fn-deprecated false}
+ :warnings true
+ :elide-asserts false
+ :pseudo-names false
+ :print-input-delimiter false
+
+; https://clojurescript.org/reference/compiler-options#output-wrapper
+ :output-wrapper false
+ :libs []
+;:libs ["closure/library/third_party/closure"
+; "src/js"
+; "src/org/example/example.js"]
+;  :preamble ["license.js"]
+ :preamble []
+;  :hashbang false
+ :compiler-stats true
+ :language-in :ecmascript5
+ :language-out  :no-transpile
+ :closure-output-charset "utf-8"
+ :rewrite-polyfills false
+ :closure-warnings {:externs-validation :off}
+ :closure-defines {"goog.DEBUG" false}
+;  :closure-extra-annotations #{"api"}
+ :anon-fn-naming-policy :off ; :unmapped :mapped
+ :optimize-constants false
+ :parallel-build true
+ :watch-fn (fn [] (println "Updated build"))
+ :process-shim true
+ :package-json-resolution ["browser", "module", "main"]
+ :aot-cache true
+ :infer-externs false
+          ;  :rename-prefix "prefix"
+ :elide-strict true
+ :spec-skip-macros false
+}
+
+; {:preloads '[foo.dev]
+;  :main 'foo.core
+;  :output-dir "out"}
+
+; {:optimizations :advanced
+;  :source-map true
+;  :output-dir "resources/public/js"
+;  :modules {:common
+;            {:output-to "resources/public/js/common.js"
+;             :entries #{"com.foo.common"}}
+;            :landing
+;            {:output-to "resources/public/js/landing.js"
+;             :entries #{"com.foo.landing"}
+;             :depends-on #{:common}}
+;            :editor
+;            {:output-to "resources/public/js/editor.js"
+;             :entries #{"com.foo.editor"}
+;             :depends-on #{:common}}}}

@@ -12,11 +12,16 @@ nrepl_cljs(){
   clj -R:nREPL -m nrepl.cmdline --middleware "[cider.piggieback/wrap-cljs-repl]"
 }
 
+clean(){
+  rm -rf out .cpcache resources/public/js
+}
+
 dev(){
-    lein clean
-    # lein garden once
-    lein garden auto &
-    lein figwheel
+    clj --main cljs.main -co compile-opts.edn -ro repl-opts.edn  --compile hello-world.core --repl 
+}
+
+help(){
+   clj -m cljs.main --help
 }
 
 "$@"
