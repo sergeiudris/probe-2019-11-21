@@ -2,5 +2,5 @@
   (:require [yq])
   )
 
-(let [yay (js/yayQuery)]
+(let [yay (yq/yayQuery)]
   (.sayHello yay (.getMessage yay)))
