@@ -83,3 +83,9 @@ over all plugins (if they are active for example, maybe a control mechanism ) an
 
 * localStorage should be protected: you cannot forbid it, but editor should infer (somehow) when a plugin changes localStorage directly and warn the user that
   'plugin x directly changes localStorage, which is anti-pattern' 
+
+
+# /_default
+
+* when specifying /_default path, deafult plugin opens wih list of plugins
+* use case: if a plugin breaks the editor, you can remove it
