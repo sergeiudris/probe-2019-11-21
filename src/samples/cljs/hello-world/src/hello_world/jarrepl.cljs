@@ -1,4 +1,4 @@
-(ns jarrepl
+(ns hello-world.jarrepl
   (:require [clojure.repl :refer [dir]] )
   )
 

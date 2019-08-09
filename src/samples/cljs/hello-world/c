@@ -50,7 +50,9 @@ build_clj(){
 
 jarrepl(){
   # java -cp cljs.jar:resources:src cljs.main jarrepl.clj --repl
-  java -cp cljs.jar cljs.main  -H "0.0.0.0" -p 3449 -c jarrepl.clj --repl
+  # java -cp cljs.jar clojure.main  -H "0.0.0.0" -p 3449 -c jarrepl.cljs --repl
+  # java -cp "cljs.jar;src" cljs.main --compile jarrepl --repl
+  java -cp cljs.jar:src cljs.main  -H "0.0.0.0" -p 3449  --compile hello-world.jarrepl --repl
 }
 
 "$@"
