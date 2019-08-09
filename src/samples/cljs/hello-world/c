@@ -44,7 +44,8 @@ download_cljs_jar_238(){
 
 build_clj(){
   # java -cp cljs.jar:resources:src clojure.main build.clj
-  java -cp cljs.jar:resources:src cljs.main build.clj 
+  # java -cp cljs.jar:resources:src cljs.main build.clj 
+  java -cp cljs.jar:resources:src clojure.main build.clj
 
 }
 
