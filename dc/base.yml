@@ -37,6 +37,23 @@ services:
     links:
       - ubuntu18
 
+
+  java8clj10:
+    image: probe.java8clj10
+    build:
+      context: ../docker/java8clj10
+      dockerfile: ./Dockerfile
+    volumes:
+      - ../:/opt/probe
+      - ../docker/java8clj10:/opt/app
+      - ../.probedata/shared/docker/java8clj10:/opt/shared
+    # command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    links:
+      - ubuntu18
+
+
   base1:
     image: probe.base1
     build:
@@ -47,3 +64,14 @@ services:
     tty: true
     links:
       - java11clj10
+
+  base2:
+    image: probe.base2
+    build:
+      context: ../docker/base2
+      dockerfile: ./Dockerfile
+    # command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    links:
+      - java8clj10

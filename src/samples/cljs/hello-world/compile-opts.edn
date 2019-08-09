@@ -24,7 +24,8 @@
 ;                  ;; this case will be overwritten.
 ;                 }]
 
- :externs [] ; ["jquery-externs.js"]
+ :externs [
+           ] ; ["jquery-externs.js"]
  :stable-names true
 ;  :npm-deps {"lodash" "4.17.4"}
  :npm-deps false

@@ -21,8 +21,36 @@ dev(){
     clj --main cljs.main -co compile-opts.edn -ro repl-opts.edn  --compile hello-world.core --repl #--serve "0.0.0.0:3449"
 }
 
+repl(){
+  clj -m cljs.main -w src  -co compile-opts.edn -ro repl-opts.edn -H "0.0.0.0" -p 3449 -c hello-world.core  --repl 
+
+}
+
 help(){
    clj -m cljs.main --help
+}
+
+allow(){
+  sudo chmod -R 757 resources
+}
+
+download_cljs_jar(){
+  wget https://github.com/clojure/clojurescript/releases/download/r1.10.520/cljs.jar
+}
+
+download_cljs_jar_238(){
+  wget https://github.com/clojure/clojurescript/releases/download/r1.10.238/cljs.jar
+}
+
+build_clj(){
+  # java -cp cljs.jar:resources:src clojure.main build.clj
+  java -cp cljs.jar:resources:src cljs.main build.clj 
+
+}
+
+jarrepl(){
+  # java -cp cljs.jar:resources:src cljs.main jarrepl.clj --repl
+  java -cp cljs.jar cljs.main  -H "0.0.0.0" -p 3449 -c jarrepl.clj --repl
 }
 
 "$@"
