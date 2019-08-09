@@ -26,7 +26,7 @@ run(){
   clj -m cljs.main -w src -co build.edn -ro repl.edn -c  -s "0.0.0.0:3449"
 }
 repl(){
-  clj -m cljs.main -w src  -co build.edn -ro repl.edn -c hello-webpack.core  --repl -H "0.0.0.0" -p 3535
+  clj -m cljs.main -w src  -co build.edn -ro repl.edn -H "0.0.0.0" -p 3449 -c hello-webpack.core  --repl 
 }
 
 
