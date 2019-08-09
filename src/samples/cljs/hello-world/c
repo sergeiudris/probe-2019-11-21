@@ -56,4 +56,9 @@ jarrepl(){
   java -cp cljs.jar:src cljs.main  -H "0.0.0.0" -p 3449  --compile hello-world.jarrepl --repl
 }
 
+serve(){
+  clj -m cljs.main -H "0.0.0.0" -p 3449  
+
+}
+
 "$@"

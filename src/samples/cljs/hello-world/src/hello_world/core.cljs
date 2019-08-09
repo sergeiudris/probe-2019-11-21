@@ -14,12 +14,15 @@
 
   (js/console.log 3)
 
-  (let [yay (js/yayQuery)]
-    (.sayHello yay (.getMessage yay)))
+  ; (let [yay (js/yayQuery)]
+  ;   (.sayHello yay (.getMessage yay)))
 
 
-  (let [yay ((goog.object.get js/window "yayQuery"))]
-    ((goog.object.get yay "sayHello") ((goog.object.get yay "getMessage")))))
+  ; (let [yay ((goog.object.get js/window "yayQuery"))]
+  ;   ((goog.object.get yay "sayHello") ((goog.object.get yay "getMessage"))))
+  
+  ;
+  )
 (.log js/console "hello-world.core loaded")
 
 

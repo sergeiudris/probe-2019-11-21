@@ -8,7 +8,7 @@ yq.yayQuery = function() {
         console.log(message);
     };
     yay.getMessage = function() {
-        return 'Hello, world!';
+        return 'yay goog style :Hello, world!';
     };
     return yay;
 };

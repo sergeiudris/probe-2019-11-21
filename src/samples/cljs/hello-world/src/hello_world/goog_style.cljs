@@ -1,6 +1,6 @@
 (ns hello-world.goog-style
-  ; (:require [yq])
+  (:require [yq])
   )
 
-; (let [yay (yq/yayQuery)]
-  ; (.sayHello yay (.getMessage yay)))
+(let [yay (yq/yayQuery)]
+  (.sayHello yay (.getMessage yay)))
