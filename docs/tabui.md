@@ -89,3 +89,28 @@ over all plugins (if they are active for example, maybe a control mechanism ) an
 
 * when specifying /_default path, deafult plugin opens wih list of plugins
 * use case: if a plugin breaks the editor, you can remove it
+
+
+# steps
+
+* use editor, plugin-kit, pluginA (cljs), pluginB (js) 
+* plugins require plugin-kit
+* plugins use umd 
+* plugin is fetched, then evaled
+* when plugin is evaled, it calles a registry and posses in exports
+* it specifies what umd name it uses, so the registry removes it from window
+* exports are put in plugin map under uuid
+* plugin should provide a unique identifier: a URI to plugin's source
+  so that editor could have settings, specifying which plugins are installed
+* when editor it fetches plugins
+* but how do you cache them not to load every time ?
+* you can use 'export-editor' plugin, which saves .edn state of you editor (history, plugins current state etc.).
+  you download files, download 'precompile-editor' tool, give it files and specify git url to store your build.
+  it downloads deps (in container), prebuilds editor and does git push (you type in credentials).
+  then you can github.io you own editor againts localhost datomic or against editor's server.
+  say, i've built a team-design solution or any other server - clients solution where editor provides ui.
+  user first uses editor as provided. then they can either do the above and use the same server from github.io personal editor (github.io is added to allow-origin)
+  or better: server has a service, when user adds plugins, a job is run that creates a new build for user and serves that compiled version to the user.
+  but how do you know which user is logging ? if user name has been removed from localstorage and system can't identify, default editor with login plugin is sent.
+  user logs in and get their last editor build
+  
