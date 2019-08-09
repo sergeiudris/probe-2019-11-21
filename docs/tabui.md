@@ -49,6 +49,13 @@ over all plugins (if they are active for example, maybe a control mechanism ) an
 * plugin gets added to dock for example
 * then init is run on plugin, it emits events
 * when open tab is clicked, editor finds plugin's tab and renders it
+* there is an option to preload plugins in the background after initial load (which should be fast)
+
+
+* plugins can be written in any language
+* tabui/plugin-tools package exposes clojuscript and js api; it contains reagent (react), re-frame and toher tools;
+  it exposes them via interface (docs are auto generated w/ codox) and plugin creator uses plugin-tools api to emit events, subscribe and read store's state
+* so plugin can be in cljs, js, ts, elm, reason or any other language then has js interperability and compiles to js
 
 
 
@@ -62,3 +69,17 @@ over all plugins (if they are active for example, maybe a control mechanism ) an
 * when tab-instance is moved, db/open-tabs/tab-instance/target-container is chnaged to new target
 * main/dock main/center main/panel will be starting main containers
 * main/dock will  db/open-tabs/tab-instance main/plugin-list and render it
+
+# things that are a plugin
+
+* authentication is a plugin. you always can load the editor, but to authenticate to one of the ssytems, you load 'example.com/auth' plugin and log-in
+  then other plugins of example.com can use token that is in editors db
+
+* list of plugins (editor has an official list of plugins that are edn stored in a repo)
+  list-of-plugins plugin fetches the edn and you can install plugins.
+  list contains uri where you can download precompiled plugin
+
+# localStorage
+
+* localStorage should be protected: you cannot forbid it, but editor should infer (somehow) when a plugin changes localStorage directly and warn the user that
+  'plugin x directly changes localStorage, which is anti-pattern' 
