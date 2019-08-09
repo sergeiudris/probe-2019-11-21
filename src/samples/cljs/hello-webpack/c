@@ -20,10 +20,13 @@ compile(){
   yarn webpack
 }
 build(){
-  clj -m cljs.main -co build.edn -v -c
+  clj -m cljs.main -co build.edn -c
 }
 run(){
-  clj -m cljs.main  -ro repl.edn  -s "0.0.0.0:3449"
+  clj -m cljs.main -w src -co build.edn -ro repl.edn -c  -s "0.0.0.0:3449"
+}
+repl(){
+  clj -m cljs.main -w src  -co build.edn -ro repl.edn -c hello-webpack.core  --repl -H "0.0.0.0" -p 3535
 }
 
 
