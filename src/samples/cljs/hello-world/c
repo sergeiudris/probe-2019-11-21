@@ -61,4 +61,14 @@ serve(){
 
 }
 
+
+npmi(){
+  npm i source-map-support
+}
+
+node_build(){
+  clj -m cljs.main --target node --output-to main.js -c hello-world.core
+}
+
+
 "$@"
