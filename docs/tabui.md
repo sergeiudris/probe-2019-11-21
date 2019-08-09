@@ -56,7 +56,7 @@ over all plugins (if they are active for example, maybe a control mechanism ) an
 * tabui/plugin-tools package exposes clojuscript and js api; it contains reagent (react), re-frame and toher tools;
   it exposes them via interface (docs are auto generated w/ codox) and plugin creator uses plugin-tools api to emit events, subscribe and read store's state
 * so plugin can be in cljs, js, ts, elm, reason or any other language then has js interperability and compiles to js
-
+* plugin-tools should be called 'plugin-kit'
 
 
 # render
