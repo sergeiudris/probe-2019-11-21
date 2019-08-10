@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+
+dev_shadow(){
+    ./node_modules/.bin/shadow-cljs watch main renderer
+}
+
+dev_electron(){
+    ./node_modules/.bin/electron .
+}
+
+"$@"

@@ -1,0 +1,12 @@
+{
+  "name": "electron-cljs",
+  "version": "1.0.0",
+  "main": "app/main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "shadow-cljs": "2.8.45"
+  },
+  "dependencies": {
+    "electron": "6.0.1"
+  }
+}
