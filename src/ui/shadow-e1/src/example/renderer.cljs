@@ -10,3 +10,14 @@
 
 (defn stop []
   (js/console.log "renderer - stop"))
+
+(comment
+
+  (prn 3)
+
+  (.log js/console 3)
+
+(start)
+  
+  ;
+  )
