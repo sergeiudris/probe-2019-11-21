@@ -117,3 +117,9 @@ over all plugins (if they are active for example, maybe a control mechanism ) an
   but how do you know which user is logging ? if user name has been removed from localstorage and system can't identify, default editor with login plugin is sent.
   user logs in and get their last editor build
   
+
+
+  # namescpaces
+
+  * a colletion (window) of editor is a namespace
+  * you can have multiple windows open (same as vscode)
