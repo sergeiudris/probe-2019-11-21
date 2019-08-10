@@ -1,7 +1,8 @@
 (ns example.main
   (:require ["electron" :as e :refer (app BrowserWindow)]
             ["path" :as path]
-            ["url" :as url]))
+            ["url" :as url]
+            ["child_process" :as cp :refer (exec)]))
 
 (defonce win-ref (atom nil))
 
@@ -43,6 +44,14 @@
   (.on app "window-all-closed" maybe-quit))
 
 
+(defn execute
+  [cmd]
+  (exec cmd #js {:shell "/bin/bash"}
+        (fn [err stdout stderr]
+          (cond
+            err (prn stderr)
+            :else (prn (clojure.string/replace stdout \newline \space)) ))))
+
 (comment
   (prn 3)
   (prn js/process.platform)
@@ -50,6 +59,26 @@
   js/process.versions.node
   js/process.versions.chrome
   js/process.versions.electron
+  
+  (exec "pwd" (fn [err stdout stderr]
+                (prn stdout)
+                ))
+  
+  (exec "docker ps" (fn [err stdout stderr]
+                (prn stdout)))
+  
+  (execute "pwad")
+  
+  
+  (execute "pwd")
+  
+  (execute "docker ps")
+  
+  (execute "pushd ~/code/probe; sh c up ")
+  
+  (execute "pushd ~/code/probe; sh c down ")
+  
+  (execute "ls")
   
   
   )
