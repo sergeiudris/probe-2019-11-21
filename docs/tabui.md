@@ -43,6 +43,9 @@ otherwise they will be added. you say 'here are tabs', they react to these event
 * first, main plugin containers are being rendered, then its tabs; then the rest; when main's container is being rendered, it goes 
 over all plugins (if they are active for example, maybe a control mechanism ) and adds their tabs that also target this container
 
+
+* user shiuld be able to create (draw) containers and specify which plugin/tabs to open there 
+
 # loading plugin 
 * plugin is app/lib: it exposes id, containers, tabs.
 * when loaded into the editor, code gets evaluated and id etc. are added to db
