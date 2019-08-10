@@ -25,4 +25,22 @@ install_yarn(){
   sudo apt-get update && sudo apt-get -y install yarn
 }
 
+remove_java_11(){
+  # sudo rm -r /usr/lib/jvm/java-11-oracle
+  sudo apt-get remove openjdk-11-jdk
+}
+
+java8(){
+  sudo apt-get update && \
+  sudo apt-get install -y openjdk-8-jdk
+}
+
+jvm_dir(){
+  ls /usr/lib/jvm
+}
+
+alternatives(){
+  sudo update-alternatives --config java
+}
+
 "$@"
