@@ -56,4 +56,8 @@ append_hosts(){
 
 }
 
+clean_m2(){
+    rm -rf ~/.m2/repository/*
+}
+
 "$@"
