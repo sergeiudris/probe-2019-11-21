@@ -23,3 +23,17 @@
 * what kind of ui matters:
     - plugin based, editor like, systemic
     - web apps serve a purpose but time+effort/outcome ration is subpar
+
+
+# packaging data exploration plugin, visualizion, docker-compose
+
+* you download some data, open code editor and clojure, start REPLing
+* you query data, find answers youn needed. you are satisfied. code is the best ui
+* but then, as a cherry on top, you need to visualize
+* your options ? jupiter lab ..
+* or you open editor and it creates cljs vizualizion plugin, you edit files and immediately see chages in editor
+    so you are developing visualiztion for your the service that is running in your docker container
+* now, you want to package it: you  select dedicated plugin, specify where to find your docker files.
+  plugin generates plugin specific code (now you can use what you've done as a plugin) and also promts you with docker-compose file (you might edit or click ok)
+  you can simply run your stack wtih docker-compose , and your plugin will open like an app
+* then by means of plugin, you push to github
