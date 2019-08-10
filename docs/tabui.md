@@ -123,3 +123,20 @@ over all plugins (if they are active for example, maybe a control mechanism ) an
 
   * a colletion (window) of editor is a namespace
   * you can have multiple windows open (same as vscode)
+
+
+  # browser-app vs electron
+    
+    * you can talk to docker from electon. boom.
+      and load/start/stop anything without leaving the editor interface
+    * installation is handled by electron
+
+  # electron possible start
+
+    * make a plugin that starts (or stops and removes) datomicfree
+    * updates should be possible
+    * plugin should also run a service/services and allow to query or create entities in datomic
+    * practically, plugin should be 'record-1' plugin and working
+    * allow to store editors data on github
+    * github-backup plugin
+    * etc. 
