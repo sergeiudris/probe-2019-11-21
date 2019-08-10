@@ -8,7 +8,11 @@
 (defn create-window []
   (let [win
         (BrowserWindow. #js {:width 800
-                             :height 600})
+                             :height 600
+                             "webPreferences" {
+                                             "nodeIntegration" true  
+                                              }
+                             })
 
         url
         (url/format #js {:pathname (path/join js/__dirname "index.html")
@@ -39,3 +43,13 @@
   (.on app "window-all-closed" maybe-quit))
 
 
+(comment
+  (prn 3)
+  (prn js/process.platform)
+  
+  js/process.versions.node
+  js/process.versions.chrome
+  js/process.versions.electron
+  
+  
+  )
