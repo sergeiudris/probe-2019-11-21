@@ -37,3 +37,10 @@
   plugin generates plugin specific code (now you can use what you've done as a plugin) and also promts you with docker-compose file (you might edit or click ok)
   you can simply run your stack wtih docker-compose , and your plugin will open like an app
 * then by means of plugin, you push to github
+
+
+# datastore plugin
+
+    * say, usda,record and other plugins are intended to use one datastore for the whole picture. one data.
+    * then, i create datastore plugin, and other plugins use it as an abstrcation to store and query data
+    * namespacing is key
