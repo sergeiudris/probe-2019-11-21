@@ -15,3 +15,11 @@
     - cross origin
     - still in browser
 
+
+* windows vs tabs
+    - tabs are btter:tabs bring structure, windows stimulate chaos
+    - splitting screen in rectangles is enogh to drga between tabs
+
+* what kind of ui matters:
+    - plugin based, editor like, systemic
+    - web apps serve a purpose but time+effort/outcome ration is subpar
