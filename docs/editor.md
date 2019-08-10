@@ -44,3 +44,13 @@
     * say, usda,record and other plugins are intended to use one datastore for the whole picture. one data.
     * then, i create datastore plugin, and other plugins use it as an abstrcation to store and query data
     * namespacing is key
+
+# first datastore plugin
+
+    * use datomicfree (plugin tab gives inforamtion, m b some funcitnoality)
+    * datomic plugin for more fucntionality
+    * record plugin (to log records)
+    * datmoci graph vizualization plguin
+    * usda also uses datomicfree datastore
+    * machine learning plugins
+    * package it!
