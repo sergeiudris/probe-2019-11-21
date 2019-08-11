@@ -30,4 +30,12 @@ server(){
     clojure -i scripts/server.clj -m figwheel.main -b dev -r
 }
 
+adv(){
+    clojure -m figwheel.main -O advanced -bo dev
+}
+
+advserve(){
+    clojure -m figwheel.main -O advanced -bo dev -s
+}
+
 "$@"

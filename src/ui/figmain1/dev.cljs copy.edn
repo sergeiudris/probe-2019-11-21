@@ -1,7 +1,6 @@
 ; ^{:hot-reload-cljs false}
 ;:open-url "http://[[server-hostname]]:[[server-port]]"
-^{
-  ; :ring-handler figmain1.server/handler
+^{:ring-handler figmain1.server/handler
   :css-dirs ["resources/public/css"]
   :open-url false
   :watch-dirs ["src"]
@@ -14,12 +13,12 @@
   }
 {:main figmain1.core
  :asset-path "cljs-out/dev"
-;  :preloads
-;  [figwheel.core
-;   figwheel.main
-;   figwheel.repl.preload
-;   devtools.preload
-;   figwheel.main.css-reload]
+ :preloads
+ [figwheel.core
+  figwheel.main
+  figwheel.repl.preload
+  devtools.preload
+  figwheel.main.css-reload]
  :closure-defines
  {figmain1.core/some-val 4}
  :recompile-dependents false
