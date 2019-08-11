@@ -1,0 +1,19 @@
+#!/bin/bash
+
+clean(){
+    rm -rf .shadow-cljs node_modules .cpcache
+}
+
+dev(){
+    clj -A:fig
+}
+
+help(){
+    clj -A:fig -h
+}
+
+clpth(){
+    clj -Spath |  sed -e 's/:/\'$'\n/g' | head -n 5
+}
+
+"$@"
