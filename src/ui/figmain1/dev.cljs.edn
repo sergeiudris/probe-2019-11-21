@@ -2,5 +2,19 @@
 ;:open-url "http://[[server-hostname]]:[[server-port]]"
 ^{:ring-handler figmain1.server/handler
   :css-dirs ["resources/public/css"]
-  :open-url false}
-{:main figmain1.core}
+  :open-url false
+  :watch-dirs ["src"]
+  }
+{:main figmain1.core
+ :asset-path "cljs-out/dev"
+ :preloads
+ [figwheel.core
+  figwheel.main
+  figwheel.repl.preload
+  devtools.preload
+  figwheel.main.css-reload]
+ :closure-defines
+ {figwheel.repl/connect-url
+  "ws://localhost:9500/figwheel-connect?fwprocess=b96800&fwbuild=dev"
+  figmain1.core/some-val 4 
+  }}

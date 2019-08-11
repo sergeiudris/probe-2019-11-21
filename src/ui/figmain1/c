@@ -22,4 +22,8 @@ build(){
     # clojure -A:fig -b dev -r
 }
 
+prnconf(){
+    clojure -m figwheel.main -pc -b dev -r
+}
+
 "$@"

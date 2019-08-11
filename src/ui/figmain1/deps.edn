@@ -3,9 +3,9 @@
         com.bhauman/figwheel-main {:mvn/version "0.2.3"}
         ;; optional but recommended		
         com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
-        probe.time.core {:local/root "../../../src/common/time"}
-        }
+        probe.time.core {:local/root "../../../src/common/time"}}
  :aliases {:fig {:main-opts ["-m" "figwheel.main"]}}
  :paths ["src" "cljs-src" "resources" "target"]
+
  
  }
