@@ -4,7 +4,7 @@
 
 (defn hi
   []
-  "hi!")
+  "hi!!")
 
 (defn ts
   []
@@ -13,6 +13,8 @@
 (comment
 
   (ts)
+  
+  (.log js/console (ts))
 
   ;
   )

@@ -2,7 +2,7 @@
   (:require  [reagent.core :as r]
              [cljs.repl :as repl]
              [cljs.pprint :as pp]
-             ))
+             [probe.time.core :as pt]))
 
 (defn simple-component []
   [:div
@@ -23,6 +23,12 @@
   (ns sniff.core)
   
   (repl/dir cljs.repl)
+  
+  (repl/dir pt)
+  
+  (pt/hi)
+  
+  (clog (pt/hi))
   
   (clog 3)
   
