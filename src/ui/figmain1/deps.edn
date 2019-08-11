@@ -5,7 +5,7 @@
         com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
         probe.time.core {:local/root "../../../src/common/time"}}
  :aliases {:fig {:main-opts ["-m" "figwheel.main"]}}
- :paths ["src" "cljs-src" "resources" "target"]
+ :paths ["src" "cljs-src" "resources" "target" "test"]
 
  
  }

@@ -34,7 +34,11 @@ adv(){
     clojure -m figwheel.main -O advanced -bo dev
 }
 
-advserve(){
+adv_watch(){
+    clojure -m figwheel.main -O advanced -b dev -s
+}
+
+advserv(){
     clojure -m figwheel.main -O advanced -bo dev -s
 }
 

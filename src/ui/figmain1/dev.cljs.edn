@@ -4,16 +4,17 @@
   ; :ring-handler figmain1.server/handler
   :css-dirs ["resources/public/css"]
   :open-url false
-  :watch-dirs ["src"]
+  :watch-dirs ["src" "test"]
   :reload-clj-files [:cljc :clj]
   :connect-url "ws://localhost:9500/figwheel-connect"
   
   ; :connect-url "ws://[[config-hostname]]:[[server-port]]/figwheel-connect"
   ; :ring-server-options {:port 4000
   ;                       :host "localhost"}
+  :extra-main-files {:test {:main figmain1.core-test}}
   }
 {:main figmain1.core
- :asset-path "cljs-out/dev"
+ :asset-path "/cljs-out/dev"
 ;  :preloads
 ;  [figwheel.core
 ;   figwheel.main
