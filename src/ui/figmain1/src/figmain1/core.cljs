@@ -1,6 +1,7 @@
 (ns figmain1.core
   (:require [clojure.repl :as repl]
-            [probe.time.core :as pt]))
+            [probe.time.core :as pt]
+            [figmain1.hooks]))
 
 (goog-define some-val 3)
 
@@ -8,7 +9,7 @@
 
 (defn hi
   []
-  "hi")
+  "hi!")
 
 (comment
   

@@ -26,4 +26,8 @@ prnconf(){
     clojure -m figwheel.main -pc -b dev -r
 }
 
+server(){
+    clojure -i scripts/server.clj -m figwheel.main -b dev -r
+}
+
 "$@"

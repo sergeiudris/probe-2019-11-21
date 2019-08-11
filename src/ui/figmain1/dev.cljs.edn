@@ -4,6 +4,12 @@
   :css-dirs ["resources/public/css"]
   :open-url false
   :watch-dirs ["src"]
+  :reload-clj-files [:cljc :clj]
+  :connect-url "ws://localhost:9500/figwheel-connect"
+  
+  ; :connect-url "ws://[[config-hostname]]:[[server-port]]/figwheel-connect"
+  ; :ring-server-options {:port 4000
+  ;                       :host "localhost"}
   }
 {:main figmain1.core
  :asset-path "cljs-out/dev"
@@ -14,7 +20,7 @@
   devtools.preload
   figwheel.main.css-reload]
  :closure-defines
- {figwheel.repl/connect-url
-  "ws://localhost:9500/figwheel-connect?fwprocess=b96800&fwbuild=dev"
-  figmain1.core/some-val 4 
-  }}
+ {
+  figmain1.core/some-val 4}
+ :recompile-dependents false
+ }
