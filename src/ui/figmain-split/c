@@ -1,0 +1,12 @@
+#!/bin/bash
+
+prnconf(){
+    clojure -m figwheel.main -pc -b dev -r
+}
+
+dev(){
+    clojure -m figwheel.main -b dev -r
+}
+
+
+"$@"

@@ -1,0 +1,3 @@
+^{:watch-dirs ["src"]}
+{:modules {:foo {:entries #{foo.core}}
+           :bar {:entries #{bar.core}}}}
