@@ -1,0 +1,18 @@
+[submodule "src/edge/dp.probe.plg.dfdb"]
+	path = src/edge/dp.probe.plg.dfdb
+	url = https://github.com/seeris/dp.probe.plg.dfdb
+[submodule "src/edge/dp.probe.plg.usda"]
+	path = src/edge/dp.probe.plg.usda
+	url = https://github.com/seeris/dp.probe.plg.usda
+[submodule "src/edge/dp.probe.plg.datomic"]
+	path = src/edge/dp.probe.plg.datomic
+	url = https://github.com/seeris/dp.probe.plg.datomic
+[submodule "src/edge/dp.probe.plg.record"]
+	path = src/edge/dp.probe.plg.record
+	url = https://github.com/seeris/dp.probe.plg.record
+[submodule "src/edge/dp.probe.sm"]
+	path = src/edge/dp.probe.sm
+	url = https://github.com/seeris/dp.probe.sm
+[submodule "src/edge/dp.probe.kit"]
+	path = src/edge/dp.probe.kit
+	url = https://github.com/seeris/dp.probe.kit

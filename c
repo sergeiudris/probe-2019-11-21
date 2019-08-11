@@ -60,4 +60,16 @@ clean_m2(){
     rm -rf ~/.m2/repository/*
 }
 
+
+git_hash(){
+  git rev-parse HEAD
+}
+
+git_refresh(){
+  git rm -r --cached .
+  git add .
+  git commit -m "🎿 Refreshing .gitignore"
+}
+
+
 "$@"
