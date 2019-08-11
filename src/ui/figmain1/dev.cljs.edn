@@ -20,7 +20,11 @@
   devtools.preload
   figwheel.main.css-reload]
  :closure-defines
- {
-  figmain1.core/some-val 4}
+ {figmain1.core/some-val 4}
  :recompile-dependents false
- }
+ :npm-deps false
+ :infer-externs true
+ :foreign-libs [{:file "dist/index.bundle.js"
+                 :provides ["react" "react-dom"]
+                 :global-exports {react React
+                                  react-dom ReactDOM}}]}

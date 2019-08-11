@@ -16,3 +16,4 @@ yarn.lock
 .cpcache
 .rebel_*
 target
+dist
