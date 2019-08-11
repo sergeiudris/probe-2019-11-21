@@ -8,5 +8,9 @@ dev(){
     clojure -m figwheel.main -b dev -r
 }
 
+adv(){
+    clojure -m figwheel.main -O advanced -bo dev
+}
+
 
 "$@"

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+
+dev(){
+  ls
+}
+
+el(){
+    ./node_modules/.bin/electron .
+}
+
+bb(){
+    clojure -m figwheel.main -bb renderer -b main -r
+}
+
+"$@"
