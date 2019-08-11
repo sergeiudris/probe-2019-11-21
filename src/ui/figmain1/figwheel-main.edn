@@ -1,0 +1,4 @@
+; this confg applies to all builds
+{:css-dirs ["resources/public/css"]
+ ;; rest of the config
+ }

@@ -3,7 +3,7 @@
             [probe.time.core :as pt]))
 
 
-(.log js/console "Hello World!")
+(.log js/console "Hello Live edit!!!!!")
 
 (defn hi
   []

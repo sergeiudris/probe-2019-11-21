@@ -16,4 +16,10 @@ clpth(){
     clj -Spath |  sed -e 's/:/\'$'\n/g' | head -n 5
 }
 
+build(){
+    clojure -m figwheel.main --build dev --repl
+    # clojure -m figwheel.main -b dev -r
+    # clojure -A:fig -b dev -r
+}
+
 "$@"
