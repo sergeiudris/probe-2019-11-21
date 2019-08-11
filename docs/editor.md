@@ -54,3 +54,12 @@
     * usda also uses datomicfree datastore
     * machine learning plugins
     * package it!
+
+# running plugin
+
+* plugin should have datumfile.edn that specifies docker or docker-compose cmd to run the plugin
+
+# platforms and commands 
+
+* editor cannot just call bash commands 
+* maybe it's better to only call docker or docker tools
