@@ -41,6 +41,10 @@ sub_remove(){
   git rm -f $SRC
 }
 
+hashes(){
+  git ls-tree master src/edge/*
+}
+
 
 add(){
   # git submodule add https://github.com/seeris/dp.probe.plg.dfdb src/edge/dp.probe.plg.dfdb
