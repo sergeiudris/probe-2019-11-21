@@ -3,7 +3,7 @@
 ^{; :ring-handler figmain1.server/handler
   ; :css-dirs ["resources/public/css"]
   ; :open-url false
-  :watch-dirs ["src/main" ]
+  :watch-dirs ["src/node" ]
   ; :reload-clj-files [:cljc :clj]
   ; :connect-url "ws://localhost:9500/figwheel-connect"
 
@@ -11,6 +11,7 @@
   ; :ring-server-options {:port 4000
   ;                       :host "localhost"
   }
-{:target :nodejs
- :output-to "app/main.js"
+{
+ :target :nodejs
+;  :output-to "app/main.js"
  :main main.core}

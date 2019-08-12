@@ -7,6 +7,16 @@
 
 (defonce win-ref (atom nil))
 
+
+(def index-file-path (path/join (.cwd js/process) "resources"  "index.html" ) )
+
+(prn "--- dirname " (path/join js/__dirname "index.html"))
+
+(prn "--- index-file-path " index-file-path)
+
+
+
+
 (defn create-window []
   (let [win
         (BrowserWindow. #js {:width 800
@@ -17,7 +27,9 @@
                              })
 
         url
-        (url/format #js {:pathname (path/join js/__dirname "index.html")
+        (url/format #js {
+                        ;  :pathname (path/join js/__dirname "index.html")
+                         :pathname index-file-path
                          :protocol "file:"
                          :slashes true})]
 

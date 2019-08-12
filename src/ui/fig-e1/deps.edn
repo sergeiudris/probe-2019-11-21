@@ -6,4 +6,4 @@
         ; probe.time.core {:local/root "../../../src/common/time"}
         }
  :aliases {:fig {:main-opts ["-m" "figwheel.main"]}}
- :paths ["src" "cljs-src" "resources" "target" "app" "test"]}
+ :paths ["src/node" "src/browser" "cljs-src" "resources" "target" "app" "test"]}

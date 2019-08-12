@@ -3,7 +3,7 @@
 ^{; :ring-handler figmain1.server/handler
   ; :css-dirs ["resources/public/css"]
   ; :open-url false
-  :watch-dirs ["src/renderer"] 
+  :watch-dirs ["src/browser"] 
   ; :reload-clj-files [:cljc :clj]
   ; :connect-url "ws://localhost:9500/figwheel-connect"
 
@@ -11,9 +11,9 @@
   ; :ring-server-options {:port 4000
   ;                       :host "localhost"
   }
-{:output-dir "app/js"
- :asset-path "js"
+{
+;  :output-dir "app/js"
  :main renderer.core
-;  :asset-path "/cljs-out/dev"
+ :asset-path "../target/public/cljs-out/renderer"
  
  }
