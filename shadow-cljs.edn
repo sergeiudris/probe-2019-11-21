@@ -3,5 +3,6 @@
  {:app {}
 
   :devcards {}
-
+  :main {}
+  :renderer {}
   :test {}}}

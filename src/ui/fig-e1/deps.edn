@@ -3,6 +3,7 @@
         com.bhauman/figwheel-main {:mvn/version "0.2.3"}
         ;; optional but recommended		
         com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
+        cider/cider-nrepl {:mvn/version "0.21.0"}
         ; probe.time.core {:local/root "../../../src/common/time"}
         }
  :aliases {:fig {:main-opts ["-m" "figwheel.main"]}}

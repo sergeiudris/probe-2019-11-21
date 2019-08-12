@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sub_push(){
+push(){
   git submodule foreach git checkout master
   git submodule foreach git add .
   git submodule foreach git commit -m $1
@@ -44,6 +44,7 @@ sub_remove(){
 
 add(){
   # git submodule add https://github.com/seeris/dp.probe.plg.dfdb src/edge/dp.probe.plg.dfdb
+  ls
 }
 
 "$@"
