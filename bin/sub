@@ -51,4 +51,22 @@ add(){
   ls
 }
 
+psh(){
+  MSG=$1 git submodule foreach '
+  echo $MSG;
+  echo $path `git rev-parse HEAD`; 
+  git add .;
+  git commit -m "build";
+  git push;
+  '
+
+}
+
+ech(){
+  git submodule foreach '
+  echo $MSG
+  '
+}
+
+
 "$@"
