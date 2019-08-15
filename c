@@ -17,9 +17,7 @@ dc(){
     docker-compose --compatibility \
         -f dc/base.yml \
         -f dc/dc.yml \
-        -f dc/stable.yml \
         -f dc/datomic.yml \
-        -f dc/ui.yml \
         "$@"
 }
 

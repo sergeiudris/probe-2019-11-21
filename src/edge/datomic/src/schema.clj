@@ -6,7 +6,7 @@
 ;   the terms of this license.
 ;   You must not remove this notice, or any other, from this software.
 
-(ns starcraft.schema
+(ns schema
   (:require [datomic.api :as d]
             [starcraft.conn :refer [conn db cdb]]
             [clojure.repl :refer :all]))

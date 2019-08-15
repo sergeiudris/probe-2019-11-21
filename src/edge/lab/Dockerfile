@@ -1,4 +1,4 @@
-FROM probe.base1
+FROM probe.base2
 
 WORKDIR /opt/app
 

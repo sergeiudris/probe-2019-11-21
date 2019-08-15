@@ -7,6 +7,9 @@
             [mbrainz.core]
             [starcraft.etl]
             [seattle.core]
+            [gitexp.core]
+            [schema]
+   
    ;
             )
   ;
