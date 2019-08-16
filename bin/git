@@ -63,4 +63,8 @@ rewrite2(){
   ' --tag-name-filter cat -- --branches --tags
 }
 
+rewrite_push(){
+  git push --force --tags origin 'refs/heads/*'
+}
+
 "$@"
