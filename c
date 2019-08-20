@@ -40,7 +40,6 @@ permis(){
 link_vscode(){
     # ln -s .vscode src/ui/wui/.vscode
     ln -s .vscode src/ui/.vscode
-
 }
 
 

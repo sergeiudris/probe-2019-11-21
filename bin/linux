@@ -51,4 +51,11 @@ lein283(){
 
 }
 
+emacs(){
+  # http://ubuntuhandbook.org/index.php/2019/04/gnu-emacs-26-2-released-install-in-ubuntu-18-04/
+  sudo add-apt-repository ppa:kelleyk/emacs
+  sudo apt update
+  sudo apt install emacs26
+}
+
 "$@"
