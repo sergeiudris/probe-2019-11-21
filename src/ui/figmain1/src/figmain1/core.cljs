@@ -7,7 +7,7 @@
 
 ; (goog-define some-val 3)
 
-(.log js/console "Hello Live edit!!!!!")
+(.log js/console "Hello Live edit!")
 
 (.log js/console react)
 (.log js/console react-dom)

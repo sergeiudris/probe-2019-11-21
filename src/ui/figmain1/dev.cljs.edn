@@ -26,7 +26,9 @@
  :recompile-dependents false
  :npm-deps false
  :infer-externs true
- :foreign-libs [{:file "dist/index.bundle.js"
+ :foreign-libs [{
+                 :file "src/js/index.js"
+                ;  :file "dist/index.bundle.js"
                  :provides ["react" "react-dom"]
                  :global-exports {react React
                                   react-dom ReactDOM}}]}
