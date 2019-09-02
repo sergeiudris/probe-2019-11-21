@@ -7,6 +7,9 @@ readd(){
   git commit -m ".gitignore fix"
 }
 
+count_files(){
+  git ls-files | wc -l
+}
 
 # checkout prev (older) revision
 git_prev() {
