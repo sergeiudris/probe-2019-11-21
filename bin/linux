@@ -43,12 +43,20 @@ alternatives(){
   sudo update-alternatives --config java
 }
 
-lein283(){
+lein_version(){
+  VERSION=$1
   rm /usr/local/bin lein
-  wget https://raw.githubusercontent.com/technomancy/leiningen/2.8.3/bin/lein
+  wget https://raw.githubusercontent.com/technomancy/leiningen/$VERSION/bin/lein
   sudo mv lein /usr/local/bin/
   chmod +x /usr/local/bin/lein
+}
 
+lein283(){
+  lein_version 2.8.3
+}
+
+lein291(){
+    lein_version 2.9.1
 }
 
 emacs(){

@@ -12,3 +12,5 @@ out
 /public/js
 /.shadow-cljs
 yarn.lock
+
+.cpcache
