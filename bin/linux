@@ -66,4 +66,12 @@ emacs(){
   sudo apt install emacs26
 }
 
+list_sizes(){
+  # https://stackoverflow.com/questions/11720079/how-can-i-see-the-size-of-files-and-directories-in-linux/11720119
+  # ls -l
+  du -bsh
+  
+
+}
+
 "$@"
