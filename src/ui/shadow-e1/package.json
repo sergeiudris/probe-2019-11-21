@@ -7,6 +7,6 @@
     "shadow-cljs": "2.8.45"
   },
   "dependencies": {
-    "electron": "6.0.1"
+    "electron": "7.2.4"
   }
 }
