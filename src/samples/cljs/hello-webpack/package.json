@@ -2,7 +2,6 @@
   "name": "hello-webpack",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -2,15 +2,6 @@
   "name": "sniff",
   "version": "0.0.1",
   "description": "shadow-cljs and re-frame template app for immediate feedback",
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.com:urbanslug/sniff.git"
-  },
-  "author": {
-    "name": "Njagi Mwaniki",
-    "email": "njagi@urbanslug.com"
-  },
-  "license": "MIT",
   "scripts": {
     "dev": "shadow-cljs -A:dev watch app;",
     "devcards": "shadow-cljs  -A:dev watch devcards",
