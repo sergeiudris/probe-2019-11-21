@@ -47,7 +47,7 @@ hashes(){
 
 
 add(){
-  # git submodule add https://github.com/dp.probe.plg.dfdb src/edge/dp.probe.plg.dfdb
+  # git submodule add https://github.com/seeris/dp.probe.plg.dfdb src/edge/dp.probe.plg.dfdb
   ls
 }
 
