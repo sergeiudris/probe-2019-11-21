@@ -52,6 +52,7 @@
 ;:libs ["closure/library/third_party/closure"
 ; "src/js"
 ; "src/org/example/example.js"]
+;  :preamble ["license.js"]
  :preamble []
 ;  :hashbang false
  :compiler-stats true
