@@ -55,6 +55,8 @@ build/
 **/.shadow-cljs/**
 **/resources/public/js/**
 
+package-lock.json
+yarn.lock
 
 data
 
